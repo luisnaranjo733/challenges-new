@@ -1,8 +1,19 @@
 body {
     font-family: 'Helvetica Neue', Helvetica, sans-serif;
     font-size: 16px;
+    font-color: white;
+    background-color: #645f67;
+}
+
+p {
+    color: white;
 }
 
 img {
     max-width: 400px;
+}
+
+.center {
+    margin: 0px auto;
+    text-align: center;
 }
