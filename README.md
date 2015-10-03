@@ -32,3 +32,5 @@ This will fetch the new commits and merge them into your repository files. After
 ```
 git push origin
 ```
+
+Hi Emnett! What a coincidence that you are my TA!
