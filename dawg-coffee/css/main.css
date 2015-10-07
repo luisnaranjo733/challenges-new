@@ -3,6 +3,12 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400,300italic,300");
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
 
+/* TODO
+
+* All <svg> elements should be the same height as the current font.
+
+*/
+
 body {
     font-family: Lato, 'Helvetica Neue', Helvetica, sans-serif;
     font-size: 16px;
@@ -25,6 +31,33 @@ h2 {
 
     h2 {
         text-align: center;
-        padding-bottom: 1em; /* Double check this */
+        padding-bottom: 1em; /* h2 should have a blank space below equal to the height of the current font */
     }
+
+    nav {  /* Is this working? */
+        background-color: rgb(24, 28, 34, 0.8);
+    }
+}
+
+nav {
+    position: fixed;
+    background-color: #181c22;
+    font-size: 16px;
+    padding-left: 15px;
+    padding-top: 15px;
+    border-style: solid;
+    border-color: white;
+}
+
+.navbar_icon {
+    width: 1em;
+    height: 1em;
+}
+
+#navlist ul{
+  list-style: none;
+}
+
+#navlist li{
+  display: inline;
 }
