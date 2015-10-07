@@ -38,6 +38,10 @@ nav {
     height: 1em;
 }
 
+#svg_color {
+    fill: white;
+}
+
 
 #horizontal_nav {
     display: inline;
