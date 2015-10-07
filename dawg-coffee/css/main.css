@@ -24,6 +24,53 @@ h2 {
     color: #bc6026;
 }
 
+nav {
+    position: fixed;
+    background-color: #181c22;
+    color: white;
+    font-size: 16px;
+    padding: 15px;
+    width: 100%;
+}
+
+#navbar_icon {
+    width: 1em;
+    height: 1em;
+}
+
+
+#horizontal_nav {
+    display: inline;
+}
+
+#horizontal_nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#horizontal_nav li {
+    display: inline;
+    padding-right: 0.5em;
+    font-variant: small-caps;
+}
+
+#horizontal_nav a:link {
+    color: white;
+    text-decoration: none;
+}
+
+/* visited link */
+#horizontal_nav a:visited {
+    color: white;
+}
+
+#horizontal_nav a:hover {
+    color: #d87e28;
+}
+
+
 @media screen and (min-width: 768px) {
     body {
         font-size: 20px;
@@ -35,29 +82,12 @@ h2 {
     }
 
     nav {  /* Is this working? */
-        background-color: rgb(24, 28, 34, 0.8);
+        background-color: rgba(24, 28, 34, 0.8);
     }
-}
 
-nav {
-    position: fixed;
-    background-color: #181c22;
-    font-size: 16px;
-    padding-left: 15px;
-    padding-top: 15px;
-    border-style: solid;
-    border-color: white;
-}
 
-.navbar_icon {
-    width: 1em;
-    height: 1em;
-}
-
-#navlist ul{
-  list-style: none;
-}
-
-#navlist li{
-  display: inline;
+    /* left and right padding should increase to 1em on screens 768 pixels and wider. */
+    #horizontal_nav li {
+        padding-right: 1em;
+    }
 }
