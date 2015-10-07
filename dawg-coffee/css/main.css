@@ -78,6 +78,11 @@ nav {
     fill: #d87e28;
 }
 
+.container {
+    padding-top: 3em;
+    color: white;
+}
+
 
 @media screen and (min-width: 768px) {
     body {
@@ -99,22 +104,11 @@ nav {
     }
 
     .container {
-        padding-top: 3em;
         background-image: url('../img/background-sm.jpg');
         background-repeat: no-repeat;
         background-size: cover;
-        border-style: dotted;
-        border-color: red;
-        height: 550px;
+        min-height: 550px;
         width: 100%;
-        /*
-        On screens 768 pixels and wider, the header
-        area should use the file background-sm.jpg
-        in the img directory as the background image. 
-        The image should cover the entire header area,
-        and not repeat.
-        */
-
-        color: white;
     }
 }
+
