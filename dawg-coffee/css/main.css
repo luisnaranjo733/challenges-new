@@ -33,7 +33,7 @@ nav {
     width: 100%;
 }
 
-#navbar_icon {
+#size_to_letter {
     width: 1em;
     height: 1em;
 }
@@ -68,6 +68,10 @@ nav {
 
 #horizontal_nav a:hover {
     color: #d87e28;
+}
+
+#horizontal_nav a:hover path{
+    fill: #d87e28;
 }
 
 
