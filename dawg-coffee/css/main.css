@@ -93,9 +93,28 @@ nav {
         background-color: rgba(24, 28, 34, 0.8);
     }
 
-
     /* left and right padding should increase to 1em on screens 768 pixels and wider. */
     #horizontal_nav li {
         padding-right: 1em;
+    }
+
+    .container {
+        padding-top: 3em;
+        background-image: url('../img/background-sm.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-style: dotted;
+        border-color: red;
+        height: 550px;
+        width: 100%;
+        /*
+        On screens 768 pixels and wider, the header
+        area should use the file background-sm.jpg
+        in the img directory as the background image. 
+        The image should cover the entire header area,
+        and not repeat.
+        */
+
+        color: white;
     }
 }
