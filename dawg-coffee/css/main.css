@@ -32,21 +32,14 @@ nav {
     width: 100%;
 }
 
-#nav_icon {
+.char_sized_icon {
     width: 1em;
-    height: 1em;
-    
-}
-
-#headline_icon {
-    width: 1em;
-    height: 1em;
+    height: 1em; 
 }
 
 #svg_white {
     fill: white;
 }
-
 
 #horizontal_nav {
     display: inline;
@@ -97,9 +90,6 @@ nav {
     font-style: italic;
 }
 
-#motto {
-    display: none;
-}
 
 @media screen and (min-width: 768px) {
     body {
@@ -109,10 +99,6 @@ nav {
     h2 {
         text-align: center;
         padding-bottom: 1em; /* h2 should have a blank space below equal to the height of the current font */
-    }
-
-    #motto {
-        display: block;
     }
 
     nav {  /* Is this working? */
