@@ -32,13 +32,23 @@ nav {
     width: 100%;
 }
 
-.char_sized_icon {
+.nav_icon {
     width: 1em;
     height: 1em; 
 }
 
+.headline_icon {
+    width: 2em;
+    height: 2em; 
+    margin-bottom: 1em;
+}
+
 #svg_white {
     fill: white;
+}
+
+#svg_brown {
+    fill: #C35E1C;
 }
 
 #horizontal_nav {
@@ -86,12 +96,19 @@ nav {
     padding-right: 3em; /* I added this */
 }
 
-.headline {
+.headline p{
     font-style: italic;
 }
 
 
 @media screen and (min-width: 768px) {
+    .headline{
+        font-size: 1.25 em;
+        text-align: center;
+        padding-top: 3em;
+        padding-bottom: 3em;
+    }
+
     body {
         font-size: 20px;
     }
