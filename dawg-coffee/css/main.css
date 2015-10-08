@@ -5,8 +5,7 @@
 
 /* TODO
 
-* All <svg> elements should be the same height as the current font.
-
+* Why is h2 not turning white 
 */
 
 body {
@@ -80,9 +79,11 @@ nav {
 
 .container {
     padding-top: 3em;
-    color: white;
 }
 
+#motto {
+    display: none;
+}
 
 @media screen and (min-width: 768px) {
     body {
@@ -92,6 +93,10 @@ nav {
     h2 {
         text-align: center;
         padding-bottom: 1em; /* h2 should have a blank space below equal to the height of the current font */
+    }
+
+    #motto {
+        display: block;
     }
 
     nav {  /* Is this working? */
@@ -109,6 +114,26 @@ nav {
         background-size: cover;
         min-height: 550px;
         width: 100%;
+        color: white;
+        text-align: right;
+
+    h2 {
+        color: white;
     }
 }
 
+@media screen and (min-width: 992px) {
+    .container {
+        background-image: url('../img/background-md.jpg');
+    }
+
+    h1 {
+        font-size: 4em;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        background-image: url('../img/background-lg.jpg');
+    }
+}
