@@ -3,11 +3,7 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400,300italic,300");
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
 
-/* TODO
-
-* Why is h2 not turning white 
-*/
-
+/* Base Page Styles */
 body {
     font-family: Lato, 'Helvetica Neue', Helvetica, sans-serif;
     font-size: 16px;
@@ -23,6 +19,8 @@ h2 {
     color: #bc6026;
 }
 
+/* End of Base Page Styles */
+
 nav {
     position: fixed;
     background-color: #181c22;
@@ -30,11 +28,6 @@ nav {
     font-size: 16px;
     padding: 15px;
     width: 100%;
-}
-
-.nav_icon {
-    width: 1em;
-    height: 1em; 
 }
 
 .headline_icon {
@@ -102,14 +95,9 @@ nav {
 
 
 @media screen and (min-width: 768px) {
-    .headline{
-        font-size: 1.25 em;
-        text-align: center;
-        padding-top: 3em;
-        padding-bottom: 3em;
-    }
-
+    /* Base Page Styles */
     body {
+        
         font-size: 20px;
     }
 
@@ -117,6 +105,23 @@ nav {
         text-align: center;
         padding-bottom: 1em; /* h2 should have a blank space below equal to the height of the current font */
     }
+
+    svg {
+        width: 1em;
+        height: 1em;  
+    }
+
+    /* End of Base Page Styles */
+
+    .headline{
+        font-size: 1.25em;
+        text-align: center;
+        padding-top: 3em;
+        padding-bottom: 3em;
+    }
+
+
+
 
     nav {  /* Is this working? */
         background-color: rgba(24, 28, 34, 0.8);
