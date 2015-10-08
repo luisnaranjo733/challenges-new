@@ -19,65 +19,62 @@ h2 {
     color: #bc6026;
 }
 
+svg {
+    width: 1em;
+    height: 1em;  
+}
+
 /* End of Base Page Styles */
+
+/* Start of navigation bar styles */
 
 nav {
     position: fixed;
     background-color: #181c22;
     color: white;
-    font-size: 16px;
+    font-size: 16px; /* Default nav text size */
     padding: 15px;
-    width: 100%;
+    width: 100%; /* So navbar extends to entire width of viewport */
+    font-variant: small-caps;
+
 }
 
-.headline_icon {
-    width: 2em;
-    height: 2em; 
-    margin-bottom: 1em;
-}
 
-#svg_white {
-    fill: white;
-}
-
-#svg_brown {
-    fill: #C35E1C;
-}
-
-#horizontal_nav {
-    display: inline;
-}
-
+/* Needed to keep nav at 15px separation from edge */
 #horizontal_nav ul {
-    list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
 }
 
 #horizontal_nav li {
-    display: inline;
-    padding-right: 0.5em;
-    font-variant: small-caps;
+    display: inline; /* forces horizontal list */
+    padding-right: 0.5em; /* default padding b/t chars*/
+    
 }
 
-#horizontal_nav a:link {
-    color: white;
-    text-decoration: none;
+#horizontal_nav a:link, #horizontal_nav a:visited {
+    color: white;  /* Idle link color */
+    text-decoration: none; /* Prevents underlining on links */
 }
 
-/* visited link */
-#horizontal_nav a:visited {
-    color: white;
-}
-
+/* Hover TEXT link color */
 #horizontal_nav a:hover {
     color: #d87e28;
 }
 
+/* Hover SVG link color */
 #horizontal_nav a:hover path{
     fill: #d87e28;
 }
+
+/* Default navbar icon color */
+.svg_white {
+    fill: white;
+}
+
+/* End of navigation bar styles */
+
+/* Start of header area styles */
 
 .container {
     width: inherit;
@@ -89,13 +86,25 @@ nav {
     padding-right: 3em; /* I added this */
 }
 
+
+.headline_icon {
+    width: 2em;
+    height: 2em; 
+    margin-bottom: 1em;
+}
+
+#svg_brown {
+    fill: #C35E1C;
+}
+
+
 .headline p{
     font-style: italic;
 }
 
 
 @media screen and (min-width: 768px) {
-    /* Base Page Styles */
+    /* Start of background: ase page styles */
     body {
         
         font-size: 20px;
@@ -106,12 +115,16 @@ nav {
         padding-bottom: 1em; /* h2 should have a blank space below equal to the height of the current font */
     }
 
-    svg {
-        width: 1em;
-        height: 1em;  
+    /* End of base page styles */
+
+    /* Start of navigation bar styles */
+
+    /* left and right padding should increase to 1em on screens 768 pixels and wider. */
+    #horizontal_nav li {
+        padding-right: 1em;
     }
 
-    /* End of Base Page Styles */
+    /* End of navigation bar styles */
 
     .headline{
         font-size: 1.25em;
@@ -125,11 +138,6 @@ nav {
 
     nav {  /* Is this working? */
         background-color: rgba(24, 28, 34, 0.8);
-    }
-
-    /* left and right padding should increase to 1em on screens 768 pixels and wider. */
-    #horizontal_nav li {
-        padding-right: 1em;
     }
 
     .header {
