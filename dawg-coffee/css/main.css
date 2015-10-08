@@ -32,12 +32,18 @@ nav {
     width: 100%;
 }
 
-#size_to_letter {
+#nav_icon {
+    width: 1em;
+    height: 1em;
+    
+}
+
+#headline_icon {
     width: 1em;
     height: 1em;
 }
 
-#svg_color {
+#svg_white {
     fill: white;
 }
 
@@ -84,6 +90,11 @@ nav {
 
 .header {
     padding-top: 3em;
+    padding-right: 3em; /* I added this */
+}
+
+.headline {
+    font-style: italic;
 }
 
 #motto {
