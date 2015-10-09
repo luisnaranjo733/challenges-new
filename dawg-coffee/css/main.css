@@ -102,6 +102,19 @@ nav {
 }
 /* END OF HEADLINE AREA STYLES */
 
+/* START OF CAFE INFO SECTION */
+
+#cafe-info-section {
+    text-align: center;
+    background-color: #dbdce3;
+    border-radius: 5px;
+}
+
+.row {
+    border-style: dotted;
+}
+
+/* END OF CAFE INFO SECTION */
 
 @media screen and (min-width: 768px) {
     /* START OF BASE PAGE STYLES */
