@@ -3,7 +3,7 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400,300italic,300");
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
 
-/* Base Page Styles */
+/* START OF BASE PAGE STYLES */
 body {
     font-family: Lato, 'Helvetica Neue', Helvetica, sans-serif;
     font-size: 16px;
@@ -23,11 +23,9 @@ svg {
     width: 1em;
     height: 1em;  
 }
+/* END OF BASE PAGE STYLES */
 
-/* End of Base Page Styles */
-
-/* Start of navigation bar styles */
-
+/* START OF NAVIGATION BAR STYLES */
 nav {
     position: fixed;
     background-color: #181c22;
@@ -71,11 +69,12 @@ nav {
 .svg_white {
     fill: white;
 }
+/* END OF NAVIGATION AREA STYLES */
 
-/* End of navigation bar styles */
-
-/* Start of header area styles */
-
+/* START OF HEADER AREA STYLES */
+/* Need to overwrite bootstrap width 
+   in order to inherit width of screen
+   for header image */
 .container {
     width: inherit;
     padding: 0;
@@ -83,30 +82,30 @@ nav {
 
 .header {
     padding-top: 3em;
-    padding-right: 3em; /* I added this */
+    padding-right: 3em; /* Added to prevent crowding at right edge of screen */
+}
+/* END OF HEADER AREA STYLES */
+
+/* START OF HEADLINE AREA STYLES */
+.headline p{
+    font-style: italic;
 }
 
-
 .headline_icon {
-    width: 2em;
-    height: 2em; 
-    margin-bottom: 1em;
+    width: 1.5em;
+    height: 1.5em; 
+    margin-bottom: 1em; /* Padding for the cafe description below */
 }
 
 #svg_brown {
     fill: #C35E1C;
 }
-
-
-.headline p{
-    font-style: italic;
-}
+/* END OF HEADLINE AREA STYLES */
 
 
 @media screen and (min-width: 768px) {
-    /* Start of background: ase page styles */
-    body {
-        
+    /* START OF BASE PAGE STYLES */
+    body {        
         font-size: 20px;
     }
 
@@ -115,31 +114,22 @@ nav {
         padding-bottom: 1em; /* h2 should have a blank space below equal to the height of the current font */
     }
 
-    /* End of base page styles */
+    /* END OF BASE PAGE STYLES */
 
-    /* Start of navigation bar styles */
+    /* START OF NAVIGATION BAR STYLES */
 
     /* left and right padding should increase to 1em on screens 768 pixels and wider. */
     #horizontal_nav li {
         padding-right: 1em;
     }
 
-    /* End of navigation bar styles */
-
-    .headline{
-        font-size: 1.25em;
-        text-align: center;
-        padding-top: 3em;
-        padding-bottom: 3em;
-    }
-
-
-
-
     nav {  /* Is this working? */
         background-color: rgba(24, 28, 34, 0.8);
     }
 
+    /* END OF NAVIGATION BAR STYLES */
+
+    /* START HEADER STYLES */
     .header {
         background-image: url('../img/background-sm.jpg');
         background-repeat: no-repeat;
@@ -148,24 +138,36 @@ nav {
         width: 100%;
         color: white;
         text-align: right;
-
-    h2 {
-        color: white;
     }
+    /* END HEADER STYLES */
+
+    /* START HEADLINE STYLES */
+    .headline{
+        font-size: 1.25em;
+        text-align: center;
+        padding-top: 3em;
+        padding-bottom: 3em;
+    }
+    /* END HEADLINE STYLES */
 }
 
 @media screen and (min-width: 992px) {
+    /* START HEADER STYLES */
     .header {
         background-image: url('../img/background-md.jpg');
     }
 
+    /* "Dawg Coffee" header should be increased in size */
     h1 {
         font-size: 4em;
     }
+    /* END HEADER STYLES */
 }
 
 @media screen and (min-width: 1200px) {
+    /* START HEADER STYLES */
     .header {
         background-image: url('../img/background-lg.jpg');
     }
+    /* END HEADER STYLES */
 }
