@@ -110,13 +110,31 @@ nav {
     border-radius: 5px;
 }
 
-.col {
-    padding-top: 25px;
+/* Used to pad the border with headline and section below */
+.row {
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
 }
 
+/* Padding between columns when stacked 
+    Not significant when horizontal */
+.col {
+    padding-bottom: 1em;  
+}
+
+/* Space between the icons and the text/images below */
+.cafe-icons-padding {
+    padding-bottom: 1em;
+}
+
+/* Size of cafe info icons */
 .cafe-info-icons {
-    width: 1.5em;
-    height: 1.5em; 
+    width: 2em;
+    height: 2em;
+}
+
+.padding-in-column {
+    padding-bottom: 1em;
 }
 
 /* END OF CAFE INFO SECTION */
