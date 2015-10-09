@@ -5,7 +5,23 @@
 		[
 			[
 				"padding",
+				"padding-right"
+			],
+			[
+				"paddin",
 				"padding-bottom"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"ali",
+				"text-align"
+			],
+			[
+				"border",
+				"border-style"
 			],
 			[
 				"fot",
@@ -18,10 +34,6 @@
 			[
 				"font-",
 				"font-size"
-			],
-			[
-				"paddin",
-				"padding-right"
 			],
 			[
 				"background",
@@ -87,7 +99,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 2862,
+				"buffer_size": 3406,
 				"line_ending": "Unix"
 			}
 		},
@@ -95,7 +107,7 @@
 			"file": "css/main.css",
 			"settings":
 			{
-				"buffer_size": 2676,
+				"buffer_size": 3837,
 				"line_ending": "Unix"
 			}
 		}
@@ -107,12 +119,12 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 0.0,
+		"height": 784.0,
 		"last_filter": "",
 		"selected_items":
 		[
 		],
-		"width": 0.0
+		"width": 784.0
 	},
 	"console":
 	{
@@ -156,6 +168,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"h2",
 			"br",
 			"translate_tabs_to_spaces"
 		],
@@ -184,15 +197,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2862,
+						"buffer_size": 3406,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1539,
-								1539
+								3234,
+								3234
 							]
 						],
 						"settings":
@@ -202,7 +215,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2276.0,
+						"translation.y": 4032.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -220,15 +233,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2676,
+						"buffer_size": 3837,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2376,
-								2376
+								3376,
+								3376
 							]
 						],
 						"settings":
@@ -238,7 +251,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 5641.0,
+						"translation.y": 1584.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -275,7 +288,7 @@
 		"cols":
 		[
 			0.0,
-			0.495439739414,
+			0.582736156352,
 			1.0
 		],
 		"rows":
