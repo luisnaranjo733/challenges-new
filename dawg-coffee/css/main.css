@@ -139,10 +139,15 @@ nav {
 
 /* START OF MENU SECTION */
 
+#menu-section {
+    padding-left: 1em;
+}
+
 #menu-section dd {
     font-style: italic;
     padding-left: 1em;
 }
+
 
 /* END OF MENU SECTION */
 
