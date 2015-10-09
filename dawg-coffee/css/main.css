@@ -110,8 +110,13 @@ nav {
     border-radius: 5px;
 }
 
-.row {
-    border-style: dotted;
+.col {
+    padding-top: 25px;
+}
+
+.cafe-info-icons {
+    width: 1.5em;
+    height: 1.5em; 
 }
 
 /* END OF CAFE INFO SECTION */
