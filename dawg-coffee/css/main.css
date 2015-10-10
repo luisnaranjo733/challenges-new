@@ -4,11 +4,17 @@
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
 
 /* START OF BASE PAGE STYLES */
+html body {
+    margin: 0px;
+    padding: 0px;
+}
+
 body {
     font-family: Lato, 'Helvetica Neue', Helvetica, sans-serif;
     font-size: 16px;
     font-weight: 300;
     background-color: #E9EAEE;
+    border-style: solid;
 }
 
 h1, h2 {
@@ -259,4 +265,9 @@ footer {
         background-image: url('../img/background-lg.jpg');
     }
     /* END HEADER STYLES */
+}
+
+html body {
+    margin: 0px;
+    padding: 0px;
 }
