@@ -1,0 +1,281 @@
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css");
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,300");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,300italic,300");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
+
+$font-stack: Lato, 'Helvetica Neue', Helvetica, sans-serif;
+$light-grey: #E9EAEE;
+$heading-orange: #bc6026;
+$nav-black: #181c22;
+$nav-orange: #d87e28;
+$nav-alt-background: rgba(24, 28, 34, 0.8);
+
+/* START OF BASE PAGE STYLES */
+html body {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: $font-stack;
+    font-size: 16px;
+    font-weight: 300;
+    background-color: $light-grey;
+    border-style: solid;
+}
+
+h1, h2 {
+    font-family: $font-stack;
+}
+
+h2 {
+    color: $heading-orange;
+}
+
+svg {
+    width: 1em;
+    height: 1em;  
+}
+/* END OF BASE PAGE STYLES */
+
+/* START OF NAVIGATION BAR STYLES */
+nav {
+    position: fixed;
+    background-color: $nav-black;
+    color: white;
+    font-size: 16px; /* Default nav text size */
+    padding: 15px;
+    width: 100%; /* So navbar extends to entire width of viewport */
+    font-variant: small-caps;
+    z-index: 1;
+
+}
+
+
+/* Needed to keep nav at 15px separation from edge */
+#horizontal_nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+#horizontal_nav li {
+    display: inline; /* forces horizontal list */
+    padding-right: 0.5em; /* default padding b/t chars*/
+    
+}
+
+#horizontal_nav a:link, #horizontal_nav a:visited {
+    color: white;  /* Idle link color */
+    text-decoration: none; /* Prevents underlining on links */
+}
+
+/* Hover TEXT link color */
+#horizontal_nav a:hover {
+    color: $nav-orange;
+}
+
+/* Hover SVG link color */
+#horizontal_nav a:hover path{
+    fill: $nav-orange;
+}
+
+/* Default navbar icon color */
+.svg_white {
+    fill: white;
+}
+/* END OF NAVIGATION AREA STYLES */
+
+/* START OF HEADER AREA STYLES */
+/* Need to overwrite bootstrap width 
+   in order to inherit width of screen
+   for header image */
+.container {
+    width: inherit;
+    padding: 0;
+}
+
+.header {
+    padding-top: 3em;
+    padding-right: 3em; /* Added to prevent crowding at right edge of screen */
+}
+/* END OF HEADER AREA STYLES */
+
+/* START OF HEADLINE AREA STYLES */
+.headline p{
+    font-style: italic;
+}
+
+.headline_icon {
+    width: 1.5em;
+    height: 1.5em; 
+    margin-bottom: 1em; /* Padding for the cafe description below */
+}
+
+#svg_brown {
+    fill: $heading-orange;
+}
+/* END OF HEADLINE AREA STYLES */
+
+/* START OF CAFE INFO SECTION */
+#cafe-info-section {
+    text-align: center;
+    /*background-color: $grey-background;*/
+    background-color: darken($light-grey, 5%);
+    border-radius: 5px;
+}
+
+/* Used to pad the border with headline and section below */
+.cafe-info-section-row {
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+}
+
+/* Padding between columns when stacked 
+    Not significant when horizontal */
+.col {
+    padding-bottom: 1em;  
+}
+
+/* Space between the icons and the text/images below */
+.cafe-icons-padding {
+    padding-bottom: 1em;
+}
+
+/* Size of cafe info icons */
+.cafe-info-icons {
+    width: 2em;
+    height: 2em;
+}
+
+.padding-in-column {
+    padding-bottom: 1em;
+}
+/* END OF CAFE INFO SECTION */
+
+/* START OF MENU SECTION */
+
+#menu-section {
+    padding-left: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+#menu-section dd {
+    font-style: italic;
+    padding-left: 1em;
+}
+/* END OF MENU SECTION */
+
+/* START OF STORY SECTION */
+
+#story-section {
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 1em;
+    background-color: darken($light-grey, 5%);
+}
+
+#story-img {
+    float: right;
+    max-height: 300px;
+    margin-left: 1em;
+    border-radius: 5px;
+
+}
+/* END OF STORY SECTION */
+
+/* START OF FOOTER SECTION */
+footer {
+    border-top: 3px solid $nav-orange;
+    background-color: darken($light-grey, 20%);
+    font-size: 12px;
+    padding: 1em;
+}
+/* END OF FOOTER SECTION */
+
+@media screen and (min-width: 768px) {
+    /* START OF BASE PAGE STYLES */
+    body {        
+        font-size: 20px;
+    }
+
+    h2 {
+        text-align: center;
+        padding-bottom: 1em; /* h2 should have a blank space below equal to the height of the current font */
+    }
+
+    /* END OF BASE PAGE STYLES */
+
+    /* START OF NAVIGATION BAR STYLES */
+
+    /* left and right padding should increase to 1em on screens 768 pixels and wider. */
+    #horizontal_nav li {
+        padding-right: 1em;
+    }
+
+    nav {  /* Is this working? */
+        background-color: $nav-alt-background;
+    }
+
+    /* END OF NAVIGATION BAR STYLES */
+
+    /* START HEADER STYLES */
+    .header {
+        background-image: url('../img/background-sm.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        min-height: 550px;
+        width: 100%;
+        color: white;
+        text-align: right;
+    }
+    /* END HEADER STYLES */
+
+    /* START HEADLINE STYLES */
+    .headline{
+        font-size: 1.25em;
+        text-align: center;
+        padding-top: 3em;
+        padding-bottom: 3em;
+    }
+    /* END HEADLINE STYLES */
+
+    /* START OF STORY SECTION */
+    #story-img {
+        max-height: 400px;
+
+    }
+    /* END OF STORY SECTION */
+
+    /* START OF FOOTER SECTION */
+    .icon-attr {
+        text-align: right;
+    }
+    /* END OF FOOTER SECTION */
+}
+
+@media screen and (min-width: 992px) {
+    /* START HEADER STYLES */
+    .header {
+        background-image: url('../img/background-md.jpg');
+    }
+
+    /* "Dawg Coffee" header should be increased in size */
+    h1 {
+        font-size: 4em;
+    }
+    /* END HEADER STYLES */
+}
+
+@media screen and (min-width: 1200px) {
+    /* START HEADER STYLES */
+    .header {
+        background-image: url('../img/background-lg.jpg');
+    }
+    /* END HEADER STYLES */
+}
+
+html body {
+    margin: 0px;
+    padding: 0px;
+}
