@@ -168,8 +168,16 @@ nav {
     border-radius: 5px;
 
 }
-
 /* END OF STORY SECTION */
+
+/* START OF FOOTER SECTION */
+footer {
+    border-top: 3px solid #d87e28;
+    background-color: #afb3c2;
+    font-size: 12px;
+    padding: 1em;
+}
+/* END OF FOOTER SECTION */
 
 @media screen and (min-width: 768px) {
     /* START OF BASE PAGE STYLES */
@@ -224,6 +232,12 @@ nav {
 
     }
     /* END OF STORY SECTION */
+
+    /* START OF FOOTER SECTION */
+    .icon-attr {
+        text-align: right;
+    }
+    /* END OF FOOTER SECTION */
 }
 
 @media screen and (min-width: 992px) {
