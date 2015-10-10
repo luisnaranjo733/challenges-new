@@ -4,12 +4,16 @@
 		"selected_items":
 		[
 			[
-				"padd",
-				"padding-left"
+				"marg",
+				"margin-left"
 			],
 			[
 				"paddi",
-				"padding-bottom"
+				"padding-left"
+			],
+			[
+				"padd",
+				"padding-left"
 			],
 			[
 				"paddin",
@@ -107,7 +111,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 11074,
+				"buffer_size": 14300,
 				"line_ending": "Unix"
 			}
 		},
@@ -139,7 +143,7 @@
 			"file": "css/main.css",
 			"settings":
 			{
-				"buffer_size": 4607,
+				"buffer_size": 4810,
 				"line_ending": "Unix"
 			}
 		}
@@ -207,6 +211,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"cafe-info-section",
 			"italic",
 			"h2",
 			"br",
@@ -237,15 +242,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11074,
+						"buffer_size": 14300,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								10478,
-								10478
+								11232,
+								11232
 							]
 						],
 						"settings":
@@ -255,7 +260,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 18000.0,
+						"translation.y": 19537.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -357,15 +362,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4607,
+						"buffer_size": 4810,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2985,
-								2985
+								3183,
+								3183
 							]
 						],
 						"settings":
@@ -375,7 +380,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 6072.0,
+						"translation.y": 6648.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

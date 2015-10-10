@@ -34,6 +34,7 @@ nav {
     padding: 15px;
     width: 100%; /* So navbar extends to entire width of viewport */
     font-variant: small-caps;
+    z-index: 1;
 
 }
 
@@ -110,7 +111,7 @@ nav {
 }
 
 /* Used to pad the border with headline and section below */
-.row {
+.cafe-info-section-row {
     padding-top: 1.5em;
     padding-bottom: 1.5em;
 }
@@ -141,6 +142,8 @@ nav {
 
 #menu-section {
     padding-left: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 #menu-section dd {
@@ -150,6 +153,13 @@ nav {
 /* END OF MENU SECTION */
 
 /* START OF STORY SECTION */
+
+#story-section {
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 1em;
+    background-color: #dbdce3;
+}
 
 #story-img {
     float: right;
@@ -207,6 +217,13 @@ nav {
         padding-bottom: 3em;
     }
     /* END HEADLINE STYLES */
+
+    /* START OF STORY SECTION */
+    #story-img {
+        max-height: 400px;
+
+    }
+    /* END OF STORY SECTION */
 }
 
 @media screen and (min-width: 992px) {
