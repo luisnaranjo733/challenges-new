@@ -147,9 +147,19 @@ nav {
     font-style: italic;
     padding-left: 1em;
 }
-
-
 /* END OF MENU SECTION */
+
+/* START OF STORY SECTION */
+
+#story-img {
+    float: right;
+    max-height: 300px;
+    margin-left: 1em;
+    border-radius: 5px;
+
+}
+
+/* END OF STORY SECTION */
 
 @media screen and (min-width: 768px) {
     /* START OF BASE PAGE STYLES */
