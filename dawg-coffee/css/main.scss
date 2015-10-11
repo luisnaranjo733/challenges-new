@@ -11,17 +11,17 @@ $nav-orange: #d87e28;
 $nav-alt-background: rgba(24, 28, 34, 0.8);
 
 /* START OF BASE PAGE STYLES */
-html body {
-    margin: 0px;
-    padding: 0px;
-}
 
 body {
     font-family: $font-stack;
     font-size: 16px;
     font-weight: 300;
     background-color: $light-grey;
-    border-style: solid;
+}
+
+.container-fluid {
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 h1, h2 {
@@ -89,10 +89,7 @@ nav {
 /* Need to overwrite bootstrap width 
    in order to inherit width of screen
    for header image */
-.container {
-    width: inherit;
-    padding: 0;
-}
+
 
 .header {
     padding-top: 3em;
@@ -273,9 +270,4 @@ footer {
         background-image: url('../img/background-lg.jpg');
     }
     /* END HEADER STYLES */
-}
-
-html body {
-    margin: 0px;
-    padding: 0px;
 }

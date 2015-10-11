@@ -3,16 +3,15 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400,300italic,300");
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
 /* START OF BASE PAGE STYLES */
-html body {
-  margin: 0px;
-  padding: 0px; }
-
 body {
   font-family: Lato, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 16px;
   font-weight: 300;
-  background-color: #E9EAEE;
-  border-style: solid; }
+  background-color: #E9EAEE; }
+
+.container-fluid {
+  padding-left: 0px;
+  padding-right: 0px; }
 
 h1, h2 {
   font-family: Lato, "Helvetica Neue", Helvetica, sans-serif; }
@@ -72,10 +71,6 @@ nav {
 /* Need to overwrite bootstrap width 
    in order to inherit width of screen
    for header image */
-.container {
-  width: inherit;
-  padding: 0; }
-
 .header {
   padding-top: 3em;
   padding-right: 3em;
@@ -225,8 +220,5 @@ footer {
     background-image: url("../img/background-lg.jpg"); }
 
   /* END HEADER STYLES */ }
-html body {
-  margin: 0px;
-  padding: 0px; }
 
 /*# sourceMappingURL=main.css.map */
