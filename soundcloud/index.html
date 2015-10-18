@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>SoundCloud Example</title>
+  
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="css/main.css"/>
+
+  <!-- include libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script src="js/app.js"></script>
+
+</head>
+<body>
+  <div class="container" ng-app="myApp" ng-controller="MyCtrl"> <!-- specify app -->
+
+    <form name="trackForm">
+      <div class="form-group">
+        <label>SoundCloud search:</label>
+        <!-- bind the search term to the controller -->
+        <input name="search" placeholder="Search for a track..." ng-model="query" class="form-control"></input>
+      </div>
+      <div class="form-group">
+        <!-- call method on click -->
+        <button class="btn btn-primary" ng-click="getTracks()" type="submit">Submit</button>
+      </div>
+    </form>     
+
+    <div ng-if="tracks"> <!-- only show results if we've done a search -->
+      <p>Tracks found:</p>
+      <ul>
+        <li ng-repeat="track in tracks"><i>{{track.title}}</i> by {{track.user.username}}</li>
+      </ul>
+    </div>
+
+  </div> <!-- end container -->
+</body>
+</html>

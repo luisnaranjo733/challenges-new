@@ -1,6 +1,6 @@
 # Map Challenge: Police Shootings
 
-This folder contains your submission for the [map challenge](http://faculty.washington.edu/joelross/courses/info343/#/challenges/map). The below questions should be answered with details about your submission!
+This folder contains your submission for the [map challenge](http://info343-joelross.rhcloud.com/challenges/map). The below questions should be answered with details about your submission!
 
 ##### 1. What information does your visualization show? What 'argument' are you making? #####
 > Answer goes here!

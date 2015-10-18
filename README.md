@@ -1,5 +1,5 @@
 # Challenge Starter Repo
-This repository contains starter code for the INFO 343 B/D challenges. You will need to fork this repository into your own account and use that forked copy as your master copy. See the [git challenge page](http://faculty.washington.edu/joelross/courses/info343/#/challenges/git) for more details on getting started.
+This repository contains starter code for the INFO 343 B/D challenges. You will need to fork this repository into your own account and use that forked copy as your master copy. See the [git challenge page](http://info343-joelross.rhcloud.com/challenges/git) for more details on getting started.
 
 ## Getting Changes from the Upstream Repository
 

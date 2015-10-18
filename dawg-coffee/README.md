@@ -1,6 +1,6 @@
 # Responsive Challenge: Dawg Coffee
 
-This folder contains your submission for the [responsive challenge](http://faculty.washington.edu/joelross/courses/info343/#/challenges/responsive). The below questions should be answered with details about your submission!
+This folder contains your submission for the [responsive challenge](http://info343-joelross.rhcloud.com/challenges/responsive). The below questions should be answered with details about your submission!
 
 
 ##### 1. Did you receive any help from others (classmates, etc)? If so, please list who. #####

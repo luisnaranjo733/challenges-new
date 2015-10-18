@@ -1,6 +1,6 @@
 # Reviews Challenge: jQuery and Parse
 
-This folder contains your submission for the [reviews challenge](http://faculty.washington.edu/joelross/courses/info343/#/challenges/reviews). The below questions should be answered with details about your submission!
+This folder contains your submission for the [reviews challenge](http://info343-joelross.rhcloud.com/challenges/reviews). The below questions should be answered with details about your submission!
 
 ##### 1. Who did you pair with to test your application? #####
 > Answer goes here!
