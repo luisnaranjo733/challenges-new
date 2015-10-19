@@ -11,6 +11,8 @@
     <meta name="author" content="Luis Naranjo">
     <title>Police Shootings</title>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+
     <!-- Leaflet stylesheet -->
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
 
@@ -21,10 +23,34 @@
     <link rel="icon" href="img/page-icon.png"/></head>
 <body>
 
-    <div id="map-container"></div>
+    <div class="row">
+        <div class="col-md-3">
+        <h1>Police violence</h1>
+        <h2>Organized by <em>outcome</em> of event</h2>
+        <ul>
+            <li>Killed</li>
+            <li>Hit</li>
+            <li>Unknown</li>
+        </ul>
+        <h2>Statistics</h2>
+        <ul>
+            <li>Of victims who were killed:</li>
+                <ul>
+                    <li id="killed-male">69% were male</li>
+                    <li id="killed-female">31% were female</li>
+                </ul>
+            <li>Of victims who were hit:</li>
+                <ul>
+                    <li id="hit-male">69% were male</li>
+                    <li id="hit-female">31% were female</li>
+                </ul>
+        </ul>
 
-    <p id="tests">asdf</p>
-
+        </div>
+        <div class="col-md-9">
+            <div id="map-container"></div>
+        </div>
+    </div>
     <!-- MORE HTML GOES HERE -->
 
 
