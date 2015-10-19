@@ -1,6 +1,28 @@
-/* add your script methods and logic here */
-
 'use strict';
+
+var overlayMaps = {
+    'Male': L.layerGroup([]),
+    'Female': L.layerGroup([]),
+};
+
+
+
+var doSomethingWithData = function(data) {
+   // for each item in data
+   // put in dict (city -> layergroup)
+    $.each( data, function(i, event ) {
+        var lat = event.lat;
+        var lng = event.lng;
+        var marker =  L.marker([lat, lng]).bindPopup('This is a popup');
+        var victim = event.victim;
+        var gender = victim.gender;
+        marker.addTo(overlayMaps[gender]);
+        
+    });
+}
+
+//this will call the processData function and pass it the downloaded data to work with
+$.getJSON('data/data.min.json').then(doSomethingWithData);
 
 var map = L.map('map-container').setView([47.655575, -122.309439], 13);
 
@@ -10,16 +32,5 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     id: 'luisnaranjo733.no8peoka',
     accessToken: 'pk.eyJ1IjoibHVpc25hcmFuam83MzMiLCJhIjoiY2lmeDVra3Q1M3A0Z3U2a3N3d2JzNXFicCJ9.nLZGt1FxRVUxOUL-_1wrIg'
 }).addTo(map);
-
-var littleton = L.marker([47.654462, -122.308195]).bindPopup('This is Littleton, CO.'),
-    denver    = L.marker([47.654520, -122.303539]).bindPopup('This is Denver, CO.'),
-    aurora    = L.marker([47.654665, -122.313795]).bindPopup('This is Aurora, CO.'),
-    golden    = L.marker([47.656920, -122.303839]).bindPopup('This is Golden, CO.');
-
-var cities = L.layerGroup([littleton, denver, aurora, golden]);
-
-var overlayMaps = {
-    "Cities": cities
-};
 
 L.control.layers(null, overlayMaps).addTo(map);
