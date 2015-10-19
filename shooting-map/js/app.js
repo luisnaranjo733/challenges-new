@@ -5,26 +5,20 @@ var overlayMaps = {
     'Female': L.layerGroup([]),
 };
 
+var parseShootings = function(data) {
+    console.log('parsing');
+    $.each(data, function(i, event ) {
+        var marker = L.marker([event.lat, event.lng]).bindPopup(event.summary);
+         marker.addTo(overlayMaps[event.victim.gender]);
 
-
-var doSomethingWithData = function(data) {
-   // for each item in data
-   // put in dict (city -> layergroup)
-    $.each( data, function(i, event ) {
-        var lat = event.lat;
-        var lng = event.lng;
-        var marker =  L.marker([lat, lng]).bindPopup('This is a popup');
-        var victim = event.victim;
-        var gender = victim.gender;
-        marker.addTo(overlayMaps[gender]);
-        
     });
 }
 
-//this will call the processData function and pass it the downloaded data to work with
-$.getJSON('data/data.min.json').then(doSomethingWithData);
+$.getJSON('data/data.min.json').then(parseShootings);
 
-var map = L.map('map-container').setView([47.655575, -122.309439], 13);
+
+
+var map = L.map('map-container').setView([40.913129, -102.491385], 5);
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
