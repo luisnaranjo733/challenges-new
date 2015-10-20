@@ -32,33 +32,16 @@ var toPercentage = function(decimal_value) {
     return round(decimal_value * 100, 2);
 }
 
-var killed_pct_obj = $('#killed-pct');
-var hit_pct_obj = $('#hit-pct');
-var unknown_pct_obj = $('#unknown-pct');
-
-var updateStats = function(stats, map) {
-    console.log('updating stats');
-    var killed_pct = toPercentage(stats.Killed / stats.events);
-    killed_pct_obj.html(killed_pct);
-
-    var hit_pct = toPercentage(stats.Hit / stats.events);
-    hit_pct_obj.html(hit_pct);
-
-    var unknown_pct = toPercentage(stats.Unknown / stats.events);
-    unknown_pct_obj.html(unknown_pct);
-    
-
-
-}
-
 var map = L.map('map-container').setView([40.913129, -102.491385], 5);
 
 map.on('overlayadd', function(e) {
-    //console.log(e.name + 'layer added');
+    console.log(e.name + 'layer added');
+    updateStats(stats);
 });
 
 map.on('overlayremove', function(e) {
-    //console.log(e.name + 'layer removed');
+    console.log(e.name + 'layer removed');
+    updateStats(stats);
 });
 
 
@@ -70,21 +53,37 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 }).addTo(map);
 
 
-
-
 L.control.layers(null, overlayMaps).addTo(map);
 
+
+var updateStats = function(stats) {
+    for (var key in overlayMaps) {
+        if (overlayMaps.hasOwnProperty(key)) {
+            var layerGroup = overlayMaps[key];
+            var visible = map.hasLayer(layerGroup);
+            if (visible) {
+                console.log('Updating visible: ' + key);
+                var layers = layerGroup.getLayers();
+                $.each(layers, function(i, event) {
+                    console.log(event);
+
+                })   
+            }
+        }
+    }
+
+}
 
 var parseEvent = function(i, event ) {
     var marker = L.circleMarker([event.lat, event.lng]).bindPopup(event.summary);
     marker.event = event;
-    //marker.addTo(map);
     if (event.outcome && event.victim.gender != 'Unknown') {
         marker.addTo(overlayMaps[event.outcome]);
-        // gender specific stats
+        // gender specific outcomes
         stats[event.victim.gender][event.outcome] += 1;
-        // all stats
+        // gender neutral outcomes
         stats[event.outcome] += 1;
+        // sum of gender neutral outcomes
         stats.events += 1;
     }
 }
