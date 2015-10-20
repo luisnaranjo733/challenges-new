@@ -120,12 +120,52 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 
 L.control.layers(null, overlayMaps).addTo(map);
 
+// lowest lat, lowest long
+var southWest = {
+    'lat':  null,
+    'lng': null,
+}
+
+// highest lat, lowest long
+var northEast =  {
+    'lat':  null,
+    'lng': null,
+} 
+
+
 var parseEvent = function(i, event ) {
-    var marker = L.circleMarker([event.lat, event.lng]).bindPopup(event.summary);
+    //var marker = L.circleMarker([event.lat, event.lng]).bindPopup(event.summary);
+    var marker = L.circleMarker([event.lat, event.lng]).bindPopup(event.lat + ', ' + event.lng);
     marker.event = event;
     if (event.outcome && event.victim.gender != 'Unknown') {
         marker.addTo(overlayMaps[event.outcome]);
         incrementStats(event);
+
+        // lowest lat, lowest long
+        if (!southWest.lat && !southWest.lng) {
+            southWest.lat = event.lat;
+            southWest.lng = event.lng;
+        } else {
+            if (event.lat < southWest.lat) {
+                southWest.lat = event.lat;
+            }
+            if (event.lng < southWest.lng) {
+                southWest.lng = event.lng;
+            }
+        }
+
+        // highest lat, highest long
+        if (!northEast.lat && !northEast.lng) {
+            northEast.lat = event.lat;
+            northEast.lng = event.lng;
+        } else {
+            if (event.lat > northEast.lat) {
+                northEast.lat = event.lat;
+            }
+            if (event.lng > northEast.lng){
+                northEast.lng = event.lng;
+            }
+        }
     }
 }
 
@@ -134,6 +174,11 @@ var parseEvent = function(i, event ) {
 
 var parseData = function(data) {
     $.each(data, parseEvent);
+    console.log(southWest.lat +  ', ' + southWest.lng);
+    var southWestObj = L.latLng(southWest.lat, southWest.lng);
+    var northEastObj = L.latLng(northEast.lat, northEast.lng);
+    var bounds = L.latLngBounds(southWestObj, northEastObj);
+    map.fitBounds(bounds);
     for (var key in overlayMaps) {
         if (overlayMaps.hasOwnProperty(key)) {
             var layerGroup = overlayMaps[key];
@@ -158,6 +203,9 @@ Increment initial dataset for stats
 Add each marker to layer
 Add each layer to the map
 */
-$( document ).ready(function() {
-  $.getJSON('data/data.min.json', parseData);
+
+//[3.81, -159.55], [61.59, -67.278]
+
+$(document).ready(function() {
+    $.getJSON('data/data.min.json', parseData);
 });
