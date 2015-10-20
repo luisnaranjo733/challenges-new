@@ -6,11 +6,6 @@ var overlayMaps = {
     "Unknown": L.layerGroup([]),
 };
 
-var killed_male_pct_obj = $('#killed-male');
-var killed_female_pct_obj = $('#killed-female');
-var hit_male_pct_obj = $('#hit-male');
-var hit_female_pct_obj = $('#hit-female');
-
 var stats = {
     'Male': {
         'Killed': 0,
@@ -34,21 +29,12 @@ var toPercentage = function(decimal_value) {
     return round(decimal_value * 100, 2);
 }
 
+var killed_pct_obj = $('#killed-pct');
+var hit_pct_obj = $('#hit-pct');
+var unknown_pct_obj = $('#unknown-pct');
+
 var updateStats = function(stats) {
     console.log('Updating stats');
-
-    var killed_male_pct = toPercentage(stats.Male.Killed / stats.Killed);
-    killed_male_pct_obj.html(killed_male_pct);
-
-    var killed_female_pct = toPercentage(stats.Female.Killed / stats.Killed);
-    killed_female_pct_obj.html(killed_female_pct);
-
-
-    var hit_male_pct = toPercentage(stats.Male.Hit / stats.Hit);
-    hit_male_pct_obj.html(hit_male_pct);
-
-    var hit_female_pct = toPercentage(stats.Female.Hit / stats.Hit);
-    hit_female_pct_obj.html(hit_female_pct);
 }
 
 var parseEvent = function(i, event ) {
@@ -64,17 +50,34 @@ var parseEvent = function(i, event ) {
 }
 
 
-var queryData = function(data) {
+var parseData = function(data) {
     $.each(data, parseEvent);
-    updateStats(stats);
-
+    console.log('Finished parsing data');
+    for (var key in overlayMaps) {
+        if (overlayMaps.hasOwnProperty(key)) {
+            console.log(key);
+            var layerGroup = overlayMaps[key];
+            var layers = layerGroup.getLayers();
+            console.log(layers);
+        }
+    }
+    
 }
 
 //$.getJSON('data/data.min.json').then(parseShootings);
-$.getJSON('data/data.min.json', queryData);
+$.getJSON('data/data.min.json', parseData);
 
 
 var map = L.map('map-container').setView([40.913129, -102.491385], 5);
+
+map.on('overlayadd', function(e) {
+    console.log(e.name + 'layer added');
+});
+
+map.on('overlayremove', function(e) {
+    console.log(e.name + 'layer removed');
+});
+
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -83,13 +86,7 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     accessToken: 'pk.eyJ1IjoibHVpc25hcmFuam83MzMiLCJhIjoiY2lmeDVra3Q1M3A0Z3U2a3N3d2JzNXFicCJ9.nLZGt1FxRVUxOUL-_1wrIg'
 }).addTo(map);
 
+
+
+
 L.control.layers(null, overlayMaps).addTo(map);
-
-map.on('overlayadd', function(e) {
-    updateStats(stats);
-});
-
-map.on('overlayremove', function(e) {
-    updateStats(stats);
-});
-
