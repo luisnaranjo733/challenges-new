@@ -51,22 +51,27 @@ var updateStats = function(stats) {
     hit_female_pct_obj.html(hit_female_pct);
 }
 
+var parseEvent = function(i, event ) {
+    var marker = L.circleMarker([event.lat, event.lng]).bindPopup(event.summary);
 
-var parseShootings = function(data) {
-    $.each(data, function(i, event ) {
-        var marker = L.circleMarker([event.lat, event.lng]).bindPopup(event.summary);
+    if (event.outcome && event.victim.gender != 'Unknown') {
         marker.addTo(overlayMaps[event.outcome]);
-        if (event.victim.gender != 'Unknown') {
-            stats[event.victim.gender][event.outcome] += 1;
-            stats[event.outcome] += 1  
-        }
-    });
-    console.log('DONE');
-    console.log(stats);
-    
+        // gender specific stats
+        stats[event.victim.gender][event.outcome] += 1;
+        // all stats
+        stats[event.outcome] += 1;
+    }
 }
 
-$.getJSON('data/data.min.json').then(parseShootings);
+
+var queryData = function(data) {
+    $.each(data, parseEvent);
+    updateStats(stats);
+
+}
+
+//$.getJSON('data/data.min.json').then(parseShootings);
+$.getJSON('data/data.min.json', queryData);
 
 
 var map = L.map('map-container').setView([40.913129, -102.491385], 5);
