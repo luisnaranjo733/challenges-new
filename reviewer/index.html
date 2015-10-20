@@ -7,19 +7,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- page information -->
-    <meta name="description" content="...page description...">
-    <meta name="author" content="...your name...">
-    <title>Something Reviews</title>
+    <meta name="description" content="A page for movie reviews">
+    <meta name="author" content="Luis Naranjo">
+    <title>Movie Reviews</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 
 </head>
 <body>
+    <div class="container">
 
-    
-    <!-- jQuery library -->
+        <h1>The Dark Knight</h1>
+        <p>[Ratings 1-5 go here]</p>
+        <p id='movie-desc'>Movie description: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>ews
+
+        <h2>Reviews</h2>
+        <p>[Ratings 1-5 go here]</p>
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control" id="reviewTitle" placeholder="Review Title">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" rows="3" placeholder="Review Body"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+
+
+    </div>  
+
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    
-    <!-- Parse.com library -->
     <script src="https://www.parsecdn.com/js/parse-1.6.0.min.js"></script>
-
+    <script src="js/app.js"></script>
 </body>
 </html>
