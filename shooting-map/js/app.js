@@ -130,7 +130,7 @@ var parseEvent = function(i, event ) {
 }
 
 
-// Main code
+// Main code below here
 
 var parseData = function(data) {
     $.each(data, parseEvent);
@@ -151,11 +151,13 @@ var parseData = function(data) {
 
 
 /*
-Parse each event
+Parse each JSON obj (event)
 Create each marker
 Add event JSON object to marker
 Increment initial dataset for stats
 Add each marker to layer
 Add each layer to the map
 */
-$.getJSON('data/data.min.json', parseData);
+$( document ).ready(function() {
+  $.getJSON('data/data.min.json', parseData);
+});
