@@ -63,7 +63,7 @@ L.control.layers(null, overlayMaps).addTo(map);
 
 var parseEvent = function(i, event ) {
     var marker = L.circleMarker([event.lat, event.lng]).bindPopup(event.summary);
-    marker.addTo(map);
+    //marker.addTo(map);
     if (event.outcome && event.victim.gender != 'Unknown') {
         marker.addTo(overlayMaps[event.outcome]);
         // gender specific stats
@@ -81,11 +81,10 @@ var parseData = function(data) {
         if (overlayMaps.hasOwnProperty(key)) {
             console.log(key);
             var layerGroup = overlayMaps[key];
+            map.addLayer(layerGroup);
             var layers = layerGroup.getLayers();
-            $.each(layers, function(i, layer) {
-                if (map.hasLayer(layer)) {
-                    console.log(layer);
-                }
+            $.each(layers, function(i, event) {
+
             })
         }
     }
