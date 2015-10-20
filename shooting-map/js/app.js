@@ -37,37 +37,6 @@ var updateStats = function(stats) {
     console.log('Updating stats');
 }
 
-var parseEvent = function(i, event ) {
-    var marker = L.circleMarker([event.lat, event.lng]).bindPopup(event.summary);
-
-    if (event.outcome && event.victim.gender != 'Unknown') {
-        marker.addTo(overlayMaps[event.outcome]);
-        // gender specific stats
-        stats[event.victim.gender][event.outcome] += 1;
-        // all stats
-        stats[event.outcome] += 1;
-    }
-}
-
-
-var parseData = function(data) {
-    $.each(data, parseEvent);
-    console.log('Finished parsing data');
-    for (var key in overlayMaps) {
-        if (overlayMaps.hasOwnProperty(key)) {
-            console.log(key);
-            var layerGroup = overlayMaps[key];
-            var layers = layerGroup.getLayers();
-            console.log(layers);
-        }
-    }
-    
-}
-
-//$.getJSON('data/data.min.json').then(parseShootings);
-$.getJSON('data/data.min.json', parseData);
-
-
 var map = L.map('map-container').setView([40.913129, -102.491385], 5);
 
 map.on('overlayadd', function(e) {
@@ -90,3 +59,38 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 
 
 L.control.layers(null, overlayMaps).addTo(map);
+
+
+var parseEvent = function(i, event ) {
+    var marker = L.circleMarker([event.lat, event.lng]).bindPopup(event.summary);
+    marker.addTo(map);
+    if (event.outcome && event.victim.gender != 'Unknown') {
+        marker.addTo(overlayMaps[event.outcome]);
+        // gender specific stats
+        stats[event.victim.gender][event.outcome] += 1;
+        // all stats
+        stats[event.outcome] += 1;
+    }
+}
+
+
+var parseData = function(data) {
+    $.each(data, parseEvent);
+    console.log('Finished parsing data');
+    for (var key in overlayMaps) {
+        if (overlayMaps.hasOwnProperty(key)) {
+            console.log(key);
+            var layerGroup = overlayMaps[key];
+            var layers = layerGroup.getLayers();
+            $.each(layers, function(i, layer) {
+                if (map.hasLayer(layer)) {
+                    console.log(layer);
+                }
+            })
+        }
+    }
+    
+}
+
+//$.getJSON('data/data.min.json').then(parseShootings);
+$.getJSON('data/data.min.json', parseData);
