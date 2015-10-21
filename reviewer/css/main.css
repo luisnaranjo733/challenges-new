@@ -1,12 +1,19 @@
 
-
 h1 {
     border-bottom-style: solid;
     margin-bottom: 0.5em;
     padding-bottom: 0.25em;
 }
 
+
+
 #header-img {
     width: 100%;
     margin-bottom: 1em;
+}
+
+
+.raty {
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
