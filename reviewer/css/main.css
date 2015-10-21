@@ -31,3 +31,19 @@ h1 {
     padding-top: 0.25em;
     padding-bottom: 1em;
 }
+
+h3 {
+    display: inline;
+}
+
+.thumbs-icon {
+    float: right;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.exit-icon {
+    float: right;
+    padding-left: 2em;
+    padding-right: 0.5em;
+}
