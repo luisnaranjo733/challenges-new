@@ -1,0 +1,9 @@
+<div class="saved-review">
+    <h3>{{ title }}</h3>
+    <i class="fa fa-close exit-icon"></i>
+    <i class="fa fa-thumbs-down thumbs-icon"></i>
+    <i class="fa fa-thumbs-up thumbs-icon"></i>
+
+    <div id="review-raty-{{ raty-id }}" class="raty"></div>
+    <p>{{ body }}</p>
+</div>

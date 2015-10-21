@@ -1,6 +1,13 @@
 Parse.initialize("lnI74xBuUcxJ5JwlWcdRMNfMlBSvvPRh5v2WRWVU", "iWPTeMpRzvObmJk2ndAyCmEZnrmMXOEmjrer1l7v");
 var Review = Parse.Object.extend('Review');
 
+function loadUser(params) {
+  $.get('load_review.mst', function(template) {
+    var rendered = Mustache.render(template, params);
+    $('#saved-reviews').html(rendered);
+  });
+}
+
 $(function() {
     // Display average rating for movie
     var avg_raty = 3; // Needs to be calculated
@@ -13,11 +20,18 @@ $(function() {
 
     // fetch reviews
     var query = new Parse.Query(Review);
+    var raty_id = 0
     query.find().then(function(results) {
         results.forEach(function(item) {
-            var title = item.get('title');
-            var body = item.get('content')
             var rating = item.get('rating');
+            raty_id += 1;
+            var params = {
+                'title': item.get('title'),
+                'body': item.get('content'),
+                'raty-id': raty_id,
+            }
+            loadUser(params);
+            $('#review-raty-' + raty_id).raty('score', rating);
         });
     });
 
