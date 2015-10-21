@@ -28,7 +28,7 @@ h1 {
     border-left-style: solid;
     padding-left: 1.5em;
     margin-bottom: 4em;
-    padding-top: 0.25em;
+    padding-top: 1em;
     padding-bottom: 1em;
 }
 
@@ -36,7 +36,7 @@ h3 {
     display: inline;
 }
 
-.thumbs-icon {
+.thumbs-icon {  
     float: right;
     padding-left: 0.5em;
     padding-right: 0.5em;

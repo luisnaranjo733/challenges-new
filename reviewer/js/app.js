@@ -12,6 +12,15 @@ $(function() {
     $('#submission-raty').raty();
 
     // fetch reviews
+    var query = new Parse.Query(Review);
+    query.find().then(function(results) {
+        results.forEach(function(item) {
+            var title = item.get('title');
+            var body = item.get('content')
+            var rating = item.get('rating');
+        });
+    });
+
     // for each review
     $('#review-raty-1').raty({
         'score': 1,
