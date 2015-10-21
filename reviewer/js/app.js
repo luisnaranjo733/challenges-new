@@ -11,6 +11,18 @@ $(function() {
 
     $('#submission-raty').raty();
 
+    // fetch reviews
+    // for each review
+    $('#review-raty-1').raty({
+        'score': 1,
+        'readOnly': true
+    });
+
+    $('#review-raty-2').raty({
+        'score': 5,
+        'readOnly': true
+    });
+
     // Intercept review submission form
     $("#review-submission-form").submit(function(event){
         var form = {
@@ -30,6 +42,11 @@ $(function() {
         }, function(error) {
             console.log(error);
         })
+
+        $('#reviewTitle').val('')
+        $('#reviewBody').val('')
+        $('#submission-raty').raty('score', 0)
+
 
         event.preventDefault();    //current standard
         event.returnValue = false; //some older browsers
