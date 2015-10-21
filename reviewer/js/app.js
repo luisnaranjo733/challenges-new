@@ -1,5 +1,6 @@
 Parse.initialize("lnI74xBuUcxJ5JwlWcdRMNfMlBSvvPRh5v2WRWVU", "iWPTeMpRzvObmJk2ndAyCmEZnrmMXOEmjrer1l7v");
 var Review = Parse.Object.extend('Review');
+var raty_id = 0
 
 function loadUser(params) {
   $.get('load_review.mst', function(template) {
@@ -25,14 +26,14 @@ $(function() {
 
     // fetch reviews
     var query = new Parse.Query(Review);
-    var raty_id = 0
+
     query.find().then(function(results) {
         results.forEach(function(item) {
             var rating = item.get('rating');
             raty_id += 1;
             var params = {
                 'title': item.get('title'),
-                'body': item.get('content'),
+                'content': item.get('content'),
                 'raty-id': raty_id,
                 'rating': rating
             }
@@ -65,6 +66,15 @@ $(function() {
         $('#reviewBody').val('')
         $('#submission-raty').raty('score', 0)
 
+        raty_id += 1;
+        var params = {
+            'title': form.title,
+            'content': form.content,
+            'raty-id': raty_id,
+            'rating': form.rating,
+        }
+        loadUser(params);
+        
 
         event.preventDefault();    //current standard
         event.returnValue = false; //some older browsers
