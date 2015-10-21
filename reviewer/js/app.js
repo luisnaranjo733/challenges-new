@@ -4,18 +4,23 @@ var Review = Parse.Object.extend('Review');
 function loadUser(params) {
   $.get('load_review.mst', function(template) {
     var rendered = Mustache.render(template, params);
-    $('#saved-reviews').html(rendered);
+    $('#saved-reviews').append(rendered);
+    $('#review-raty-' + params['raty-id']).raty({
+        'readOnly': true,
+        'score': params['rating'],
+    });
   });
 }
 
 $(function() {
-    // Display average rating for movie
+    // Display average rating for movie at movie description header
     var avg_raty = 3; // Needs to be calculated
     $('#avg-raty').raty({
         'score': avg_raty,
         'readOnly': true
     });
 
+    // Raty for submitting reviews
     $('#submission-raty').raty();
 
     // fetch reviews
@@ -29,22 +34,12 @@ $(function() {
                 'title': item.get('title'),
                 'body': item.get('content'),
                 'raty-id': raty_id,
+                'rating': rating
             }
             loadUser(params);
-            $('#review-raty-' + raty_id).raty('score', rating);
         });
     });
 
-    // for each review
-    $('#review-raty-1').raty({
-        'score': 1,
-        'readOnly': true
-    });
-
-    $('#review-raty-2').raty({
-        'score': 5,
-        'readOnly': true
-    });
 
     // Intercept review submission form
     $("#review-submission-form").submit(function(event){
