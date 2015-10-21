@@ -15,34 +15,31 @@ Parse.initialize("lnI74xBuUcxJ5JwlWcdRMNfMlBSvvPRh5v2WRWVU", "iWPTeMpRzvObmJk2nd
 //more code goes here!
 
 // extend the 
-var Song = Parse.Object.extend('Song');
+var Review = Parse.Object.extend('Review');
 
 // instantiate an
-var mySong = new Song();
+// var myReview = new Review();
 
-mySong.set('title', "Can't sleep");
-mySong.set('artist', "Vanic x K.Flay");
-mySong.increment('score');
-mySong.set('year', 2014);
+// myReview.set('title', "Phenomenal movie");
+// myReview.set('content', "Great acting, great directing, what's not to love?");
+// myReview.set('rating', 4);
 
-// mySong.save().then(function(obj) {
+// myReview.save().then(function(obj) {
 //     console.log('saved object');
 // }, function(error) {
 //     console.log(error);
 // })
 
 // create query
-var query = new Parse.Query(Song);
+var query = new Parse.Query(Review);
 
 // specify constraints
-query.equalTo('artist', 'Vanic x K.Flay');
+// query.equalTo('artist', 'Vanic x K.Flay');
 
 // run the query
 query.find().then(function(results) {
     results.forEach(function(item) {
-        item.increment('score');
-        item.save();
-        console.log(item.get('score'));    
+        console.log(item.get('title'));    
     })
     
 });
