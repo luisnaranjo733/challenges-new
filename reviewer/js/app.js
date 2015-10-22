@@ -7,6 +7,7 @@ function round(value, decimals) {
 
 function deleteReview(close_icon) {
     // review-close-9UOvQLnXXy --> 9UOvQLnXXy
+
     var objectID = close_icon.target.id.slice(13);
 
     var query = new Parse.Query(Review);
@@ -14,9 +15,10 @@ function deleteReview(close_icon) {
     query.find().then(function (results) {
         results.forEach(function(item) {
             item.destroy({});
-            console.log(item);
         });
-    });
+    }).then(updateAvgReview);
+    console.log('deleting review');
+    
 
     var reviewDiv = $('#saved-review-' +  objectID);
     reviewDiv.remove();
@@ -47,15 +49,41 @@ function addReviewToDOM(data, created) {
     if (created) {
         $('html, body').animate({
             scrollTop: $('#review-raty-' + data['id']).offset().top
-        }, 2000);      
+        }, 500);      
     }
 
     $('#' + raty_div_id).raty({
         'readOnly': true,
         'score': data.rating,
-    })
-    
+    })   
 }
+
+function updateAvgReview() {
+    console.log('Updating avg review');
+    var query = new Parse.Query(Review);
+
+    query.find().then(function(results) {
+        var ratings_count = 0;
+        var ratings_sum =  0;
+        results.forEach(function(item) {
+            ratings_count += 1;
+            var rating = item.get('rating');
+            ratings_sum += rating;
+        });
+        var avg_rating = ratings_sum / ratings_count;
+        avg_rating = round(avg_rating, 1);
+        console.log('avg: ' +  avg_rating);
+
+        // Display average rating for movie at movie description header
+        $('#avg-raty').raty({
+            'score': avg_rating,
+            'readOnly': true
+        });
+            // calculate average rating
+    });
+
+}
+
 
 $(function() {
     // Raty for submitting reviews
@@ -89,8 +117,7 @@ $(function() {
             'score': avg_rating,
             'readOnly': true
         });
-            // calculate average rating
-        });
+    });
 
 
     // Intercept review submission form
@@ -109,6 +136,7 @@ $(function() {
 
         myReview.save().then(function(obj) {
             console.log('saved object');
+            updateAvgReview();
         }, function(error) {
             console.log(error);
         })
@@ -126,7 +154,6 @@ $(function() {
 
         addReviewToDOM(data, true)
         
-
         event.preventDefault();    //current standard
         event.returnValue = false; //some older browsers
         return false;              //most older browsers
