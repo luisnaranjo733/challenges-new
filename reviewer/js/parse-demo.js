@@ -34,12 +34,12 @@ var Review = Parse.Object.extend('Review');
 var query = new Parse.Query(Review);
 
 // specify constraints
-// query.equalTo('artist', 'Vanic x K.Flay');
+query.equalTo('title', 'Wee');
 
 // run the query
 query.find().then(function(results) {
     results.forEach(function(item) {
-        console.log(item.get('title'));    
+        console.log(item.id);    
     })
     
 });

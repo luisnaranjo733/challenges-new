@@ -1,23 +1,26 @@
 Parse.initialize("lnI74xBuUcxJ5JwlWcdRMNfMlBSvvPRh5v2WRWVU", "iWPTeMpRzvObmJk2ndAyCmEZnrmMXOEmjrer1l7v");
 var Review = Parse.Object.extend('Review');
-var raty_id = 0
 
-function deleteReview(review) {
-    raty_id = review.target.id;
-    raty_id = raty_id[raty_id.length -1];
-    var query = new Parse.Query(Review);
+function deleteReview(close_icon) {
+    // review-close-9UOvQLnXXy --> 9UOvQLnXXy
+    var objectID = close_icon.target.id.slice(13);
+    console.log(objectID);
+    var reviewDiv = $('#saved-review-' +  objectID);
+    reviewDiv.remove();
+    //var query = new Parse.Query(Review);
 }
 
 
 function addReviewToHTML(data) {
     var review_div = $('<div>').attr('class', 'saved-review');
+    review_div.attr('id', 'saved-review-'  + data['id']);
     var h3 = $('<h3>').text(data['title']);
-    var close_icon = $('<i>').attr('id', 'review-close-' +  data['raty-id']);
+    var close_icon = $('<i>').attr('id', 'review-close-' +  data['id']);
     close_icon.attr('class', 'fa fa-close exit-icon');
     close_icon.click(deleteReview);
     var thumbs_up_icon = $('<i>').attr('class', 'fa fa-thumbs-up thumbs-icon');
     var thumbs_down_icon = $('<i>').attr('class', 'fa fa-thumbs-down thumbs-icon');
-    var raty_div = $('<div>').attr('id', 'review-raty-' + data['raty-id']);
+    var raty_div = $('<div>').attr('id', 'review-raty-' + data['id']);
     raty_div.attr('class', 'raty');
     var body = $('<p>').text(data.content);
 
@@ -47,12 +50,11 @@ $(function() {
     query.find().then(function(results) {
         results.forEach(function(item) {
             var rating = item.get('rating');
-            raty_id += 1;
             var data = {
                 'title': item.get('title'),
                 'content': item.get('content'),
-                'raty-id': raty_id,
-                'rating': rating
+                'rating': rating,
+                'id': item.id,
             }
             addReviewToHTML(data);
         });
@@ -83,14 +85,12 @@ $(function() {
         $('#reviewBody').val('')
         $('#submission-raty').raty('score', 0)
 
-        raty_id += 1;
         var params = {
             'title': form.title,
             'content': form.content,
-            'raty-id': raty_id,
             'rating': form.rating,
+            'objectID': myReview.get('objectID'),
         }
-        loadUser(params);
         
 
         event.preventDefault();    //current standard
