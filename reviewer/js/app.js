@@ -1,6 +1,10 @@
 Parse.initialize("lnI74xBuUcxJ5JwlWcdRMNfMlBSvvPRh5v2WRWVU", "iWPTeMpRzvObmJk2ndAyCmEZnrmMXOEmjrer1l7v");
 var Review = Parse.Object.extend('Review');
 
+function round(value, decimals) {
+    return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+}
+
 function deleteReview(close_icon) {
     // review-close-9UOvQLnXXy --> 9UOvQLnXXy
     var objectID = close_icon.target.id.slice(13);
@@ -50,18 +54,10 @@ function addReviewToDOM(data, created) {
         'readOnly': true,
         'score': data.rating,
     })
-    console.log();
     
 }
 
 $(function() {
-    // Display average rating for movie at movie description header
-    var avg_raty = 3; // Needs to be calculated
-    $('#avg-raty').raty({
-        'score': avg_raty,
-        'readOnly': true
-    });
-
     // Raty for submitting reviews
     $('#submission-raty').raty({
         'score': 3,
@@ -85,10 +81,16 @@ $(function() {
             }
             addReviewToDOM(data);
         });
-        console.log('count: ' + ratings_count);
-        console.log('sum: ' + ratings_sum);
-        // calculate average rating
-    });
+        var avg_rating = ratings_sum / ratings_count;
+        avg_rating = round(avg_rating, 1);
+
+        // Display average rating for movie at movie description header
+        $('#avg-raty').raty({
+            'score': avg_rating,
+            'readOnly': true
+        });
+            // calculate average rating
+        });
 
 
     // Intercept review submission form
