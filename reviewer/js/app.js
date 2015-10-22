@@ -4,10 +4,18 @@ var Review = Parse.Object.extend('Review');
 function deleteReview(close_icon) {
     // review-close-9UOvQLnXXy --> 9UOvQLnXXy
     var objectID = close_icon.target.id.slice(13);
-    console.log(objectID);
+
+    var query = new Parse.Query(Review);
+    query.equalTo('objectId', objectID);
+    query.find().then(function (results) {
+        results.forEach(function(item) {
+            item.destroy({});
+            console.log(item);
+        });
+    });
+
     var reviewDiv = $('#saved-review-' +  objectID);
     reviewDiv.remove();
-    //var query = new Parse.Query(Review);
 }
 
 
@@ -42,7 +50,9 @@ $(function() {
     });
 
     // Raty for submitting reviews
-    $('#submission-raty').raty();
+    $('#submission-raty').raty({
+        'score': 3,
+    });
 
     // fetch reviews
     var query = new Parse.Query(Review);
