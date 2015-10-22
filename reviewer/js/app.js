@@ -2,38 +2,19 @@ Parse.initialize("lnI74xBuUcxJ5JwlWcdRMNfMlBSvvPRh5v2WRWVU", "iWPTeMpRzvObmJk2nd
 var Review = Parse.Object.extend('Review');
 var raty_id = 0
 
-var deleteReview = function(e) {
-    console.log(e);
+function deleteReview(review) {
+    raty_id = review.target.id;
+    raty_id = raty_id[raty_id.length -1];
+    var query = new Parse.Query(Review);
 }
 
-// data properties
-// title, content, raty-id, rating
-/*
-<div class="saved-review">
-    <h3>{{ title }}</h3>
-    <i id="review-close-{{ raty-id }}" class="fa fa-close exit-icon"></i>
-    <i class="fa fa-thumbs-down thumbs-icon"></i>
-    <i class="fa fa-thumbs-up thumbs-icon"></i>
 
-    <div id="review-raty-{{ raty-id }}" class="raty"></div>
-    <p>{{ body }}</p>
-</div>
-
-Append to #saved-reviews
-
-$('<div>')                      // Creates the element
-    .attr('spry:region','myDs') // Sets the attribute spry:region="myDs"
-    .html('{hostname}')         // Sets the inner HTML to {hostname}
-    .appendTo('body')    
-
-        $([h3[0], close_icon[0]]).appendTo(review_div);
-*/
 function addReviewToHTML(data) {
     var review_div = $('<div>').attr('class', 'saved-review');
     var h3 = $('<h3>').text(data['title']);
     var close_icon = $('<i>').attr('id', 'review-close-' +  data['raty-id']);
     close_icon.attr('class', 'fa fa-close exit-icon');
-    //close_icon.click();
+    close_icon.click(deleteReview);
     var thumbs_up_icon = $('<i>').attr('class', 'fa fa-thumbs-up thumbs-icon');
     var thumbs_down_icon = $('<i>').attr('class', 'fa fa-thumbs-down thumbs-icon');
     var raty_div = $('<div>').attr('id', 'review-raty-' + data['raty-id']);
