@@ -95,12 +95,14 @@ $(function() {
         $('#reviewBody').val('')
         $('#submission-raty').raty('score', 0)
 
-        var params = {
+        var data = {
             'title': form.title,
             'content': form.content,
             'rating': form.rating,
-            'objectID': myReview.get('objectID'),
+            'id': myReview.id,
         }
+
+        addReviewToHTML(data)
         
 
         event.preventDefault();    //current standard
