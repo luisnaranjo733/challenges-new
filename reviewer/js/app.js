@@ -19,7 +19,7 @@ function deleteReview(close_icon) {
 }
 
 
-function addReviewToHTML(data, created) {
+function addReviewToDOM(data, created) {
     var review_div = $('<div>').attr('class', 'saved-review');
     review_div.attr('id', 'saved-review-'  + data['id']);
     var h3 = $('<h3>').text(data['title']);
@@ -28,7 +28,8 @@ function addReviewToHTML(data, created) {
     close_icon.click(deleteReview);
     var thumbs_up_icon = $('<i>').attr('class', 'fa fa-thumbs-up thumbs-icon');
     var thumbs_down_icon = $('<i>').attr('class', 'fa fa-thumbs-down thumbs-icon');
-    var raty_div = $('<div>').attr('id', 'review-raty-' + data['id']);
+    var raty_div_id = 'review-raty-' + data['id'];
+    var raty_div = $('<div>').attr('id', raty_div_id);
     raty_div.attr('class', 'raty');
     var body = $('<p>').text(data.content);
 
@@ -38,12 +39,18 @@ function addReviewToHTML(data, created) {
     });
     $(children).appendTo(review_div);
     review_div.appendTo($('#saved-reviews'));
+
     if (created) {
         $('html, body').animate({
             scrollTop: $('#review-raty-' + data['id']).offset().top
         }, 2000);      
     }
 
+    $('#' + raty_div_id).raty({
+        'readOnly': true,
+        'score': data.rating,
+    })
+    console.log();
     
 }
 
@@ -64,16 +71,23 @@ $(function() {
     var query = new Parse.Query(Review);
 
     query.find().then(function(results) {
+        var ratings_count = 0;
+        var ratings_sum =  0;
         results.forEach(function(item) {
             var rating = item.get('rating');
+            ratings_count += 1;
+            ratings_sum += rating;
             var data = {
                 'title': item.get('title'),
                 'content': item.get('content'),
                 'rating': rating,
                 'id': item.id,
             }
-            addReviewToHTML(data);
+            addReviewToDOM(data);
         });
+        console.log('count: ' + ratings_count);
+        console.log('sum: ' + ratings_sum);
+        // calculate average rating
     });
 
 
@@ -108,7 +122,7 @@ $(function() {
             'id': myReview.id,
         }
 
-        addReviewToHTML(data, true)
+        addReviewToDOM(data, true)
         
 
         event.preventDefault();    //current standard
