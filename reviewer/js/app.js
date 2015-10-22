@@ -19,7 +19,7 @@ function deleteReview(close_icon) {
 }
 
 
-function addReviewToHTML(data) {
+function addReviewToHTML(data, created) {
     var review_div = $('<div>').attr('class', 'saved-review');
     review_div.attr('id', 'saved-review-'  + data['id']);
     var h3 = $('<h3>').text(data['title']);
@@ -38,6 +38,12 @@ function addReviewToHTML(data) {
     });
     $(children).appendTo(review_div);
     review_div.appendTo($('#saved-reviews'));
+    if (created) {
+        $('html, body').animate({
+            scrollTop: $('#review-raty-' + data['id']).offset().top
+        }, 2000);      
+    }
+
     
 }
 
@@ -102,7 +108,7 @@ $(function() {
             'id': myReview.id,
         }
 
-        addReviewToHTML(data)
+        addReviewToHTML(data, true)
         
 
         event.preventDefault();    //current standard
