@@ -22,6 +22,14 @@ function deleteReview(close_icon) {
     reviewDiv.remove();
 }
 
+function thumbsUp(icon) {
+    console.log('Thumbs up!');
+}
+
+function thumbsDown(icon) {
+    console.log('Thumbs down!');
+}
+
 
 function addReviewToDOM(data, created) {
     var review_div = $('<div>').attr('class', 'saved-review');
@@ -31,13 +39,22 @@ function addReviewToDOM(data, created) {
     close_icon.attr('class', 'fa fa-close exit-icon');
     close_icon.click(deleteReview);
     var thumbs_up_icon = $('<i>').attr('class', 'fa fa-thumbs-up thumbs-icon');
+    thumbs_up_icon.click(thumbsUp);
+    var review_counter =  $('<i>').attr('class', 'thumbs-icon');
+    review_counter_str = data['reviewCount'];
+
+    if (review_counter_str > 0) {
+        review_counter_str = '+' + review_counter_str;
+    } 
+    review_counter.text(review_counter_str);
     var thumbs_down_icon = $('<i>').attr('class', 'fa fa-thumbs-down thumbs-icon');
+    thumbs_down_icon.click(thumbsDown);
     var raty_div_id = 'review-raty-' + data['id'];
     var raty_div = $('<div>').attr('id', raty_div_id);
     raty_div.attr('class', 'raty');
     var body = $('<p>').text(data.content);
 
-    var children = [h3, close_icon, thumbs_up_icon, thumbs_down_icon, raty_div, body];
+    var children = [h3, close_icon, thumbs_up_icon, review_counter, thumbs_down_icon, raty_div, body];
     children.forEach(function(element, i) {
         children[i] = element.get(0);
     });
@@ -47,7 +64,7 @@ function addReviewToDOM(data, created) {
     if (created) {
         $('html, body').animate({
             scrollTop: $('#review-raty-' + data['id']).offset().top
-        }, 500);      
+        }, 250);      
     }
 
     $('#' + raty_div_id).raty({
@@ -103,6 +120,7 @@ $(function() {
                 'content': item.get('content'),
                 'rating': rating,
                 'id': item.id,
+                'reviewCount': item.get('reviewCount'),
             }
             addReviewToDOM(data);
         });
@@ -130,6 +148,7 @@ $(function() {
         myReview.set('title', form.title);
         myReview.set('content', form.content);
         myReview.set('rating', form.rating);
+        myReview.set('reviewCount', 0);
 
         myReview.save().then(function(obj) {
             console.log('saved object');
@@ -160,14 +179,6 @@ $(function() {
 
 /* Remaining requirements
 
-* Because the review title and body are entered by the user and integrated into the page
-    by your code, you must protect against script injection attacks. The easiest way to
-    do this is to use jQuery's text() method instead of it's html() method when
-    populating the review title and body elements. The text() method escapes the HTML,
-    so any embedded HTML will just show up literally on the page, and will not be
-    interpreted as HTML by the browser.
-    - tl;dr prevent script injection attacks
-
 * Users must be able to indicate whether a particular review was helpful or unhelpful
     (e.g., up/down vote icons or yes/no buttons), and these vote totals must be
     persisted with the review object on Parse. Note that multiple users may be voting
@@ -193,10 +204,18 @@ $(function() {
     - tl;dr Visual feedback for the user during fetch operations
 
 * If any of the Parse operations return an error, you should display the error's message
-property on the page so the user knows why the operation failed. If you are using Bootstrap,
-remember that they define style classes for alerts that are appropriate for displaying
-errors and other feedback to the user. You can even make these alerts interactive.
+    property on the page so the user knows why the operation failed. If you are using Bootstrap,
+    remember that they define style classes for alerts that are appropriate for displaying
+    errors and other feedback to the user. You can even make these alerts interactive.
     - tl;dr Display error messages to user from parse operations
+
+* Because the review title and body are entered by the user and integrated into the page
+    by your code, you must protect against script injection attacks. The easiest way to
+    do this is to use jQuery's text() method instead of it's html() method when
+    populating the review title and body elements. The text() method escapes the HTML,
+    so any embedded HTML will just show up literally on the page, and will not be
+    interpreted as HTML by the browser.
+    - tl;dr prevent script injection attacks
 
 * Testing with a friend
 * Extra Credit
