@@ -55,3 +55,9 @@ h3 {
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
 }
+
+.alert {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}

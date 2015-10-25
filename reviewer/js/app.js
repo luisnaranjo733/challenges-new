@@ -6,13 +6,15 @@ function round(value, decimals) {
 }
 
 
-function alert(text, parent) {
-    var html = '<div class="alert alert-warning alert-dismissible" role="alert">';
+function alert(title, content, alert_type, parent) {
+    var html = '<div class="alert alert-' + alert_type;
+    html += ' alert-dismissible" role="alert">';
     html += '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
     html += '<span aria-hidden="true">&times;</span></button>';
-    html += '<strong>Warning!</strong> ' + text + '</div>';
+    html += '<strong>' + title;
+    html += '</strong> ' + content + '</div>';
     html = $(html);
-    html.appendTo(parent);
+    html.prependTo(parent);
     return html;
 }
 
@@ -239,13 +241,6 @@ $(function() {
 });
 
 /* Remaining requirements
-
-* You must also display the vote totals with the review. How you display these vote
-    totals is up to you, but look at how Amazon, Yelp, and other review sites do it.
-    A typical approach is to build a string that says something like "2 out of 5
-    people found this review helpful," but you may opt to show a percentage (texturally
-    or graphically) instead.
-    - tl;dr Display review upvote/downvote
 
 * If any of the Parse operations return an error, you should display the error's message
     property on the page so the user knows why the operation failed. If you are using Bootstrap,
