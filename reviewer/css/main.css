@@ -47,3 +47,11 @@ h3 {
     padding-left: 2em;
     padding-right: 0.5em;
 }
+
+.loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}

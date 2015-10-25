@@ -17,8 +17,8 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
 
 </head>
-<body>
-    <div class="container">
+<body id='body'>
+    <div class="container" id="container">
         <h1>The Dark Knight</h1>
         <img src="img/joker.jpg" id='header-img'>
         <p>Average rating: <span id="avg-raty"></span></p>
@@ -26,6 +26,7 @@
 
         <h2>Reviews</h2>
         <div id="submission-raty" class="raty"></div>
+
         <form action="" method="POST" id="review-submission-form">
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Review Title" name="reviewTitle" id='reviewTitle' value="title">

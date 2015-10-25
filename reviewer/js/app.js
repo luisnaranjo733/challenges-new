@@ -161,6 +161,11 @@ $(function() {
 
     // Intercept review submission form
     $("#review-submission-form").submit(function(event){
+        var container = $('#container');
+        var loading_icon = $('<i>');
+        loading_icon.attr('class', 'fa fa-5x fa-circle-o-notch fa-spin loading');
+        loading_icon.attr('id', 'loading_icon');
+        loading_icon.appendTo(container);
         var form = {
             'title': $('#reviewTitle').val(),
             'content': $('#reviewBody').val(),
@@ -177,6 +182,7 @@ $(function() {
         myReview.save().then(function(obj) {
             console.log('saved object');
             updateAvgReview();
+            $('#loading_icon').remove();
         }, function(error) {
             console.log(error);
         })
@@ -202,16 +208,6 @@ $(function() {
 });
 
 /* Remaining requirements
-
-* Users must be able to indicate whether a particular review was helpful or unhelpful
-    (e.g., up/down vote icons or yes/no buttons), and these vote totals must be
-    persisted with the review object on Parse. Note that multiple users may be voting
-    on the same review at the same time, so you should use Parse's atomic increment
-    function to safely increment the values. To keep things simple, you may let users
-    vote on their own reviews and vote multiple times. Check out the advanced
-    extra-credit requirements if you want to enable authentication and authorization
-    rules that prohibit this.
-    - tl;dr atomic review upvote/downvote
 
 * You must also display the vote totals with the review. How you display these vote
     totals is up to you, but look at how Amazon, Yelp, and other review sites do it.
