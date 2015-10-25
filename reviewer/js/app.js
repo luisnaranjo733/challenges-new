@@ -28,9 +28,17 @@ function updateReviewCount(objectID, direction) {
     query.first({
         'success': function(result) {
             result.increment('reviewCount', direction);
-            result.save();
+            result.save().then(function (result){
+                var counter_element = $('#review-counter-' + objectID);
+                var updated_count = result.get('reviewCount');
+                if (updated_count > 0) {
+                    updated_count = '+' + updated_count;
+                }
+                counter_element.text(updated_count);
+            });
         }
     });
+    
 }
 
 function thumbsUp(icon) {
@@ -55,6 +63,7 @@ function addReviewToDOM(data, created) {
     thumbs_up_icon.attr('id', 'thumbs-up-' + data['id']);
     thumbs_up_icon.click(thumbsUp);
     var review_counter =  $('<i>').attr('class', 'thumbs-icon');
+    review_counter.attr('id', 'review-counter-' + data['id']);
     review_counter_str = data['reviewCount'];
 
     if (review_counter_str > 0) {
