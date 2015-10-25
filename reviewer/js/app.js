@@ -95,6 +95,7 @@ function addReviewToDOM(data, created) {
     var raty_div_id = 'review-raty-' + data['id'];
     var raty_div = $('<div>').attr('id', raty_div_id);
     raty_div.attr('class', 'raty');
+    console.log(data.content)
     var body = $('<p>').text(data.content);
 
     var children = [h3, close_icon, thumbs_up_icon, review_counter, thumbs_down_icon, raty_div, body];
@@ -102,7 +103,7 @@ function addReviewToDOM(data, created) {
         children[i] = element.get(0);
     });
     $(children).appendTo(review_div);
-    review_div.appendTo($('#saved-reviews'));
+    review_div.prependTo($('#saved-reviews'));
 
     if (created) {
         $('html, body').animate({
@@ -243,25 +244,12 @@ $(function() {
     });
 });
 
-/* Remaining requirements
-
-* If any of the Parse operations return an error, you should display the error's message
-    property on the page so the user knows why the operation failed. If you are using Bootstrap,
-    remember that they define style classes for alerts that are appropriate for displaying
-    errors and other feedback to the user. You can even make these alerts interactive.
-    - tl;dr Display error messages to user from parse operations
-
-* Because the review title and body are entered by the user and integrated into the page
-    by your code, you must protect against script injection attacks. The easiest way to
-    do this is to use jQuery's text() method instead of it's html() method when
-    populating the review title and body elements. The text() method escapes the HTML,
-    so any embedded HTML will just show up literally on the page, and will not be
-    interpreted as HTML by the browser.
-    - tl;dr prevent script injection attacks
+/* 
 
 * Testing with a friend
 * Extra Credit
     - Authentication/Authorization
     - Multiple things to review
     - Use a templating engine
+
 */
