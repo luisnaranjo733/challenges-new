@@ -46,22 +46,18 @@ function updateReviewCount(objectID, direction) {
     showLoadingIcon();
     var query = new Parse.Query(Review);
     query.equalTo('objectId', objectID);
-    query.first({
-        'success': function(result) {
-            result.increment('reviewCount', direction);
-            result.save().then(function (result){
-                var counter_element = $('#review-counter-' + objectID);
-                var updated_count = result.get('reviewCount');
-                if (updated_count > 0) {
-                    updated_count = '+' + updated_count;
-                }
-                counter_element.text(updated_count);
-                hideLoadingIcon();
-            });
-        },
-
+    query.first(function(result) {
+        result.increment('reviewCount', direction);
+        result.save().then(function (result){
+            var counter_element = $('#review-counter-' + objectID);
+            var updated_count = result.get('reviewCount');
+            if (updated_count > 0) {
+                updated_count = '+' + updated_count;
+            }
+            counter_element.text(updated_count);
+            hideLoadingIcon();
+        });
     });
-    
 }
 
 function thumbsUp(icon) {
