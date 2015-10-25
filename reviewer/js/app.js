@@ -5,8 +5,20 @@ function round(value, decimals) {
     return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 }
 
+
+function alert(text, parent) {
+    var html = '<div class="alert alert-warning alert-dismissible" role="alert">';
+    html += '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+    html += '<span aria-hidden="true">&times;</span></button>';
+    html += '<strong>Warning!</strong> ' + text + '</div>';
+    html = $(html);
+    html.appendTo(parent);
+    return html;
+}
+
+
 function deleteReview(close_icon) {
-    // review-close-9UOvQLnXXy --> 9UOvQLnXXy
+    showLoadingIcon();
 
     var objectID = close_icon.target.id.slice(13);
 
@@ -16,7 +28,10 @@ function deleteReview(close_icon) {
         results.forEach(function(item) {
             item.destroy({});
         });
-    }).then(updateAvgReview);
+    }).then(function () {
+        updateAvgReview();
+        hideLoadingIcon();
+    });
 
     var reviewDiv = $('#saved-review-' +  objectID);
     reviewDiv.remove();
@@ -25,6 +40,7 @@ function deleteReview(close_icon) {
 function updateReviewCount(objectID, direction) {
     var query = new Parse.Query(Review);
     query.equalTo('objectId', objectID);
+    console.log(objectID);
     query.first({
         'success': function(result) {
             result.increment('reviewCount', direction);
@@ -35,6 +51,7 @@ function updateReviewCount(objectID, direction) {
                     updated_count = '+' + updated_count;
                 }
                 counter_element.text(updated_count);
+                hideLoadingIcon();
             });
         }
     });
@@ -42,11 +59,13 @@ function updateReviewCount(objectID, direction) {
 }
 
 function thumbsUp(icon) {
+    showLoadingIcon();
     var objectID = icon.target.id.slice(10);
     updateReviewCount(objectID, 1);
 }
 
 function thumbsDown(icon) {
+    showLoadingIcon();
     var objectID = icon.target.id.slice(12);
     updateReviewCount(objectID, -1);
 }
@@ -122,6 +141,17 @@ function updateAvgReview() {
 
 }
 
+function showLoadingIcon() {
+    var container = $('#container');
+    var loading_icon = $('<i>');
+    loading_icon.attr('class', 'fa fa-5x fa-circle-o-notch fa-spin loading');
+    loading_icon.attr('id', 'loading_icon');
+    loading_icon.appendTo(container);
+}
+
+function hideLoadingIcon() {    
+    $('#loading_icon').remove();
+}
 
 $(function() {
     // Raty for submitting reviews
@@ -161,11 +191,7 @@ $(function() {
 
     // Intercept review submission form
     $("#review-submission-form").submit(function(event){
-        var container = $('#container');
-        var loading_icon = $('<i>');
-        loading_icon.attr('class', 'fa fa-5x fa-circle-o-notch fa-spin loading');
-        loading_icon.attr('id', 'loading_icon');
-        loading_icon.appendTo(container);
+        showLoadingIcon();
         var form = {
             'title': $('#reviewTitle').val(),
             'content': $('#reviewBody').val(),
@@ -179,10 +205,25 @@ $(function() {
         myReview.set('rating', form.rating);
         myReview.set('reviewCount', 0);
 
+        var data = {
+            'title': form.title,
+            'content': form.content,
+            'rating': form.rating,
+            'id': myReview.id,
+            'reviewCount': 0,
+        }
+
         myReview.save().then(function(obj) {
-            console.log('saved object');
             updateAvgReview();
-            $('#loading_icon').remove();
+            var data = {
+                'title': form.title,
+                'content': form.content,
+                'rating': form.rating,
+                'id': myReview.id,
+                'reviewCount': 0,
+            }
+            addReviewToDOM(data, true);
+            hideLoadingIcon();
         }, function(error) {
             console.log(error);
         })
@@ -190,16 +231,6 @@ $(function() {
         $('#reviewTitle').val('')
         $('#reviewBody').val('')
         $('#submission-raty').raty('score', 0)
-
- 
-        var data = {
-            'title': form.title,
-            'content': form.content,
-            'rating': form.rating,
-            'id': myReview.id,
-        }
-
-        addReviewToDOM(data, true)
         
         event.preventDefault();    //current standard
         event.returnValue = false; //some older browsers
@@ -215,13 +246,6 @@ $(function() {
     people found this review helpful," but you may opt to show a percentage (texturally
     or graphically) instead.
     - tl;dr Display review upvote/downvote
-
-* Because communication with the Parse server is asynchronous and not instantaneous,
-    you must display visual feedback to the user that a save or fetch operation is in
-    progress. This is typically done using some kind of animated icon that is shown while
-    the request is happening, and hidden when the request ends. An easy and attractive
-    option is to use the spin feature of the Font Awesome library.
-    - tl;dr Visual feedback for the user during fetch operations
 
 * If any of the Parse operations return an error, you should display the error's message
     property on the page so the user knows why the operation failed. If you are using Bootstrap,
