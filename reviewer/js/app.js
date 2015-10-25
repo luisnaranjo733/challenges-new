@@ -6,7 +6,8 @@ function round(value, decimals) {
 }
 
 
-function alert(title, content, alert_type, parent) {
+function alert(title, content, alert_type) {
+    var parent = $('#error-messages');
     var html = '<div class="alert alert-' + alert_type;
     html += ' alert-dismissible" role="alert">';
     html += '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
@@ -14,7 +15,7 @@ function alert(title, content, alert_type, parent) {
     html += '<strong>' + title;
     html += '</strong> ' + content + '</div>';
     html = $(html);
-    html.prependTo(parent);
+    html.appendTo(parent);
     return html;
 }
 
@@ -33,6 +34,8 @@ function deleteReview(close_icon) {
     }).then(function () {
         updateAvgReview();
         hideLoadingIcon();
+    }, function (error) {
+        alert('Error deleting review:', error.message, 'danger');
     });
 
     var reviewDiv = $('#saved-review-' +  objectID);
@@ -40,9 +43,9 @@ function deleteReview(close_icon) {
 }
 
 function updateReviewCount(objectID, direction) {
+    showLoadingIcon();
     var query = new Parse.Query(Review);
     query.equalTo('objectId', objectID);
-    console.log(objectID);
     query.first({
         'success': function(result) {
             result.increment('reviewCount', direction);
@@ -55,19 +58,18 @@ function updateReviewCount(objectID, direction) {
                 counter_element.text(updated_count);
                 hideLoadingIcon();
             });
-        }
+        },
+
     });
     
 }
 
 function thumbsUp(icon) {
-    showLoadingIcon();
     var objectID = icon.target.id.slice(10);
     updateReviewCount(objectID, 1);
 }
 
 function thumbsDown(icon) {
-    showLoadingIcon();
     var objectID = icon.target.id.slice(12);
     updateReviewCount(objectID, -1);
 }
@@ -131,7 +133,7 @@ function updateAvgReview() {
         });
         var avg_rating = ratings_sum / ratings_count;
         avg_rating = round(avg_rating, 1);
-        console.log('Upaged avg: ' +  avg_rating);
+        console.log('Updated avg: ' +  avg_rating);
 
         // Display average rating for movie at movie description header
         $('#avg-raty').raty({
@@ -139,6 +141,8 @@ function updateAvgReview() {
             'readOnly': true
         });
             // calculate average rating
+    }, function (error) {
+        alert('Error updating average review:', error.message, 'danger');
     });
 
 }
@@ -188,6 +192,8 @@ $(function() {
             'score': avg_rating,
             'readOnly': true
         });
+    }, function (error) {
+        alert('Error loading reviews:', error.message, 'danger');
     });
 
 
@@ -227,7 +233,8 @@ $(function() {
             addReviewToDOM(data, true);
             hideLoadingIcon();
         }, function(error) {
-            console.log(error);
+            alert('Error saving new review:', error.message, 'danger');
+            hideLoadingIcon();
         })
 
         $('#reviewTitle').val('')

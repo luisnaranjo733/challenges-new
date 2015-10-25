@@ -57,7 +57,14 @@ h3 {
 }
 
 .alert {
+    position: relative;
+
+}
+
+#error-messages {
     position: fixed;
     top: 0;
     width: 100%;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
