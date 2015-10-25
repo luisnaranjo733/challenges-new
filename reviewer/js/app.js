@@ -23,11 +23,27 @@ function deleteReview(close_icon) {
 }
 
 function thumbsUp(icon) {
-    console.log('Thumbs up!');
+    var objectID = icon.target.id.slice(10);
+    var query = new Parse.Query(Review);
+    query.equalTo('objectId', objectID);
+    query.first({
+        'success': function(result) {
+            result.increment('reviewCount');
+            result.save();
+        }
+    });
 }
 
 function thumbsDown(icon) {
-    console.log('Thumbs down!');
+    var objectID = icon.target.id.slice(12);
+    var query = new Parse.Query(Review);
+    query.equalTo('objectId', objectID);
+    query.first({
+        'success': function(result) {
+            result.increment('reviewCount', -1);
+            result.save();
+        }
+    });
 }
 
 
@@ -39,6 +55,7 @@ function addReviewToDOM(data, created) {
     close_icon.attr('class', 'fa fa-close exit-icon');
     close_icon.click(deleteReview);
     var thumbs_up_icon = $('<i>').attr('class', 'fa fa-thumbs-up thumbs-icon');
+    thumbs_up_icon.attr('id', 'thumbs-up-' + data['id']);
     thumbs_up_icon.click(thumbsUp);
     var review_counter =  $('<i>').attr('class', 'thumbs-icon');
     review_counter_str = data['reviewCount'];
@@ -48,6 +65,7 @@ function addReviewToDOM(data, created) {
     } 
     review_counter.text(review_counter_str);
     var thumbs_down_icon = $('<i>').attr('class', 'fa fa-thumbs-down thumbs-icon');
+    thumbs_down_icon.attr('id', 'thumbs-down-' + data['id']);
     thumbs_down_icon.click(thumbsDown);
     var raty_div_id = 'review-raty-' + data['id'];
     var raty_div = $('<div>').attr('id', raty_div_id);
