@@ -22,28 +22,25 @@ function deleteReview(close_icon) {
     reviewDiv.remove();
 }
 
-function thumbsUp(icon) {
-    var objectID = icon.target.id.slice(10);
+function updateReviewCount(objectID, direction) {
     var query = new Parse.Query(Review);
     query.equalTo('objectId', objectID);
     query.first({
         'success': function(result) {
-            result.increment('reviewCount');
+            result.increment('reviewCount', direction);
             result.save();
         }
     });
 }
 
+function thumbsUp(icon) {
+    var objectID = icon.target.id.slice(10);
+    updateReviewCount(objectID, 1);
+}
+
 function thumbsDown(icon) {
     var objectID = icon.target.id.slice(12);
-    var query = new Parse.Query(Review);
-    query.equalTo('objectId', objectID);
-    query.first({
-        'success': function(result) {
-            result.increment('reviewCount', -1);
-            result.save();
-        }
-    });
+    updateReviewCount(objectID, -1);
 }
 
 
