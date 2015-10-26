@@ -95,9 +95,9 @@ function addReviewToDOM(data, created) {
     var raty_div_id = 'review-raty-' + data['id'];
     var raty_div = $('<div>').attr('id', raty_div_id);
     raty_div.attr('class', 'raty');
-    console.log(data.content)
+    console.log(JSON.stringify(data.content));
     var body = $('<p>').text(data.content);
-
+    
     var children = [h3, close_icon, thumbs_up_icon, review_counter, thumbs_down_icon, raty_div, body];
     children.forEach(function(element, i) {
         children[i] = element.get(0);
