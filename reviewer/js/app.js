@@ -5,6 +5,9 @@ function round(value, decimals) {
     return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 }
 
+function replaceAll(find, replace, str) {
+    return str.replace(new RegExp(find, 'g'), replace);
+}
 
 function alert(title, content, alert_type) {
     var parent = $('#error-messages');
@@ -95,8 +98,9 @@ function addReviewToDOM(data, created) {
     var raty_div_id = 'review-raty-' + data['id'];
     var raty_div = $('<div>').attr('id', raty_div_id);
     raty_div.attr('class', 'raty');
-    console.log(JSON.stringify(data.content));
-    var body = $('<p>').text(data.content);
+    //console.log(JSON.stringify(data.content));
+    //console.log(replaceAll('\n', '<br>', data.content));
+    var body = $('<p>').html(data.content);
     
     var children = [h3, close_icon, thumbs_up_icon, review_counter, thumbs_down_icon, raty_div, body];
     children.forEach(function(element, i) {
