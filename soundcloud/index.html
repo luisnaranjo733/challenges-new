@@ -23,7 +23,7 @@
       <div class="form-group">
         <label>SoundCloud search:</label>
         <!-- bind the search term to the controller -->
-        <input name="search" placeholder="Search for a track..." ng-model="query" class="form-control"></input>
+        <input name="search" placeholder="Search for a track..." ng-model="query" class="form-control" ng-change="getTracks()"></input>
       </div>
       <div class="form-group">
         <!-- call method on click -->
@@ -34,7 +34,7 @@
     <div ng-if="tracks"> <!-- only show results if we've done a search -->
       <p>Tracks found:</p>
       <ul>
-        <li ng-repeat="track in tracks"><i>{{track.title}}</i> by {{track.user.username}}</li>
+        <li ng-repeat="track in tracks | orderBy:'-playback_count'"><i>{{track.title}}</i> by {{track.user.username}} - {{ track.playback_count }}</li>
       </ul>
     </div>
 

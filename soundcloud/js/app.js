@@ -33,6 +33,7 @@ var myApp = angular.module('myApp', [])
   
     //function called to fetch tracks based on the scope's query
     $scope.getTracks = function() {
+        console.log('get tracks')
         var username = $scope.query;
         var request = getUserIdURL(username); //build the RESTful request UR
         $http.get(request) //Angular AJAX call
@@ -40,7 +41,8 @@ var myApp = angular.module('myApp', [])
             var userId = response.data.id;
             request = getUserFavoritesURL(userId);
             $http.get(request).then(function(response) {
-                console.log(response);
+                console.log(response.data);
+                // comment count, duration, playback_count
                 $scope.tracks = response.data; //save results to available model
             })
             
