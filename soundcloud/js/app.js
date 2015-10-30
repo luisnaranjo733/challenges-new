@@ -63,6 +63,21 @@ var myApp = angular.module('myApp', [])
             
         });
     };
+
+
+    $scope.embed = function() {
+        console.log('embedding');
+        SC.initialize({
+          client_id: CLIENT_ID
+        });
+
+        var track_url = 'http://soundcloud.com/forss/flickermood';
+        SC.oEmbed(track_url, { auto_play: true }).then(function(oEmbed) {
+          console.log(oEmbed.html);
+          var e = document.getElementById("player");
+          e.innerHTML = oEmbed.html;
+        });
+    }
 }])
 
 
