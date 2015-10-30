@@ -1,42 +1,45 @@
 'use strict';
 
 var BASE_URL = 'https://api.soundcloud.com'; //website we fetch information from
-var BASE_URI = new URI(BASE_URL);
 var CLIENT_ID = '1ad29a5353733827b97f335387269fa1' //application ID for requests
 
 // user id = 5678925
 
+var urlGenerator = function(url_template, url_params) {
+    var template = new URITemplate(BASE_URL + url_template);
+    var url = template.expand(url_params);
+    return url;
+}
+
 // http://api.soundcloud.com/users/5678925?client_id=1ad29a5353733827b97f335387269fa1
 var getUserURL = function(user_id) {
-    var template = new URITemplate(BASE_URL + '/users/{user_id}?client_id={client_id}');
-    var url = template.expand({
+    var url_template = '/users/{user_id}?client_id={client_id}';
+    var url_params = {
         'user_id': user_id,
         'client_id': CLIENT_ID,
-    });
-    return url;
-    return BASE_URL + '/users/' +  user_id + '?client_id='+ CLIENT_ID;
+    }
+    return urlGenerator(url_template, url_params);
 }
 
 // https://api.soundcloud.com/users/5678925/favorites?client_id=1ad29a5353733827b97f335387269fa1
 var getUserFavoritesURL = function(user_id) {
-    var template = new URITemplate(BASE_URL + '/users/{user_id}/favorites?client_id={client_id}');
-    var url = template.expand({
+    var url_template = '/users/{user_id}/favorites?client_id={client_id}';
+    var url_params = {
         'user_id': user_id,
         'client_id': CLIENT_ID,
-    });
-    return url;
-    return BASE_URL + '/users/' +  user_id + '/favorites?client_id='+ CLIENT_ID;
+    }
+    return urlGenerator(url_template, url_params);
 }
 
 // https://api.soundcloud.com/resolve?url=https://soundcloud.com/doubledubba&client_id=1ad29a5353733827b97f335387269fa1
 var getUserIdURL = function(username) {
-    var template = new URITemplate(BASE_URL + '/resolve?url={profile_url}&client_id={client_id}');
+    var url_template = '/resolve?url={profile_url}&client_id={client_id}';
     var profile_url = 'https://soundcloud.com/' + username;
-    var url = template.expand({
+    var url_params = {
         'profile_url': profile_url,
         'client_id': CLIENT_ID,
-    });
-    return url;
+    }
+    return urlGenerator(url_template, url_params);
 }
 
 var myApp = angular.module('myApp', [])
