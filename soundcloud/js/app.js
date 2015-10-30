@@ -1,30 +1,42 @@
 'use strict';
 
 var BASE_URL = 'https://api.soundcloud.com'; //website we fetch information from
+var BASE_URI = new URI(BASE_URL);
 var CLIENT_ID = '1ad29a5353733827b97f335387269fa1' //application ID for requests
 
 // user id = 5678925
 
-var url_wrapper = function(url) {
-    return BASE_URL + url +'client_id='+ CLIENT_ID;
-}
-
-
 // http://api.soundcloud.com/users/5678925?client_id=1ad29a5353733827b97f335387269fa1
 var getUserURL = function(user_id) {
+    var template = new URITemplate(BASE_URL + '/users/{user_id}?client_id={client_id}');
+    var url = template.expand({
+        'user_id': user_id,
+        'client_id': CLIENT_ID,
+    });
+    return url;
     return BASE_URL + '/users/' +  user_id + '?client_id='+ CLIENT_ID;
 }
 
 // https://api.soundcloud.com/users/5678925/favorites?client_id=1ad29a5353733827b97f335387269fa1
 var getUserFavoritesURL = function(user_id) {
+    var template = new URITemplate(BASE_URL + '/users/{user_id}/favorites?client_id={client_id}');
+    var url = template.expand({
+        'user_id': user_id,
+        'client_id': CLIENT_ID,
+    });
+    return url;
     return BASE_URL + '/users/' +  user_id + '/favorites?client_id='+ CLIENT_ID;
 }
 
 // https://api.soundcloud.com/resolve?url=https://soundcloud.com/doubledubba&client_id=1ad29a5353733827b97f335387269fa1
 var getUserIdURL = function(username) {
-    var url = 'https://soundcloud.com/' + username;
-    return BASE_URL + '/resolve?url=' + url + '&client_id='+ CLIENT_ID;
-    // response.data.id
+    var template = new URITemplate(BASE_URL + '/resolve?url={profile_url}&client_id={client_id}');
+    var profile_url = 'https://soundcloud.com/' + username;
+    var url = template.expand({
+        'profile_url': profile_url,
+        'client_id': CLIENT_ID,
+    });
+    return url;
 }
 
 var myApp = angular.module('myApp', [])
@@ -49,6 +61,7 @@ var myApp = angular.module('myApp', [])
         });
     };
 }])
+
 
 /* Assignment requirements 
 
