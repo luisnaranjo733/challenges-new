@@ -22,11 +22,10 @@
   <div class="container" ng-app="myApp" ng-controller="MyCtrl"> <!-- specify app -->
 
     <h1>How hipster are you?</h1>
-    <br>
 
     <form name="trackForm">
       <div class="form-group">
-        <label>SoundCloud search:</label>
+        <label>SoundCloud Username:</label>
         <!-- bind the search term to the controller -->
         <input name="search" placeholder="Search for a track..." ng-model="query" class="form-control"></input>
       </div>
@@ -45,6 +44,9 @@
         </div>
         <div class="box-text">
           <h4>{{ track.title }}</h4>
+        </div>
+        <div class="box-likes">
+          <span>{{ track.favoritings_count }} likes</span>
         </div>
       </div>
 
