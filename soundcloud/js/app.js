@@ -8,6 +8,22 @@ SC.initialize({
 });
 
 
+function showLoadingIcon() {
+    var container = document.getElementById("container");
+    var loading_icon = document.createElement('i');
+    loading_icon.className = 'fa fa-5x fa-circle-o-notch fa-spin loading';
+    loading_icon.id = 'loading_icon'
+    container.appendChild(loading_icon);
+}
+
+function hideLoadingIcon() {    
+    var parent = document.getElementById("container");
+    var child = document.getElementById("loading_icon");
+    parent.removeChild(child);
+}
+
+
+
 // user id = 5678925
 
 var urlGenerator = function(url_template, url_params) {
@@ -68,6 +84,7 @@ var myApp = angular.module('myApp', [])
 
     //function called to fetch tracks based on the scope's query
     $scope.getTracks = function() {
+        showLoadingIcon();
         console.log('get tracks')
         var username = $scope.query;
         var request = getUserIdURL(username); //build the RESTful request UR
@@ -79,6 +96,7 @@ var myApp = angular.module('myApp', [])
                 console.log(response.data);
                 // comment count, duration, playback_count
                 $scope.tracks = response.data; //save results to available model
+                hideLoadingIcon();
             })
             
         });
