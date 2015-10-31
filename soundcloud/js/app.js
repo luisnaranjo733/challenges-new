@@ -3,6 +3,11 @@
 var BASE_URL = 'https://api.soundcloud.com'; //website we fetch information from
 var CLIENT_ID = '1ad29a5353733827b97f335387269fa1' //application ID for requests
 
+SC.initialize({
+    client_id: CLIENT_ID
+});
+
+
 // user id = 5678925
 
 var urlGenerator = function(url_template, url_params) {
@@ -42,10 +47,25 @@ var getUserIdURL = function(username) {
     return urlGenerator(url_template, url_params);
 }
 
+
 var myApp = angular.module('myApp', [])
     .controller('MyCtrl', ['$scope', '$http', function($scope, $http) { 
     $scope.query = 'doubledubba';
   
+    $scope.embed = function() {
+        console.log('embedding');
+        SC.initialize({
+          client_id: CLIENT_ID
+        });
+
+        var track_url = 'http://soundcloud.com/forss/flickermood';
+        SC.oEmbed(track_url, { auto_play: true }).then(function(oEmbed) {
+          console.log(oEmbed.html);
+          var e = document.getElementById("player");
+          e.innerHTML = oEmbed.html;
+        });
+    }
+
     //function called to fetch tracks based on the scope's query
     $scope.getTracks = function() {
         console.log('get tracks')
@@ -64,35 +84,23 @@ var myApp = angular.module('myApp', [])
         });
     };
 
-
-    $scope.embed = function() {
-        console.log('embedding');
-        SC.initialize({
-          client_id: CLIENT_ID
-        });
-
-        var track_url = 'http://soundcloud.com/forss/flickermood';
-        SC.oEmbed(track_url, { auto_play: true }).then(function(oEmbed) {
-          console.log(oEmbed.html);
-          var e = document.getElementById("player");
-          e.innerHTML = oEmbed.html;
-        });
-    }
+    $scope.getTracks();
 }])
+
 
 
 /* Assignment requirements 
 
 * Use the RESTful API to get data
-  - Use at least one of the API endpoints
+- Use at least one of the API endpoints
 * Use Angular directives to display data
-  - Data retrieved from API should be directly linked to the view
-  - No submit button on form
+- Data retrieved from API should be directly linked to the view
+- No submit button on form
 * Include an HTML Form with Angular and Validation
-  -Application should impose and validate some requirements on the form.
-  or example, maybe there is a minimum number of characters needed to
-  search for a song, or the user must fill out all options before searching.
-  Be sure and give the user feedback regarding their entry. 
+-Application should impose and validate some requirements on the form.
+or example, maybe there is a minimum number of characters needed to
+search for a song, or the user must fill out all options before searching.
+Be sure and give the user feedback regarding their entry. 
 
 * Do something creative
 
