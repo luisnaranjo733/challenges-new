@@ -85,7 +85,6 @@ var myApp = angular.module('myApp', [])
     //function called to fetch tracks based on the scope's query
     $scope.getTracks = function() {
         showLoadingIcon();
-        console.log('get tracks')
         var username = $scope.query;
         var request = getUserIdURL(username); //build the RESTful request UR
         $http.get(request) //Angular AJAX call
@@ -93,16 +92,27 @@ var myApp = angular.module('myApp', [])
             var userId = response.data.id;
             request = getUserFavoritesURL(userId);
             $http.get(request).then(function(response) {
-                console.log(response.data);
                 // comment count, duration, playback_count
                 $scope.tracks = response.data; //save results to available model
                 hideLoadingIcon();
+                
             })
             
         });
     };
 
-    $scope.getTracks();
+    $scope.clickTrack = function($event) {
+        var id = null;
+        if ($event.target.id) {
+            id = $event.target.id;
+        } else if ($event.target.parentElement.id) {
+            id = $event.target.parentElement.id
+        }  else {
+            id = $event.target.parentElement.parentElement.id
+        }
+        console.log(id)
+    }
+
 }])
 
 
