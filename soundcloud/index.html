@@ -21,6 +21,9 @@
 <body>
   <div class="container" ng-app="myApp" ng-controller="MyCtrl"> <!-- specify app -->
 
+    <h1>How hipster are you?</h1>
+    <br>
+
     <form name="trackForm">
       <div class="form-group">
         <label>SoundCloud search:</label>
@@ -35,11 +38,16 @@
     
     <div ng-if="tracks"> 
       <p>Tracks found:</p>
-      <div ng-repeat="track in tracks" id="{{ track.id }}" class="box">
+
+      <div ng-repeat="track in tracks | orderBy: 'favoritings_count'" id="{{ track.id }}" class="box">
         <div class="box-icon">
           <img src="{{ track.artwork_url }}">
         </div>
+        <div class="box-text">
+          <h4>{{ track.title }}</h4>
+        </div>
       </div>
+
     </div>
     
 
