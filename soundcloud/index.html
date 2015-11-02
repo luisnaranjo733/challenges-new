@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="css/main.css"/>
 
   <!-- include libraries -->
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
   <script src="js/URI.js"></script>
   <script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
@@ -36,10 +37,12 @@
       </div>
     </form>    
     
+    <div id="player"></div>
+
     <div ng-if="tracks"> 
       <p>Tracks found:</p>
 
-      <div ng-repeat="track in tracks | orderBy: 'favoritings_count'" id="{{ track.id }}" class="box" ng-click="clickTrack($event)">
+      <div ng-repeat="track in tracks | orderBy: '-favoritings_count'" id="{{ track.permalink_url }}" class="box" ng-click="clickTrack($event)">
         <div class="box-icon">
           <img src="{{ track.artwork_url }}">
         </div>

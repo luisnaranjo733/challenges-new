@@ -32,28 +32,8 @@ var urlGenerator = function(url_template, url_params) {
     return url;
 }
 
-// http://api.soundcloud.com/users/5678925?client_id=1ad29a5353733827b97f335387269fa1
-var getUserURL = function(user_id) {
-    var url_template = '/users/{user_id}?client_id={client_id}';
-    var url_params = {
-        'user_id': user_id,
-        'client_id': CLIENT_ID,
-    }
-    return urlGenerator(url_template, url_params);
-}
-
-// https://api.soundcloud.com/users/5678925/favorites?client_id=1ad29a5353733827b97f335387269fa1
-var getUserFavoritesURL = function(user_id) {
-    var url_template = '/users/{user_id}/favorites?client_id={client_id}';
-    var url_params = {
-        'user_id': user_id,
-        'client_id': CLIENT_ID,
-    }
-    return urlGenerator(url_template, url_params);
-}
-
 // https://api.soundcloud.com/resolve?url=https://soundcloud.com/doubledubba&client_id=1ad29a5353733827b97f335387269fa1
-var getUserIdURL = function(username) {
+var getUserURLByUsername = function(username) {
     var url_template = '/resolve?url={profile_url}&client_id={client_id}';
     var profile_url = 'https://soundcloud.com/' + username;
     var url_params = {
@@ -63,6 +43,20 @@ var getUserIdURL = function(username) {
     return urlGenerator(url_template, url_params);
 }
 
+// https://api.soundcloud.com/users/5678925/favorites?client_id=1ad29a5353733827b97f335387269fa1
+var getUserFavoritesByUserURL = function(user_id) {
+    var url_template = '/users/{user_id}/favorites?client_id={client_id}';
+    var url_params = {
+        'user_id': user_id,
+        'client_id': CLIENT_ID,
+    }
+    return urlGenerator(url_template, url_params);
+}
+
+var getTrackByTrackID = function(track_id) {
+
+}
+
 
 var myApp = angular.module('myApp', [])
     .controller('MyCtrl', ['$scope', '$http', function($scope, $http) { 
@@ -70,9 +64,6 @@ var myApp = angular.module('myApp', [])
   
     $scope.embed = function() {
         console.log('embedding');
-        SC.initialize({
-          client_id: CLIENT_ID
-        });
 
         var track_url = 'http://soundcloud.com/forss/flickermood';
         SC.oEmbed(track_url, { auto_play: true }).then(function(oEmbed) {
@@ -86,11 +77,11 @@ var myApp = angular.module('myApp', [])
     $scope.getTracks = function() {
         showLoadingIcon();
         var username = $scope.query;
-        var request = getUserIdURL(username); //build the RESTful request UR
+        var request = getUserURLByUsername(username); //build the RESTful request UR
         $http.get(request) //Angular AJAX call
         .then(function (response) {
             var userId = response.data.id;
-            request = getUserFavoritesURL(userId);
+            request = getUserFavoritesByUserURL(userId);
             $http.get(request).then(function(response) {
                 // comment count, duration, playback_count
                 $scope.tracks = response.data; //save results to available model
@@ -110,7 +101,15 @@ var myApp = angular.module('myApp', [])
         }  else {
             id = $event.target.parentElement.parentElement.id
         }
-        console.log(id)
+        
+
+        SC.oEmbed(id, {
+            auto_play: false ,
+            maxheight: 100
+        }).then(function(oEmbed) {
+          var e = document.getElementById("player");
+          e.innerHTML = oEmbed.html;
+        });
     }
 
 }])

@@ -36,6 +36,8 @@ h1 {
     position: absolute;
     left: 100px;
     padding: 1em;
+    height: 100%;
+    width: calc(100% - 150px);
 }
 
 .box-text h4 {
@@ -52,7 +54,6 @@ h1 {
     bottom: 0px;
     height: 100px;
     width: 50px;
-
     text-align: center;
     display: flex;
     justify-content: center; /* align horizontal */
