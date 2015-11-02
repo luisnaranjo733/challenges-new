@@ -21,15 +21,16 @@
 
 </head>
 <body>
-  <div class="container" ng-app="myApp" ng-controller="MyCtrl" id="container" ng-init="getTracks()"> <!-- specify app -->
+  <div class="container-fluid" ng-app="myApp" ng-controller="MyCtrl" id="container" ng-init="getTracks()"> <!-- specify app -->
 
     <h1>How hipster are you?</h1>
+
 
     <form name="trackForm">
       <div class="form-group">
         <label>SoundCloud Username:</label>
         <!-- bind the search term to the controller -->
-        <input name="search" placeholder="Search for a track..." ng-model="query" ng-change="getTracks()"class="form-control"></input>
+        <input name="search" placeholder="Search for a track..." ng-model="query" ng-change="getTracks()" ng-model-options="{debounce:1000}" class="form-control"></input>
       </div>
       <div class="form-group">
         <!-- call method on click -->
@@ -37,17 +38,16 @@
       </div>
     </form>    
     
-    <div id="player"></div>
 
     <div ng-if="tracks"> 
       <p>Tracks found:</p>
 
-      <div ng-repeat="track in tracks | orderBy: '-favoritings_count'" id="{{ track.permalink_url }}" class="box" ng-click="clickTrack($event)">
+      <div ng-repeat="track in tracks | orderBy: 'favoritings_count'" id="{{ track.permalink_url }}" class="box" ng-click="clickTrack($event)">
         <div class="box-icon">
           <img src="{{ track.artwork_url }}">
         </div>
         <div class="box-text">
-          <h4>{{ track.title }}</h4>
+          <h4>{{ track.title | limitTo:50 }}</h4>
         </div>
         <div class="box-likes">
           <span>{{ track.favoritings_count }} likes</span>
@@ -56,6 +56,8 @@
 
     </div>
     
+  <div id="player">
+  </div>
 
   </div> <!-- end container -->
 </body>

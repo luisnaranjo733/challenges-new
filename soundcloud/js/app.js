@@ -104,11 +104,12 @@ var myApp = angular.module('myApp', [])
         
 
         SC.oEmbed(id, {
-            auto_play: false ,
+            auto_play: true,
             maxheight: 100
         }).then(function(oEmbed) {
-          var e = document.getElementById("player");
-          e.innerHTML = oEmbed.html;
+          var player = document.getElementById("player");
+          player.style.display = 'block';
+          player.innerHTML = oEmbed.html;
         });
     }
 

@@ -41,7 +41,7 @@ h1 {
 }
 
 .box-text h4 {
-    font-size: 18px;
+    font-size: 16px;
     letter-spacing: 2px;
     text-transform: uppercase;
         
@@ -54,11 +54,22 @@ h1 {
     bottom: 0px;
     height: 100px;
     width: 50px;
+    padding-right: 10px;
     text-align: center;
     display: flex;
     justify-content: center; /* align horizontal */
     align-items: center; /* align vertical */
 
+}
+
+#player {
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height:100px;
+   width:100%;
+   background: rgba(24, 28, 34, 0.8);
+   display: none;
 }
 
 @media screen and (min-width: 768px) {
