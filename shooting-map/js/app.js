@@ -206,6 +206,10 @@ Add each layer to the map
 
 //[3.81, -159.55], [61.59, -67.278]
 
+/*
+ * $(document).ready() should be at the top of your script and  
+ * include variable declarations, functions, and AJAX requests
+ */
 $(document).ready(function() {
     $.getJSON('data/data.min.json', parseData);
 });
