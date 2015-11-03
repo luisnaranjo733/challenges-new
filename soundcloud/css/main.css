@@ -71,6 +71,10 @@ h1 {
    display: none;
 }
 
+#hipster-raty {
+  padding-bottom: 2em;
+}
+
 @media screen and (min-width: 768px) {
     .box-text h4 {
         font-size: 26px;

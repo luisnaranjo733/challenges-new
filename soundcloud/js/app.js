@@ -68,32 +68,6 @@ The hipster scale is graded based on the total # of favorites per track
 <500,000+ favorites is 2 stars
 <1,000,000+ favorites is 1 star
 */
-var rankHipsterScale = function(data) {
-    console.log('Ranking you on the hipster scale!');
-    var total_favorites = 0;
-    var n_tracks = data.length;
-    for (var i = 0; i < data.length; i++) {
-        var track = data[i];
-        var n_favorites = track.favoritings_count;
-        if (n_favorites) {
-            total_favorites += n_favorites;
-        } else {
-            n_tracks = n_tracks - 1; // for the case when a track has no favorites (we just ignore it from our rankings)
-        }
-    }
-    var favorites_per_track = total_favorites / n_tracks;
-    if (favorites_per_track < 5000) {
-        console.log('5 stars');
-    } else if (favorites_per_track < 50000) {
-        console.log('4 stars');
-    } else if (favorites_per_track < 100000) {
-        console.log('3 stars');
-    } else if (favorites_per_track < 500000) {
-        console.log('2 stars');
-    } else {
-        console.log('1 star');
-    }
-}
 
 
 var myApp = angular.module('myApp', [])
@@ -112,7 +86,7 @@ var myApp = angular.module('myApp', [])
             $http.get(request).then(function(response) {
                 if (response.data.length > 0) {
                     $scope.tracks = response.data; //save results to available model
-                    rankHipsterScale(response.data);
+                    $scope.rankHipsterScale(response.data);
                 } else {
                     console.log('No tracks found!');
                 }
@@ -146,6 +120,40 @@ var myApp = angular.module('myApp', [])
         });
     }
 
+    $scope.rankHipsterScale = function(data) {
+        console.log('Ranking you on the hipster scale!');
+        var total_favorites = 0;
+        var n_tracks = data.length;
+        for (var i = 0; i < data.length; i++) {
+            var track = data[i];
+            var n_favorites = track.favoritings_count;
+            if (n_favorites) {
+                total_favorites += n_favorites;
+            } else {
+                n_tracks = n_tracks - 1; // for the case when a track has no favorites (we just ignore it from our rankings)
+            }
+        }
+        var favorites_per_track = total_favorites / n_tracks;
+        var rank = 0;
+        if (favorites_per_track < 5000) {
+            rank = 5;
+        } else if (favorites_per_track < 50000) {
+            rank = 4;
+        } else if (favorites_per_track < 100000) {
+            rank = 3;
+        } else if (favorites_per_track < 500000) {
+            rank = 2;
+        } else {
+            rank = 1;
+        }
+
+        $('#hipster-raty').raty({
+            score: rank,
+            readOnly: true
+        });
+    }
+
+    
 }])
 
 
@@ -153,7 +161,5 @@ var myApp = angular.module('myApp', [])
 /* TODO
 
 * Publish to server
-* ReadMe
-* Complete hipster ranking
 
 */
