@@ -25,16 +25,12 @@
 
     <h1>How hipster are you?</h1>
 
-
-    <form name="trackForm">
-      <div class="form-group">
+    <form name="trackForm" novalidate>
+      <div class="form-group" ng-class="{ 'has-error' : trackForm.query.$invalid && !trackForm.query.$pristine, 'has-success': trackForm.query.$valid}">
         <label>SoundCloud Username:</label>
         <!-- bind the search term to the controller -->
-        <input name="search" placeholder="Search for a track..." ng-model="query" ng-change="getTracks()" ng-model-options="{debounce:1000}" class="form-control"></input>
-      </div>
-      <div class="form-group">
-        <!-- call method on click -->
-        <button class="btn btn-primary" ng-click="getTracks()" type="submit">Submit</button>
+        <input name="query" placeholder="Search for a track..." class="form-control" ng-model="query" ng-change="getTracks()" ng-model-options="{debounce:1000}" ng-minlength="3" required>
+        <p ng-show="trackForm.query.$invalid" class="help-block">User name must be 3 letters</p>
       </div>
     </form>    
     

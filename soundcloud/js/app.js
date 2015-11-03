@@ -60,7 +60,6 @@ var getTrackByTrackID = function(track_id) {
 
 var myApp = angular.module('myApp', [])
     .controller('MyCtrl', ['$scope', '$http', function($scope, $http) { 
-    $scope.query = 'doubledubba';
   
     $scope.embed = function() {
         console.log('embedding');
@@ -84,7 +83,12 @@ var myApp = angular.module('myApp', [])
             request = getUserFavoritesByUserURL(userId);
             $http.get(request).then(function(response) {
                 // comment count, duration, playback_count
-                $scope.tracks = response.data; //save results to available model
+                if (response.data.length > 0) {
+                    console.log(response.data)
+                    $scope.tracks = response.data; //save results to available model
+                } else {
+                    console.log('No tracks found!');
+                }
                 hideLoadingIcon();
                 
             })
