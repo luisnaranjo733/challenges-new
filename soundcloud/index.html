@@ -37,7 +37,7 @@
     </form>    
     
 
-    <div ng-if="tracks"> 
+    <div ng-if="tracks && trackForm.query.$valid"> 
       <p>Tracks found:</p>
 
       <div ng-repeat="track in tracks | orderBy: 'favoritings_count'" id="{{ track.permalink_url }}" class="box" ng-click="clickTrack($event)">
