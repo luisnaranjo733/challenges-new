@@ -5,10 +5,9 @@
 
 $font-stack: Lato, 'Helvetica Neue', Helvetica, sans-serif;
 $light-grey: #E9EAEE;
-$heading-orange: #bc6026;
-$nav-black: #181c22;
-$nav-orange: #d87e28;
-$nav-alt-background: rgba(24, 28, 34, 0.8);
+$black: #181c22;
+$orange: #d87e28;
+$translucent_black: rgba(24, 28, 34, 0.9);  // needed
 
 /* START OF BASE PAGE STYLES */
 
@@ -29,7 +28,7 @@ h1, h2 {
 }
 
 h2 {
-    color: $heading-orange;
+    color: $orange;
 }
 
 svg {
@@ -41,7 +40,7 @@ svg {
 /* START OF NAVIGATION BAR STYLES */
 nav {
     position: fixed;
-    background-color: $nav-black;
+    background-color: $black;
     color: white;
     font-size: 16px; /* Default nav text size */
     padding: 15px;
@@ -71,12 +70,12 @@ nav {
 
 /* Hover TEXT link color */
 #horizontal_nav a:hover {
-    color: $nav-orange;
+    color: $orange;
 }
 
 /* Hover SVG link color */
 #horizontal_nav a:hover path{
-    fill: $nav-orange;
+    fill: $orange;
 }
 
 /* Default navbar icon color */
@@ -109,7 +108,7 @@ nav {
 }
 
 #svg_brown {
-    fill: $heading-orange;
+    fill: $orange;
 }
 /* END OF HEADLINE AREA STYLES */
 
@@ -183,7 +182,7 @@ nav {
 
 /* START OF FOOTER SECTION */
 footer {
-    border-top: 3px solid $nav-orange;
+    border-top: 3px solid $orange;
     background-color: darken($light-grey, 20%);
     font-size: 12px;
     padding: 1em;
@@ -211,7 +210,7 @@ footer {
     }
 
     nav {  /* Is this working? */
-        background-color: $nav-alt-background;
+        background-color: $translucent_black;
     }
 
     /* END OF NAVIGATION BAR STYLES */
