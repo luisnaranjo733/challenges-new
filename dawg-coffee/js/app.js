@@ -4,6 +4,6 @@
 var madLibApp = angular.module('CoffeeApp', [])
 .controller('HomeCtrl', ['$scope', '$http', function($scope, $http) {
 
-    $scope.message = "hello world";
+    $scope.message = "hello world@";
 
 }])
