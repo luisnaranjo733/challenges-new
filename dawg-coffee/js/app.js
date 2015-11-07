@@ -3,7 +3,7 @@
 
 var app = angular.module('CoffeeApp', ['ui.router']);
 
-app.config(function($stateProvider) {
+app.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider.state('Home', {
        url: '/', 
        templateUrl: 'partials/home.html',
@@ -11,10 +11,11 @@ app.config(function($stateProvider) {
     });
 
     $stateProvider.state('Order', {
-       url: '/order', 
+       url: '/orders', 
        templateUrl: 'partials/order.html',
        controller: 'OrderCtrl',
     });
+    $urlRouterProvider.otherwise('/');
 
 })
 
@@ -22,6 +23,10 @@ app.controller('HomeCtrl', ['$scope', function($scope) {
     $scope.headline_text = 'exquisite drinks made from fair-trade coffee, served in a relaxing and studious environment'
 }]);
 
-app.controller('OrderCtrl', ['$scope', function($scope) {
+app.controller('OrderCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.hello = 'hello';
+    $http.get('data/products.json').then(function(response) {
+        console.log(response.data);
+        $scope.orders = response.data;
+    });
 }]);

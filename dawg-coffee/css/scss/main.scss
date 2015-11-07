@@ -1,15 +1,17 @@
 @import url("../bower_components/bootstrap/dist/css/bootstrap.min.css");
+@import url("../bower_components/components-font-awesome/css/font-awesome.min.css");
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,300");
 @import url("https://fonts.googleapis.com/css?family=Lato:400,300italic,300");
-@import url("../bower_components/components-font-awesome/css/font-awesome.min.css");
 
 $font-stack: Lato, 'Helvetica Neue', Helvetica, sans-serif;
 $light-grey: #E9EAEE;
 $black: #181c22;
 $orange: #d87e28;
-$translucent_black: rgba(24, 28, 34, 0.8);  // needed
+$translucent_black: rgba(24, 28, 34, 0.9);  // needed
 
 /* START OF BASE PAGE STYLES */
+
+@import 'orders';
 
 body {
     font-family: $font-stack;
@@ -226,7 +228,7 @@ footer {
         background-image: url('../img/background-sm.jpg');
         background-repeat: no-repeat;
         background-size: cover;
-        min-height: 550px;
+        min-height: 350px; /*changed from 550px so user doesn't need to scroll in orders.html partial */
         width: 100%;
         color: white;
         text-align: right;
