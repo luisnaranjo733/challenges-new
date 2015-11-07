@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="img/page-icon.png">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
     <title>Dawg Coffee</title>
 
     <nav>
@@ -33,16 +33,12 @@
         <h1>Orders</h1> 
         <p class="hidden-xs">Supplying beans to sleepy Huskies since 2015</p>
     </div>
-    <!--<div ui-view></div>-->
-    <div class="headline">
-        <br>
-        <p>{{message}}</p>
-    </div>
+    <div ui-view></div>
 
 </div>
 
 <!-- load external libraries -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
 <!-- load our script -->
 <script src="js/app.js"></script>
