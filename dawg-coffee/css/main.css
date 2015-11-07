@@ -17,7 +17,7 @@ h1, h2 {
   font-family: Lato, "Helvetica Neue", Helvetica, sans-serif; }
 
 h2 {
-  color: #bc6026; }
+  color: #d87e28; }
 
 svg {
   width: 1em;
@@ -37,30 +37,29 @@ nav {
   font-variant: small-caps;
   z-index: 1; }
 
-/* Needed to keep nav at 15px separation from edge */
-#horizontal_nav ul {
-  margin: 0;
-  padding: 0; }
-
-#horizontal_nav li {
-  display: inline;
-  /* forces horizontal list */
-  padding-right: 0.5em;
-  /* default padding b/t chars*/ }
-
-#horizontal_nav a:link, #horizontal_nav a:visited {
-  color: white;
-  /* Idle link color */
-  text-decoration: none;
-  /* Prevents underlining on links */ }
-
-/* Hover TEXT link color */
-#horizontal_nav a:hover {
-  color: #d87e28; }
-
-/* Hover SVG link color */
-#horizontal_nav a:hover path {
-  fill: #d87e28; }
+#horizontal_nav {
+  /* Needed to keep nav at 15px separation from edge */
+  /* Hover TEXT link color */
+  /* Hover SVG link color */ }
+  #horizontal_nav ul {
+    margin: 0;
+    padding: 0; }
+  #horizontal_nav li {
+    display: inline;
+    /* forces horizontal list */
+    padding-right: 0.5em;
+    /* default padding b/t chars*/ }
+  #horizontal_nav a:link, #horizontal_nav a:visited {
+    color: white;
+    /* Idle link color */
+    text-decoration: none;
+    /* Prevents underlining on links */ }
+  #horizontal_nav a:hover {
+    color: #d87e28; }
+  #horizontal_nav a:hover path {
+    fill: #d87e28; }
+  #horizontal_nav .right {
+    float: right; }
 
 /* Default navbar icon color */
 .svg_white {
@@ -88,7 +87,7 @@ nav {
   /* Padding for the cafe description below */ }
 
 #svg_brown {
-  fill: #bc6026; }
+  fill: #d87e28; }
 
 /* END OF HEADLINE AREA STYLES */
 /* START OF CAFE INFO SECTION */

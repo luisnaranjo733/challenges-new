@@ -7,7 +7,7 @@ $font-stack: Lato, 'Helvetica Neue', Helvetica, sans-serif;
 $light-grey: #E9EAEE;
 $black: #181c22;
 $orange: #d87e28;
-$translucent_black: rgba(24, 28, 34, 0.9);  // needed
+$translucent_black: rgba(24, 28, 34, 0.8);  // needed
 
 /* START OF BASE PAGE STYLES */
 
@@ -50,33 +50,42 @@ nav {
 
 }
 
+#horizontal_nav {
+    /* Needed to keep nav at 15px separation from edge */
+    ul {
+        margin: 0;
+        padding: 0;
+    }
 
-/* Needed to keep nav at 15px separation from edge */
-#horizontal_nav ul {
-    margin: 0;
-    padding: 0;
+    li {
+        display: inline; /* forces horizontal list */
+        padding-right: 0.5em; /* default padding b/t chars*/
+    }
+
+    a:link, a:visited {
+        color: white;  /* Idle link color */
+        text-decoration: none; /* Prevents underlining on links */
+    }
+
+
+    /* Hover TEXT link color */
+    a:hover {
+        color: $orange;
+    }
+
+    /* Hover SVG link color */
+    a:hover path {
+        fill: $orange;
+    }
+
+    .right {
+        float: right
+    }
 }
 
-#horizontal_nav li {
-    display: inline; /* forces horizontal list */
-    padding-right: 0.5em; /* default padding b/t chars*/
-    
-}
 
-#horizontal_nav a:link, #horizontal_nav a:visited {
-    color: white;  /* Idle link color */
-    text-decoration: none; /* Prevents underlining on links */
-}
 
-/* Hover TEXT link color */
-#horizontal_nav a:hover {
-    color: $orange;
-}
 
-/* Hover SVG link color */
-#horizontal_nav a:hover path{
-    fill: $orange;
-}
 
 /* Default navbar icon color */
 .svg_white {
