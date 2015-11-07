@@ -4,11 +4,6 @@
     <p class="hidden-xs">Supplying beans to sleepy Huskies since 2015</p>
 </div>
 
-<!--
-Shows a list of products that are available for sale. For each product you should show the product name, the description, the price per-pound, and a link to the appropriate detail page. The price must be formatted as a currency value (dollar sign, decimal point, and 2 decimal digits). For example, $13.00. Products should also be ordered alphabetically, regardless of the way they might be ordered in the data file.
-
-This page should also include a "search" bar so that customers can search for products they may be interested in. Entering text into the search bar should dynamically filter the products that are listed so that only ones containing that search term are included
--->
 
 <input type="text" class="form-control input-lg" placeholder="Bean name" ng-model="order_query">
 
@@ -21,7 +16,7 @@ This page should also include a "search" bar so that customers can search for pr
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="order in orders | orderBy:'name' | filter:order_query">
+        <tr ng-repeat="order in orders | orderBy:'name' | filter:order_query" ng-click="click(order)" ui-sref='OrderDetail({"id": order.id})'>
             <td>{{ order.name }}</td>
             <td>{{ order.description }}</td>
             <td>{{ order.price | currency }}</td>
