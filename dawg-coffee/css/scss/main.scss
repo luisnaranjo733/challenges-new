@@ -3,6 +3,10 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,300");
 @import url("https://fonts.googleapis.com/css?family=Lato:400,300italic,300");
 
+$min-tablet: "(min-width: 768px)";
+$min-md-desktop: "(min-width: 992px)";
+$min-lg-desktop: "(min-width: 1024px)";
+
 $font-stack: Lato, 'Helvetica Neue', Helvetica, sans-serif;
 $light-grey: #E9EAEE;
 $black: #181c22;
@@ -197,7 +201,15 @@ footer {
 }
 /* END OF FOOTER SECTION */
 
-@media screen and (min-width: 768px) {
+/*
+Extra small devices Phones (<768px) (default)
+Small devices Tablets (≥768px)
+Medium devices Desktops (≥992px)
+Large devices Desktops (≥1200px)
+*/
+
+
+@media screen and #{$min-tablet} {
     /* START OF BASE PAGE STYLES */
     body {        
         font-size: 20px;
@@ -258,7 +270,7 @@ footer {
     /* END OF FOOTER SECTION */
 }
 
-@media screen and (min-width: 992px) {
+@media screen and #{$min-md-desktop} {
     /* START HEADER STYLES */
     .header {
         background-image: url('../img/background-md.jpg');
@@ -271,7 +283,7 @@ footer {
     /* END HEADER STYLES */
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and #{$min-lg-desktop} {
     /* START HEADER STYLES */
     .header {
         background-image: url('../img/background-lg.jpg');

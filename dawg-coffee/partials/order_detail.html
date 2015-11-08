@@ -9,15 +9,18 @@ The bean detail page should also include an order form so the customer can add t
 <div class="order-detail-header"></div>
 
 <div class="row">
-    <div class="col-md-8 order-grid-col">
-        <h2>{{ order.name }}</h2>
-        <img src="{{ order.image }}">
-        <p>{{ order.price | currency }}</p>
-        <p>{{ order.description }}</p>
-        <p>Categories</p>
-        <ul>
-            <li ng-repeat="category in order.categories">{{ category }}</li>
-        </ul>
+    <div class="col-md-8 ">
+        <div class="order-grid-col">
+            <h2>{{ order.name }}</h2>
+            <img src="{{ order.image }}">
+            <p class="price">{{ order.price | currency }}</p>
+        
+            <p>{{ order.description }}</p>
+            <p id='categories'>Categories</p>
+            <ul>
+                <li ng-repeat="category in order.categories">{{ category }}</li>
+            </ul>
+        </div>
     </div>
     <div class="col-md-4 order-grid-col">
         <h2>Purchase {{ order.name }}</h2>

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("../bower_components/bootstrap/dist/css/bootstrap.min.css");
 @import url("../bower_components/components-font-awesome/css/font-awesome.min.css");
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,300");
@@ -8,9 +9,17 @@
   width: 100%;
   height: 55px; }
 
+.order-grid-col h2 {
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em; }
 .order-grid-col img {
-  max-height: 400px;
-  max-width: 400px; }
+  max-width: 100%; }
+.order-grid-col .price {
+  margin-bottom: 1em;
+  margin-top: 1em;
+  text-align: center;
+  font-size: 1.75em; }
 
 .grower-section {
   background-color: #dbdce3; }
@@ -29,11 +38,19 @@
   margin-left: 0;
   margin-right: 0; }
 
+#categories {
+  font-weight: bold; }
+
 @media screen and (min-width: 768px) {
-  .order-grid-col-1 img {
-    max-height: none;
-    max-width: none;
-    width: 70%; } }
+  .order-grid-col img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto; }
+  .order-grid-col .price {
+    margin-bottom: 1em;
+    margin-top: 1em;
+    text-align: center;
+    font-size: 1.75em; } }
 body {
   font-family: Lato, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 16px;
@@ -184,6 +201,12 @@ footer {
   padding: 1em; }
 
 /* END OF FOOTER SECTION */
+/*
+Extra small devices Phones (<768px) (default)
+Small devices Tablets (≥768px)
+Medium devices Desktops (≥992px)
+Large devices Desktops (≥1200px)
+*/
 @media screen and (min-width: 768px) {
   /* START OF BASE PAGE STYLES */
   body {
@@ -245,7 +268,7 @@ footer {
     font-size: 4em; }
 
   /* END HEADER STYLES */ }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1024px) {
   /* START HEADER STYLES */
   .header {
     background-image: url("../img/background-lg.jpg"); }
