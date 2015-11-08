@@ -3,33 +3,37 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,300");
 @import url("https://fonts.googleapis.com/css?family=Lato:400,300italic,300");
 /* START OF BASE PAGE STYLES */
-.form-control {
-  width: 95%;
-  margin: 2em auto; }
-
+/* Set up a buffer header so our content doesn't load under the navbar */
 .order-detail-header {
   width: 100%;
-  height: 55px;
-  border-style: dotted; }
+  height: 55px; }
+
+.order-grid-col img {
+  max-height: 400px;
+  max-width: 400px; }
 
 .grower-section {
   background-color: #dbdce3; }
 
-.order-grid-col-1 {
-  padding-left: 3em; }
-  .order-grid-col-1 h2 {
-    text-align: left; }
-  .order-grid-col-1 img {
-    max-height: 400px;
-    max-width: 400px; }
+.center img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+/* Make the text input look a bit nicer */
+.form-control {
+  width: 95%;
+  margin: 2em auto; }
+
+.row {
+  margin-left: 0;
+  margin-right: 0; }
 
 @media screen and (min-width: 768px) {
-  img {
-    max-height: 100%;
-    max-width: 100%; }
-
-  h2 {
-    text-align: center; } }
+  .order-grid-col-1 img {
+    max-height: none;
+    max-width: none;
+    width: 70%; } }
 body {
   font-family: Lato, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 16px;

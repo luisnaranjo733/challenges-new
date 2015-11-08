@@ -1,43 +1,48 @@
-.form-control {
-    width: 95%;
-    margin: 2em auto;
-}
 
+/* Set up a buffer header so our content doesn't load under the navbar */
 .order-detail-header {
     width: 100%;
     height: 55px;
-    border-style: dotted;
 }
 
-.order-grid {
 
+.order-grid-col {
+    img {
+        max-height: 400px;
+        max-width: 400px;
+
+    }
 }
 
 .grower-section {
     background-color: darken($light-grey, 5%);
 }
 
-.order-grid-col-1 {
-    padding-left: 3em;
-    h2 {
-        text-align: left;
-    }
-    img {
-        max-height: 400px;
-        max-width: 400px;
-    }
+.center img {        
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
 }
 
-.order-grid-col-2 {
+/* Make the text input look a bit nicer */
+.form-control {
+    width: 95%;
+    margin: 2em auto;
+}
 
+// Bootstrap leaves margins by default which cause unnecessary horiz scrollbars
+.row {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 @media screen and (min-width: 768px) {
-    img {
-        max-height: 100%;
-        max-width: 100%;
-    }
-    h2 {
-        text-align: center;
+
+    .order-grid-col-1 {
+        img {
+            max-height: none;
+            max-width: none;
+            width: 70%
+        }
     }
 }
