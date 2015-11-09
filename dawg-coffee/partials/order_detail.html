@@ -8,8 +8,8 @@ The bean detail page should also include an order form so the customer can add t
 
 <div class="order-detail-header"></div>
 
-<div class="alerts">
-    <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+<div id="alerts">
+    <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" id="alert-{{$index}}" dismiss-on-timeout="10000">{{alert.msg}}</uib-alert>
 </div>
 
 <div class="row">
@@ -75,3 +75,4 @@ The bean detail page should also include an order form so the customer can add t
         
     </div>
 </div>
+
