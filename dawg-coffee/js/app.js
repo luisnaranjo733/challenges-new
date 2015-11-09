@@ -46,6 +46,7 @@ app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter',
             id: $stateParams.id
         }, true)[0]
         $scope.order = order;
+        console.log(JSON.stringify(order.grower.description));
     });
     $scope.submitForm = function(order) {
       console.log($scope.quantity)

@@ -28,9 +28,12 @@
   background-color: #dbdce3; }
   .grower-section img {
     max-width: 85%;
+    max-height: 500px;
     margin-bottom: 20px; }
   .grower-section h3 {
     margin-bottom: 1em; }
+  .grower-section p {
+    word-wrap: break-word; }
 
 /* Make the text input look a bit nicer */
 .form-control {
