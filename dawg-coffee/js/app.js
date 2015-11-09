@@ -1,6 +1,7 @@
 'use strict';
 
 var setItem = function(key, value) {
+    console.log('set item called');
     var json = JSON.stringify(value);
     localStorage.setItem(key, json);
 }
@@ -97,11 +98,18 @@ app.controller('OrderCartCtrl', ['$scope', 'cartService', function($scope, cartS
         for (var i = 0; i < $scope.orders.length; i++) {
             var order = $scope.orders[i];
             if (order == order_to_remove) {
-                $scope.orders.splice(i, 1);
-                setItem('orders', $scope.orders);
+                $scope.orders.splice(i, 1); // so it gets removed from view
+                cartService.orders.splice(i, 1); // so it gets removed from localStorage
+                setItem('orders', cartService.orders);
             }
         }
     }
+
+    $scope.deleteOrders = function() {
+        $scope.orders = null;
+        removeItem('orders');
+    }
+
 }]);
 
 app.factory('cartService', ['$http', '$filter', function($http, $filter) {

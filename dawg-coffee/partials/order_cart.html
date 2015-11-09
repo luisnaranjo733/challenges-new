@@ -21,7 +21,7 @@
             <td>{{ order.quantity }}</td>
             <td>{{ order.price }}</td>
             <td>{{ order.quantity * order.price | currency }}</td>
-            <td><i class="fa fa-times" ng-click="deleteOrder(order)" ng-class="{'fa-lg': hover}" ng-mouseenter="hover=true" ng-mouseleave="hover=false"></i></td>
+            <td><i class="fa fa-times" ng-click="deleteOrder(order)"></i></td>
         </tr>
         <tr>
             <td></td>
