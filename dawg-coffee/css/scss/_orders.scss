@@ -64,9 +64,10 @@
     font-weight: bold;
 }
 
-.fa-times:hover, .fa-plus:hover, .fa-minus:hover {
+.fa-times:active, .fa-plus:active, .fa-minus:active {
     color: red;
 }
+
 
 .space-left {
     margin-left: 1em;
