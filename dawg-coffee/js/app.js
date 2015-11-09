@@ -81,6 +81,7 @@ app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter',
 
 app.controller('OrderCartCtrl', ['$scope', '$uibModal', 'cartService', function($scope, $uibModal, cartService) {
     $scope.orders = getItem('orders');
+    // Needs to be sanitized for null $scope.orders case
     $scope.getTotal = function() {
         var sum = 0;
         for (var i = 0; i < $scope.orders.length; i++) {
