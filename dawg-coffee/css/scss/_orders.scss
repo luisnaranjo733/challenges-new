@@ -64,10 +64,17 @@
     font-weight: bold;
 }
 
-.fa-times:hover {
+.fa-times:hover, .fa-plus:hover, .fa-minus:hover {
     color: red;
 }
 
+.space-left {
+    margin-left: 1em;
+}
+
+.space-right {
+    margin-right: 1em;
+}
 
 
 @media screen and #{$min-tablet} {

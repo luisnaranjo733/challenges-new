@@ -98,6 +98,16 @@ app.controller('OrderCartCtrl', ['$scope', 'cartService', function($scope, cartS
             }
         }
     }
+    $scope.increaseOrderQty = function(order) {
+        order.quantity += 1;
+        setItem('orders', cartService.orders)
+    }
+
+    $scope.decreaseOrderQty = function(order) {
+        order.quantity -= 1;
+        setItem('orders', cartService.orders)
+    }
+
 
     $scope.deleteOrders = function() {
         $scope.orders = null;
