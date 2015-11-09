@@ -43,9 +43,7 @@ The bean detail page should also include an order form so the customer can add t
             <div class="form-group" ng-class="{'has-success':orderForm.grind.$valid}">
                 <label for="grind">Grind:</label>
                 <select type="text" name="grind" id="grind" class="form-control" ng-model="grind_type" required>
-                    <option ng-repeat='available_grind_type in grind_types'>
-                        {{ available_grind_type }}
-                    </option>
+                    <option ng-repeat='available_grind_type in grind_types'>{{ available_grind_type }}</option>
                 </select>
             </div>    
 
