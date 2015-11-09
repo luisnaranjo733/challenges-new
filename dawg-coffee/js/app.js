@@ -61,26 +61,56 @@ app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter',
         $scope.order = order;
     });
     $scope.submitForm = function(orderForm) {
-        var order = {
+        var order_details = {
             id: product_id,
             quantity: $scope.quantity,
             grind_type: $scope.grind_type,
         }
-        cartService.order(order);
+        cartService.order(order_details);
 
     }
 }]);
 
-app.controller('OrderCartCtrl', ['$scope', '$http','cartService', function($scope, $http, cartService) {
-
+app.controller('OrderCartCtrl', ['$scope', 'cartService', function($scope, cartService) {
+    $scope.orders = cartService.orders;
+    $scope.getTotal = function() {
+        var sum = 0;
+        for (var i = 0; i < $scope.orders.length; i++) {
+            var order = $scope.orders[i];
+            sum += order.price *  order.quantity;
+        }
+        return sum;
+    }
 }]);
 
-app.factory('cartService', function() {
+app.factory('cartService', ['$http', '$filter', function($http, $filter) {
     var cart = {};
     cart.orders = [];
-    cart.order = function(order) {
-        console.log('Making an order');
-        cart.orders.push(order);
+    cart.order = function(order_details) {
+
+        $http.get('data/products.json').then(function(response) {
+            var order = $filter('filter')(response.data, {
+                id: order_details.id,
+            }, true)[0]
+            order.quantity = order_details.quantity;
+            order.grind_type = order_details.grind_type;
+            cart.orders.push(order);
+        });
     }
+
+    // for development only
+    var default_order_1 = {
+        grind_type: "French Press",
+        id: "frech-roast",
+        quantity: 8,
+    }
+    cart.order(default_order_1);
+    var default_order_2 = {
+        grind_type: "Whole Bean",
+        id: "sumatran",
+        quantity: 3,
+    }
+    cart.order(default_order_2);
+
     return cart;
-});
+}]);
