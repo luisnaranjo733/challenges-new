@@ -14,7 +14,7 @@ var removeItem = function(key) {
     localStorage.removeItem(key);
 }
 
-var app = angular.module('CoffeeApp', ['ui.router']);
+var app = angular.module('CoffeeApp', ['ui.router', 'ui.bootstrap']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider.state('Home', {
@@ -57,7 +57,7 @@ app.controller('OrderCtrl', ['$scope', '$http', function($scope, $http) {
     });
 }]);
 
-app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter', 'cartService', function($scope, $http, $stateParams, $filter, cartService) {
+app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter', 'cartService', 'alertService', function($scope, $http, $stateParams, $filter, cartService, alertService) {
     $scope.grind_types = ['Whole Bean', 'Espresso', 'French Press', 'Cone Drip Filter', 'Flat Bottom Filter'];
     var product_id = $stateParams.id;
     $http.get('data/products.json').then(function(response) {
@@ -74,6 +74,8 @@ app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter',
         }
         cartService.order(order_details);
     }
+    alertService.addAlert('success', 'order added!');
+    
 }]);
 
 app.controller('OrderCartCtrl', ['$scope', 'cartService', function($scope, cartService) {
@@ -124,4 +126,24 @@ app.factory('cartService', ['$http', '$filter', function($http, $filter) {
     }
 
     return cart;
+}]);
+
+app.factory('alertService', ['$rootScope', function($rootScope) {
+    var alertService = {};
+    $rootScope.alerts = [];
+
+    alertService.addAlert = function(type, msg) {
+        $rootScope.alerts.push({
+            'type': type,
+            'msg': msg
+        });
+    };
+    $rootScope.addAlert = alertService.addAlert;
+
+    alertService.closeAlert = function(index) {
+        $rootScope.alerts.splice(index, 1);
+    };
+    $rootScope.closeAlert = alertService.closeAlert;
+
+    return alertService;
 }]);
