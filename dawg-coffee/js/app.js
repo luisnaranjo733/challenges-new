@@ -105,7 +105,7 @@ app.controller('OrderCartCtrl', ['$scope', 'cartService', function($scope, cartS
 
     $scope.decreaseOrderQty = function(index) {
         var order = $scope.orders[index];
-        if (order.quantity > 0) {
+        if (order.quantity > 1) {
             order.quantity -= 1;
         }
         cartService.orders = setItem('orders', $scope.orders);
