@@ -56,6 +56,19 @@
 .space-right {
   margin-right: 1em; }
 
+html {
+  position: relative;
+  min-height: 100%; }
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px; }
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%; }
+
 @media screen and (min-width: 768px) {
   .order-grid-col img {
     display: block;
