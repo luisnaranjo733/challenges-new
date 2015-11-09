@@ -11,15 +11,17 @@
             <th>Quantity</th>
             <th>Unit price</th>
             <th>Total price</th>
+            <th></th>
         </tr>
     </thead>
-    <tbody>
-        <tr ng-repeat="order in orders" ng-click="deleteOrder(order)">
+    <tbody ng-init="hover=false">
+        <tr ng-repeat="order in orders">
             <td>{{ order.name }}</td>
             <td>{{ order.grind_type }}</td>
             <td>{{ order.quantity }}</td>
             <td>{{ order.price }}</td>
             <td>{{ order.quantity * order.price | currency }}</td>
+            <td><i class="fa fa-times" ng-click="deleteOrder(order)" ng-class="{'fa-lg': hover}" ng-mouseenter="hover=true" ng-mouseleave="hover=false"></i></td>
         </tr>
         <tr>
             <td></td>

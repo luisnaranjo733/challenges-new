@@ -113,6 +113,8 @@ app.factory('cartService', ['$http', '$filter', function($http, $filter) {
         setItem('orders', cart.orders);
     }
     cart.order = function(order_details) {
+        console.log('grind type');
+        console.log(order_details.grind_type);
 
         $http.get('data/products.json').then(function(response) {
             var order = $filter('filter')(response.data, {
