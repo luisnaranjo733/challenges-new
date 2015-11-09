@@ -2,7 +2,7 @@
 /* Set up a buffer header so our content doesn't load under the navbar */
 .order-detail-header {
     width: 100%;
-    height: 55px;
+    height: 85px;
 }
 
 
@@ -68,6 +68,10 @@
     color: red;
 }
 
+.alerts {
+
+}
+
 @media screen and #{$min-tablet} {
     .order-grid-col {
         img {
@@ -83,5 +87,8 @@
             text-align: center;
             font-size: 1.75em;
         }
+    }
+    .order-detail-header {
+        height: 55px;
     }
 }

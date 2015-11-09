@@ -7,7 +7,7 @@
 /* Set up a buffer header so our content doesn't load under the navbar */
 .order-detail-header {
   width: 100%;
-  height: 55px; }
+  height: 85px; }
 
 .order-grid-col h2 {
   text-align: center;
@@ -60,7 +60,10 @@
     margin-bottom: 1em;
     margin-top: 1em;
     text-align: center;
-    font-size: 1.75em; } }
+    font-size: 1.75em; }
+
+  .order-detail-header {
+    height: 55px; } }
 body {
   font-family: Lato, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 16px;

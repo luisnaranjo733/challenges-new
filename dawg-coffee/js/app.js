@@ -73,8 +73,8 @@ app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter',
             grind_type: $scope.grind_type,
         }
         cartService.order(order_details);
+        alertService.addAlert('success', 'Your order was succesfully placed!');
     }
-    alertService.addAlert('success', 'order added!');
     
 }]);
 
