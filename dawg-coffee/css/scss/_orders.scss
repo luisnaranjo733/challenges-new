@@ -28,7 +28,19 @@
 }
 
 .grower-section {
+    text-align: center;
+    margin-top: 5em;
+    padding-top: 1em;
     background-color: darken($light-grey, 5%);
+
+    img {
+        max-width: 85%;
+        margin-bottom: 20px;
+    }
+
+    h3 {
+        margin-bottom: 1em;
+    }
 }
 
 /* Make the text input look a bit nicer */
