@@ -3,6 +3,7 @@
 var setItem = function(key, value) {
     var json = JSON.stringify(value);
     localStorage.setItem(key, json);
+    return value
 }
 
 var getItem = function(key) {
@@ -88,26 +89,22 @@ app.controller('OrderCartCtrl', ['$scope', 'cartService', function($scope, cartS
         }
         return sum;
     }
-    $scope.deleteOrder = function(order_to_remove) {
-        for (var i = 0; i < $scope.orders.length; i++) {
-            var order = $scope.orders[i];
-            if (order == order_to_remove) {
-                $scope.orders.splice(i, 1); // so it gets removed from view
-                cartService.orders.splice(i, 1); // so it gets removed from localStorage
-                setItem('orders', cartService.orders);
-            }
-        }
+
+    $scope.deleteOrder = function(index) {
+        $scope.orders.splice(index, 1); // so it gets removed from view
+        cartService.orders = setItem('orders', $scope.orders);
     }
+
     $scope.increaseOrderQty = function(index) {
         var order = $scope.orders[index];
         order.quantity += 1;
-        setItem('orders', $scope.orders);
+        cartService.orders = setItem('orders', $scope.orders);
     }
 
     $scope.decreaseOrderQty = function(index) {
         var order = $scope.orders[index];
         order.quantity -= 1;
-        setItem('orders', $scope.orders);
+        cartService.orders = setItem('orders', $scope.orders);
     }
 
 
