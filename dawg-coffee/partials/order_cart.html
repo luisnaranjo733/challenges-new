@@ -3,34 +3,37 @@
 <h1>Shopping Cart</h1>
 
 <p ng-show='!orders.length'>No orders currently in the cart!</p>
-<table class="table table-hover" ng-hide="!orders.length">
-    <thead>
-        <tr>
-            <th>Item</th>
-            <th>Grind</th>
-            <th>Quantity</th>
-            <th>Unit price</th>
-            <th>Total price</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody ng-init="hover=false">
-        <tr ng-repeat="order in orders">
-            <td>{{ order.name }}</td>
-            <td>{{ order.grind_type }}</td>
-            <td><i class="fa fa-plus space-right" ng-click="increaseOrderQty($index)"></i>{{ order.quantity }}<i class="fa fa-minus space-left" ng-click="decreaseOrderQty($index)"></i></td>
-            <td>{{ order.price }}</td>
-            <td>{{ order.quantity * order.price | currency }}</td>
-            <td><i class="fa fa-times" ng-click="deleteOrder(order)"></i></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th>Grand Total</th>
-            <th>{{ getTotal() | currency }}</th>
-        </tr>
-    </tbody>
-</table>
+
+<div class="table-responsive">
+    <table class="table table-hover" ng-hide="!orders.length">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Grind</th>
+                <th>Quantity</th>
+                <th>Unit price</th>
+                <th>Total price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody ng-init="hover=false">
+            <tr ng-repeat="order in orders">
+                <td>{{ order.name }}</td>
+                <td>{{ order.grind_type }}</td>
+                <td><i class="fa fa-plus space-right" ng-click="increaseOrderQty($index)"></i>{{ order.quantity }}<i class="fa fa-minus space-left" ng-click="decreaseOrderQty($index)"></i></td>
+                <td>{{ order.price }}</td>
+                <td>{{ order.quantity * order.price | currency }}</td>
+                <td><i class="fa fa-times" ng-click="deleteOrder(order)"></i></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th>Grand Total</th>
+                <th>{{ getTotal() | currency }}</th>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <button type="submit" class="btn btn-primary" ng-click="deleteOrders()">Delete all orders</button>
