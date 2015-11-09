@@ -14,7 +14,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="order in orders">
+        <tr ng-repeat="order in orders" ng-click="deleteOrder(order)">
             <td>{{ order.name }}</td>
             <td>{{ order.grind_type }}</td>
             <td>{{ order.quantity }}</td>

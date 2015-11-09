@@ -93,9 +93,14 @@ app.controller('OrderCartCtrl', ['$scope', 'cartService', function($scope, cartS
         }
         return sum;
     }
-    $scope.deleteOrders = function() {
-        removeItem('orders');
-        alert('deleted all orders');
+    $scope.deleteOrder = function(order_to_remove) {
+        for (var i = 0; i < $scope.orders.length; i++) {
+            var order = $scope.orders[i];
+            if (order == order_to_remove) {
+                $scope.orders.splice(i, 1);
+                setItem('orders', $scope.orders);
+            }
+        }
     }
 }]);
 
