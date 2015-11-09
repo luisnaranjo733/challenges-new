@@ -1,8 +1,17 @@
 'use strict';
 
+var setItem = function(key, value) {
+    var json = JSON.stringify(value);
+    localStorage.setItem(key, json);
+}
 
-var getOrderFromId = function(id) {
+var getItem = function(key) {
+    var json = localStorage.getItem(key);
+    return JSON.parse(json);
+}
 
+var removeItem = function(key) {
+    localStorage.removeItem(key);
 }
 
 var app = angular.module('CoffeeApp', ['ui.router']);
@@ -67,12 +76,15 @@ app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter',
             grind_type: $scope.grind_type,
         }
         cartService.order(order_details);
+        alert('Order submitted!');
 
     }
 }]);
 
 app.controller('OrderCartCtrl', ['$scope', 'cartService', function($scope, cartService) {
-    $scope.orders = cartService.orders;
+    console.log('hey')
+    $scope.orders = getItem('orders');
+    console.log($scope.orders);
     $scope.getTotal = function() {
         var sum = 0;
         for (var i = 0; i < $scope.orders.length; i++) {
@@ -81,11 +93,20 @@ app.controller('OrderCartCtrl', ['$scope', 'cartService', function($scope, cartS
         }
         return sum;
     }
+    $scope.deleteOrders = function() {
+        removeItem('orders');
+        alert('deleted all orders');
+    }
 }]);
 
 app.factory('cartService', ['$http', '$filter', function($http, $filter) {
     var cart = {};
-    cart.orders = [];
+    cart.orders = getItem('orders');
+    if (!cart.orders) {
+        console.log('initializing orders');
+        cart.orders = [];
+        setItem('orders', cart.orders);
+    }
     cart.order = function(order_details) {
 
         $http.get('data/products.json').then(function(response) {
@@ -95,22 +116,9 @@ app.factory('cartService', ['$http', '$filter', function($http, $filter) {
             order.quantity = order_details.quantity;
             order.grind_type = order_details.grind_type;
             cart.orders.push(order);
+            setItem('orders', cart.orders);
         });
     }
-
-    // for development only
-    var default_order_1 = {
-        grind_type: "French Press",
-        id: "frech-roast",
-        quantity: 8,
-    }
-    cart.order(default_order_1);
-    var default_order_2 = {
-        grind_type: "Whole Bean",
-        id: "sumatran",
-        quantity: 3,
-    }
-    cart.order(default_order_2);
 
     return cart;
 }]);

@@ -2,7 +2,8 @@
 
 <h1>Shopping Cart</h1>
 
-<table class="table table-hover">
+<p ng-show='!orders.length'>No orders currently in the cart!</p>
+<table class="table table-hover" ng-hide="!orders.length">
     <thead>
         <tr>
             <th>Item</th>
@@ -29,3 +30,5 @@
         </tr>
     </tbody>
 </table>
+
+<button type="submit" class="btn btn-primary" ng-click="deleteOrders()">Delete all orders</button>
