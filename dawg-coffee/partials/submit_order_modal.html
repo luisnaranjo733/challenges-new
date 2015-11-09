@@ -1,0 +1,27 @@
+<div ng-show="orders.length">
+    <div class="modal-header">
+        <h3 class="modal-title">Thanks!</h3>
+    </div>
+    <div class="modal-body">
+        <p>Your order has been placed.</p>
+        <p>You will be charged {{ getTotal() | currency }} for: </p>
+        <ul>
+            <li ng-repeat="order in orders">{{ order.quantity}} units of {{ order.name }}</li>
+        </ul>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Close</button>
+    </div>
+</div>
+
+<div ng-show="!orders.length">
+    <div class="modal-header">
+        <h3 class="modal-title">Woops!</h3>
+    </div>
+    <div class="modal-body">
+        <p>You haven't filled out an order yet!</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Close</button>
+    </div>
+</div>

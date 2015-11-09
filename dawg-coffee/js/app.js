@@ -79,7 +79,7 @@ app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter',
     
 }]);
 
-app.controller('OrderCartCtrl', ['$scope', 'cartService', function($scope, cartService) {
+app.controller('OrderCartCtrl', ['$scope', '$uibModal', 'cartService', function($scope, $uibModal, cartService) {
     $scope.orders = getItem('orders');
     $scope.getTotal = function() {
         var sum = 0;
@@ -117,7 +117,28 @@ app.controller('OrderCartCtrl', ['$scope', 'cartService', function($scope, cartS
         removeItem('orders');
     }
 
+    $scope.placeOrder = function() {
+        //show modal!
+        var modalInstance = $uibModal.open({
+            templateUrl: 'partials/submit_order_modal.html',
+            controller: 'SubmitOrderModalCtrl',
+            scope: $scope, //pass in all our scope variables!
+        });
+
+        modalInstance.result.catch(function() {
+            $scope.deleteOrders();
+        })
+
+    }
+
 }]);
+
+
+app.controller('SubmitOrderModalCtrl', function($scope, $uibModalInstance) {
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
+})
 
 app.factory('cartService', ['$http', '$filter', function($http, $filter) {
     var cart = {};
