@@ -69,6 +69,11 @@ body {
   bottom: 0;
   width: 100%; }
 
+.order-header {
+  padding-top: 3em;
+  padding-right: 3em;
+  /* Added to prevent crowding at right edge of screen */ }
+
 @media screen and (min-width: 768px) {
   .order-grid-col img {
     display: block;
@@ -82,7 +87,17 @@ body {
     font-size: 1.75em; }
 
   .order-detail-header {
-    height: 55px; } }
+    height: 55px; }
+
+  .order-header {
+    background-image: url("../img/background-sm.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 225px;
+    /*changed from 550px so user doesn't need to scroll in orders.html partial */
+    width: 100%;
+    color: white;
+    text-align: right; } }
 body {
   font-family: Lato, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 16px;
@@ -265,7 +280,7 @@ Large devices Desktops (≥1200px)
     background-image: url("../img/background-sm.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 350px;
+    min-height: 550px;
     /*changed from 550px so user doesn't need to scroll in orders.html partial */
     width: 100%;
     color: white;

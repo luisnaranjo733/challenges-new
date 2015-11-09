@@ -6,7 +6,13 @@ Include an "About the Grower" section including the description, image, and the 
 The bean detail page should also include an order form so the customer can add that product to their shopping cart. They should be able to indicate how many pounds they desire (minimum of 1, maximum of 10, whole point increments) and what kind of grind they need (Whole Bean, Espresso, French Press, Cone Drip Filter, or Flat Bottom Filter). See below for more details about the shopping cart.
 -->
 
-<div class="order-detail-header"></div>
+<!-- <div class="order-detail-header"></div> -->
+
+<div class="order-header">
+    <h1>Dawg Coffee</h1>
+    <h1>Orders</h1> 
+    <p class="hidden-xs">Supplying beans to sleepy Huskies since 2015</p>
+</div>
 
 <div id="alerts">
     <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" id="alert-{{$index}}" dismiss-on-timeout="10000">{{alert.msg}}</uib-alert>
