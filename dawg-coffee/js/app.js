@@ -1,7 +1,6 @@
 'use strict';
 
 var setItem = function(key, value) {
-    console.log('set item called');
     var json = JSON.stringify(value);
     localStorage.setItem(key, json);
 }
@@ -56,9 +55,6 @@ app.controller('OrderCtrl', ['$scope', '$http', function($scope, $http) {
     $http.get('data/products.json').then(function(response) {
         $scope.orders = response.data;
     });
-    $scope.click = function(order) {
-        //console.log(order);
-    }
 }]);
 
 app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter', 'cartService', function($scope, $http, $stateParams, $filter, cartService) {
@@ -77,15 +73,11 @@ app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter',
             grind_type: $scope.grind_type,
         }
         cartService.order(order_details);
-        alert('Order submitted!');
-
     }
 }]);
 
 app.controller('OrderCartCtrl', ['$scope', 'cartService', function($scope, cartService) {
-    console.log('hey')
     $scope.orders = getItem('orders');
-    console.log($scope.orders);
     $scope.getTotal = function() {
         var sum = 0;
         for (var i = 0; i < $scope.orders.length; i++) {
@@ -116,14 +108,10 @@ app.factory('cartService', ['$http', '$filter', function($http, $filter) {
     var cart = {};
     cart.orders = getItem('orders');
     if (!cart.orders) {
-        console.log('initializing orders');
         cart.orders = [];
         setItem('orders', cart.orders);
     }
     cart.order = function(order_details) {
-        console.log('grind type');
-        console.log(order_details.grind_type);
-
         $http.get('data/products.json').then(function(response) {
             var order = $filter('filter')(response.data, {
                 id: order_details.id,
