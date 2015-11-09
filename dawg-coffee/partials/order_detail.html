@@ -24,7 +24,26 @@ The bean detail page should also include an order form so the customer can add t
     </div>
     <div class="col-md-4 order-grid-col">
         <h2>Purchase {{ order.name }}</h2>
-        <p>Insert order form here</p>
+
+        <form class="form-horizontal" name="orderForm" novalidate>
+            <div class="form-group" ng-class="{'has-error':orderForm.quantity.$invalid && orderForm.quantity.$touched, 'has-success':orderForm.quantity.$valid}">
+                <label for="quantity">Quantity:</label>
+                <input type="number" name="quantity" id="quantity" class="form-control" ng-model="quantity" min="1" max="10" required>
+                <p ng-show="orderForm.quantity.$invalid && orderForm.quantity.$touched" class="help-block">Order quantity must be between 1-10</p>
+            </div> 
+
+            <div class="form-group" ng-class="{'has-success':orderForm.grind.$valid}">
+                <label for="grind">Grind:</label>
+                <select type="text" name="grind" id="grind" class="form-control" ng-model="grind_type" required>
+                    <option ng-repeat='available_grind_type in grind_types'>
+                        {{ available_grind_type }}
+                    </option>
+                </select>
+            </div>    
+
+            <button type="submit" class="btn btn-primary" ng-click="submitForm(orderForm)" ng-disabled="orderForm.$invalid">Submit</button>
+        </form>
+
   </div>
 </div>
 

@@ -24,11 +24,6 @@
 .grower-section {
   background-color: #dbdce3; }
 
-.center img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto; }
-
 /* Make the text input look a bit nicer */
 .form-control {
   width: 95%;
@@ -45,7 +40,8 @@
   .order-grid-col img {
     display: block;
     margin-left: auto;
-    margin-right: auto; }
+    margin-right: auto;
+    max-height: 400px; }
   .order-grid-col .price {
     margin-bottom: 1em;
     margin-top: 1em;

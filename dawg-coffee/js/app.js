@@ -40,10 +40,15 @@ app.controller('OrderCtrl', ['$scope', '$http', function($scope, $http) {
 }]);
 
 app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter', function($scope, $http, $stateParams, $filter) {
+    $scope.grind_types = ['Whole Bean', 'Espresso', 'French Press', 'Cone Drip Filter', 'Flat Bottom Filter'];
     $http.get('data/products.json').then(function(response) {
         var order = $filter('filter')(response.data, {
             id: $stateParams.id
         }, true)[0]
         $scope.order = order;
     });
+    $scope.submitForm = function(order) {
+      console.log($scope.quantity)
+      console.log($scope.grind_type)
+    }
 }]);
