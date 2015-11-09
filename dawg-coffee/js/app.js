@@ -20,13 +20,21 @@ app.config(function($stateProvider, $urlRouterProvider) {
        controller: 'OrderCtrl',
     });
 
+    $stateProvider.state('OrderCart', {
+       url: '/orders/cart', 
+       templateUrl: 'partials/order_cart.html',
+       controller: 'OrderCartCtrl',
+    });
+
     $stateProvider.state('OrderDetail', {
        url: '/orders/{id}', 
        templateUrl: 'partials/order_detail.html',
        controller: 'OrderDetailCtrl',
     });
 
-    //$urlRouterProvider.otherwise('/');
+
+
+    $urlRouterProvider.otherwise('/');
 })
 
 app.controller('HomeCtrl', ['$scope', function($scope) {
@@ -61,6 +69,10 @@ app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter',
         cartService.order(order);
 
     }
+}]);
+
+app.controller('OrderCartCtrl', ['$scope', '$http','cartService', function($scope, $http, cartService) {
+
 }]);
 
 app.factory('cartService', function() {
