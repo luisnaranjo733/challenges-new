@@ -96,13 +96,17 @@ app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter',
 
 app.controller('OrderCartCtrl', ['$scope', '$uibModal', 'cartService', function($scope, $uibModal, cartService) {
     $scope.orders = cartService.orders;
-    cartService.orders.$loaded(function(orders) {
-        var grandTotal = 0;
-        angular.forEach(orders, function(order) {
-            grandTotal += order.quantity * order.price;
-        });
-        $scope.grandTotal = grandTotal;
-    });
+
+    $scope.getTotal = function() {
+        var getTotal = function(orders) {
+            var grandTotal = 0;
+            angular.forEach(orders, function(order) {
+                grandTotal += order.quantity * order.price;
+            });
+            return grandTotal
+        }
+        return getTotal(cartService.orders);
+    }
 
     $scope.deleteOrder = function(order) {
         cartService.orders.$remove(order);
