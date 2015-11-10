@@ -97,7 +97,10 @@ body {
     /*changed from 550px so user doesn't need to scroll in orders.html partial */
     width: 100%;
     color: white;
-    text-align: right; } }
+    text-align: right; }
+
+  .fa-shopping-cart {
+    font-size: 1.5em; } }
 body {
   font-family: Lato, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 16px;

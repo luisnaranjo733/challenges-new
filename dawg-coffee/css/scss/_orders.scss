@@ -96,6 +96,8 @@ body {
     padding-right: 3em; /* Added to prevent crowding at right edge of screen */
 }
 
+
+
 @media screen and #{$min-tablet} {
     .order-grid-col {
         img {
@@ -124,4 +126,9 @@ body {
         color: white;
         text-align: right;
     }
+    .fa-shopping-cart {
+        font-size: 1.5em;
+    }
+
+
 }
