@@ -48,7 +48,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 })
 
 app.controller('HomeCtrl', ['$scope', function($scope) {
-    $scope.headline_text = 'exquisite drinks made from fair-trade coffee, served in a relaxing and studious environment'
+
 }]);
 
 app.controller('OrderCtrl', ['$scope', '$http', function($scope, $http) {
