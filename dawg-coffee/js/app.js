@@ -73,8 +73,16 @@ app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter',
             quantity: $scope.quantity,
             grind_type: $scope.grind_type,
         }
-        cartFireService.order(order_details);
-        alertService.addAlert('success', 'Your order was succesfully placed!');
+
+        $http.get('data/products.json').then(function(response) {
+            var order = $filter('filter')(response.data, {
+                id: order_details.id,
+            }, true)[0]
+            order.quantity = order_details.quantity;
+            order.grind_type = order_details.grind_type;
+            cartFireService.order(order);
+            alertService.addAlert('success', 'Your order was succesfully placed!');
+        });
     }
     $scope.scrollTo = function(id) {
         var old = $location.hash();
@@ -88,15 +96,13 @@ app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter',
 
 app.controller('OrderCartCtrl', ['$scope', '$uibModal', 'cartFireService', function($scope, $uibModal, cartFireService) {
     $scope.orders = cartFireService.orders;
-    // Needs to be sanitized for null $scope.orders case
-    $scope.getTotal = function() {
-        var sum = 0;
-        for (var i = 0; i < $scope.orders.length; i++) {
-            var order = $scope.orders[i];
-            sum += order.price *  order.quantity;
-        }
-        return sum;
-    }
+    cartFireService.orders.$loaded(function(orders) {
+        var grandTotal = 0;
+        angular.forEach(orders, function(order) {
+            grandTotal += order.quantity * order.price;
+        });
+        $scope.grandTotal = grandTotal;
+    });
 
     $scope.deleteOrder = function(order) {
         cartFireService.orders.$remove(order);

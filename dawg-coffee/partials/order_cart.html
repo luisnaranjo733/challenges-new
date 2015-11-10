@@ -19,7 +19,7 @@
                 <th></th>
             </tr>
         </thead>
-        <tbody ng-init="hover=false">
+        <tbody>
             <tr ng-repeat="order in orders">
                 <td ui-sref="OrderDetail({id: order.id})">{{ order.name }}</td>
                 <td>{{ order.grind_type }}</td>
@@ -33,7 +33,7 @@
                 <td></td>
                 <td></td>
                 <th>Grand Total</th>
-                <th>{{ getTotal() | currency }}</th>
+                <th>{{ grandTotal | currency }}</th>
             </tr>
         </tbody>
     </table>

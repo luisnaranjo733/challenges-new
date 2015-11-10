@@ -4,32 +4,96 @@
 		"selected_items":
 		[
 			[
-				"calc",
-				"calcBlur"
+				"cart",
+				"cartFireService"
+			],
+			[
+				"order",
+				"order_details"
+			],
+			[
+				"prudc",
+				"product_id"
+			],
+			[
+				"font-st",
+				"font-style"
+			],
+			[
+				"moda",
+				"modalInstance"
+			],
+			[
+				"or",
+				"order_to_increase"
+			],
+			[
+				"paddin",
+				"padding-left"
+			],
+			[
+				"alert",
+				"alertService"
+			],
+			[
+				"aler",
+				"alertService"
+			],
+			[
+				"ord",
+				"order_details"
+			],
+			[
+				"ore",
+				"order_details"
+			],
+			[
+				"d",
+				"default_order"
+			],
+			[
+				"produ",
+				"product_id"
+			],
+			[
+				"prod",
+				"product_id"
+			],
+			[
+				"marign",
+				"margin-top"
 			],
 			[
 				"padd",
-				"padding-right"
+				"padding-left"
+			],
+			[
+				"padding",
+				"padding-left"
+			],
+			[
+				"pad",
+				"padding-left"
+			],
+			[
+				"marg",
+				"margin-top"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"calc",
+				"calcBlur"
 			],
 			[
 				"nav",
 				"nav-orange"
 			],
 			[
-				"padding",
-				"padding-top"
-			],
-			[
 				"borde",
 				"border-bottom-style"
-			],
-			[
-				"marg",
-				"margin-bottom"
-			],
-			[
-				"paddin",
-				"padding-right"
 			],
 			[
 				"wid",
@@ -46,10 +110,6 @@
 			[
 				"border-",
 				"border-top"
-			],
-			[
-				"pad",
-				"padding-right"
 			],
 			[
 				"paddi",
@@ -108,10 +168,6 @@
 				"background-image"
 			],
 			[
-				"margin",
-				"margin-top"
-			],
-			[
 				"backgron",
 				"background-color"
 			],
@@ -132,85 +188,87 @@
 	"buffers":
 	[
 		{
+			"file": "js/app.js",
+			"settings":
+			{
+				"buffer_size": 6548,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "partials/order_cart.html",
+			"settings":
+			{
+				"buffer_size": 1555,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "partials/order.html",
+			"settings":
+			{
+				"buffer_size": 1193,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 15242,
+				"buffer_size": 2605,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n  \n  <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css\">\n  <meta charset=\"UTF-8\" />\n  <style>\n  #container {\n    position: absolute;\n    height: auto;\n    top: 0;\n    bottom: 0;\n    width: auto;\n    left: 0;\n    right: 0;\n    overflow: auto;\n  }\n\n  #foo {\n    height:1000px;\n    width:1000px;\n    background-color: #777;\n    display: block;\n  }\n\n  </style>\n  </head>\n  <body>\n    <div id=\"container\">\n      <div id=\"foo\"></div>\n    </div>\n\n    <script type=\"text/javascript\">\n      document.getElementById('container').onscroll = function() {\n        console.log(\"scrolling\");\n      };\n    </script>\n  </body>\n</html>",
-			"file": "test.html",
-			"file_size": 708,
-			"file_write_time": 130890238223596854,
+			"file": "partials/order_detail.html",
 			"settings":
 			{
-				"buffer_size": 708,
+				"buffer_size": 2950,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "order.html",
+			"file": "partials/home.html",
 			"settings":
 			{
-				"buffer_size": 2414,
+				"buffer_size": 11816,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "svg/hours.svg",
+			"file": "css/scss/_orders.scss",
 			"settings":
 			{
-				"buffer_size": 2845,
+				"buffer_size": 2564,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "svg/location.svg",
+			"file": "css/scss/main.scss",
 			"settings":
 			{
-				"buffer_size": 969,
+				"buffer_size": 6066,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "svg/contact.svg",
+			"file": "data/products.json",
 			"settings":
 			{
-				"buffer_size": 928,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/blur.js",
-			"settings":
-			{
-				"buffer_size": 829,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "css/main.scss",
-			"settings":
-			{
-				"buffer_size": 5689,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "css/main.css",
-			"settings":
-			{
-				"buffer_size": 5202,
+				"buffer_size": 13583,
 				"line_ending": "Unix"
 			}
 		}
 	],
 	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
 	"command_palette":
 	{
 		"height": 784.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -218,7 +276,11 @@
 	},
 	"console":
 	{
-		"height": 0.0
+		"height": 0.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
 	},
 	"distraction_free":
 	{
@@ -229,8 +291,36 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee",
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/bower_components",
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/bower_components/angularfire",
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/bower_components/angularfire/dist",
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/css",
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/css/scss",
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/data",
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/js",
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/partials"
+	],
 	"file_history":
 	[
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/css/main.css",
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/partials/order_header.html",
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/data/products.json",
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/partials/submit_order_modal.html",
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/js/app.js",
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/run.sh",
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/index.html",
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/css/scss/_orders.scss",
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/svg/contact.svg",
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/svg/location.svg",
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/svg/hours.svg",
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/test.html",
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/css/scss/orders.scss",
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/css/main.scss",
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/order.html",
+		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/js/blur.js",
 		"/C/Users/luisn/Dropbox/projects/info343/lab_10_13/file.js",
 		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/svg/brand.svg",
 		"/home/luis/Dropbox/projects/info343/challenges/dawg-coffee/img/map.png",
@@ -257,6 +347,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"cartService",
+			"bootstrap",
+			"$lg-desktop",
+			"$md-desktop",
+			"$tablet",
 			"js",
 			"javascr",
 			"id=",
@@ -280,6 +375,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			"$min-lg-desktop",
+			"$min-md-desktop",
+			"$min-tablet"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -295,187 +393,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "index.html",
+					"file": "js/app.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 15242,
+						"buffer_size": 6548,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4,
-								4
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "test.html",
-					"settings":
-					{
-						"buffer_size": 708,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								145,
-								145
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 864.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "order.html",
-					"settings":
-					{
-						"buffer_size": 2414,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2275,
-								2275
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3312.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "svg/hours.svg",
-					"settings":
-					{
-						"buffer_size": 2845,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2845,
-								2845
-							]
-						],
-						"settings":
-						{
-							"history_list_is_closing": true,
-							"syntax": "Packages/XML/XML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 2057.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "svg/location.svg",
-					"settings":
-					{
-						"buffer_size": 969,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								969,
-								969
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "svg/contact.svg",
-					"settings":
-					{
-						"buffer_size": 928,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								928,
-								928
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 6,
-					"file": "js/blur.js",
-					"settings":
-					{
-						"buffer_size": 829,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
+								2624,
+								2624
 							]
 						],
 						"settings":
@@ -485,65 +415,245 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 3000.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "css/main.scss",
+					"buffer": 1,
+					"file": "partials/order_cart.html",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5689,
+						"buffer_size": 1555,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								525,
-								525
+								1384,
+								1384
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"auto_name": "",
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 432.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "partials/order.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1193,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1062,
+								1062
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 97.0,
+						"translation.y": 137.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "css/main.css",
+					"buffer": 3,
+					"file": "index.html",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5202,
+						"buffer_size": 2605,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1630,
-								1995
+								2401,
+								2401
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 2,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 857.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "partials/order_detail.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2950,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								365,
+								365
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1008.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "partials/home.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11816,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1061,
+								1061
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "css/scss/_orders.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2564,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1752,
+								1752
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 4032.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "css/scss/main.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6066,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2235,
+								2235
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 4296.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "data/products.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13583,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11360,
+								11360
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4320.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
 					"type": "text"
 				}
 			]
@@ -566,18 +676,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.566129658157,
 			1.0
 		],
 		"rows":
@@ -591,14 +694,17 @@
 	{
 		"height": 0.0
 	},
+	"pinned_build_system": "",
+	"project": "dawg-coffee.sublime-project",
 	"replace":
 	{
-		"height": 108.0
+		"height": 136.0
 	},
 	"save_all_on_build": true,
 	"select_file":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -611,6 +717,7 @@
 	"select_project":
 	{
 		"height": 1000.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -620,10 +727,26 @@
 		],
 		"width": 760.0
 	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 300.0,
-	"status_bar_visible": true
+	"side_bar_width": 515.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
 }
