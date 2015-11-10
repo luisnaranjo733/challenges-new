@@ -53,12 +53,6 @@
     }
 }
 
-/* Make the text input look a bit nicer */
-.form-control {
-    width: 95%;
-    margin: 2em auto;
-}
-
 // Bootstrap leaves margins by default which cause unnecessary horiz scrollbars
 .row {
     margin-left: 0;
@@ -107,6 +101,16 @@ body {
     }
 }
 
+.order-filter {
+    input {
+        width: 95%;
+        margin: 2em auto;
+    }
+
+    label, select, option {
+
+    }
+}
 
 
 @media screen and #{$min-tablet} {

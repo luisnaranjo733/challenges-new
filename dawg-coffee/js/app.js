@@ -52,7 +52,7 @@ app.controller('HomeCtrl', ['$scope', function($scope) {
 }]);
 
 app.controller('OrderCtrl', ['$scope', '$http', function($scope, $http) {
-    $scope.hello = 'hello';
+    $scope.categories = ["blends", "dark roast", "espresso", "varietals", "luxury"];
     $http.get('data/products.json').then(function(response) {
         $scope.orders = response.data;
     });

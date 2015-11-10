@@ -4,8 +4,17 @@
     <p >Supplying beans to sleepy Huskies since 2015</p>
 </div>
 
+<div class="order-filter">
+    <label for="">Bean name:</label>
+    <input type="text" class="form-control input-lg" placeholder="Filter by bean name" ng-model="order_query">
 
-<input type="text" class="form-control input-lg" placeholder="Bean name" ng-model="order_query">
+
+    <label for="category">Category:</label>
+    <select type="text" name="category" id="category" ng-model="category_query" class="form-control" required>
+        <option value="" selected disabled>Filter by category</option>
+        <option ng-repeat='category in categories'>{{ category }}</option>
+    </select>
+</div>
 
 <table class="table table-hover">
     <thead>
@@ -16,7 +25,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="order in orders | orderBy:'name' | filter:order_query" ng-click="click(order)" ui-sref='OrderDetail({"id": order.id})'>
+        <tr ng-repeat="order in orders | orderBy:'name' | filter:order_query | filter:category_query" ng-click="click(order)" ui-sref='OrderDetail({"id": order.id})'>
             <td>{{ order.name }}</td>
             <td>{{ order.description }}</td>
             <td>{{ order.price | currency }}</td>
