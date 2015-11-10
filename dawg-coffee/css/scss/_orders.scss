@@ -78,22 +78,28 @@
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
 }
 #footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .order-header {
     padding-top: 3em;
     padding-right: 3em; /* Added to prevent crowding at right edge of screen */
+    padding-left: 0.5em;
+    p {
+        padding-top: 1em;
+        padding-left: 0.5em;
+        font-style: italic;
+    }
 }
 
 

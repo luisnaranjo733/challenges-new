@@ -105,12 +105,14 @@ nav {
 .header {
     padding-top: 3em;
     padding-right: 3em; /* Added to prevent crowding at right edge of screen */
+    padding-left: 0.5em;
 }
 /* END OF HEADER AREA STYLES */
 
 /* START OF HEADLINE AREA STYLES */
 .headline p{
     font-style: italic;
+    padding-left: 0.5em;
 }
 
 .headline_icon {
