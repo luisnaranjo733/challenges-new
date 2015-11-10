@@ -58,7 +58,7 @@ app.controller('OrderCtrl', ['$scope', '$http', function($scope, $http) {
     });
 }]);
 
-app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter', '$location', '$anchorScroll', '$firebaseArray', 'cartFireService', 'alertService', function($scope, $http, $stateParams, $filter, $location, $anchorScroll, $firebaseArry, cartFireService, alertService) {
+app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter', '$location', '$anchorScroll', '$firebaseArray', 'cartService', 'alertService', function($scope, $http, $stateParams, $filter, $location, $anchorScroll, $firebaseArry, cartService, alertService) {
     $scope.grind_types = ['Whole Bean', 'Espresso', 'French Press', 'Cone Drip Filter', 'Flat Bottom Filter'];
     var product_id = $stateParams.id;
     $http.get('data/products.json').then(function(response) {
@@ -80,7 +80,7 @@ app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter',
             }, true)[0]
             order.quantity = order_details.quantity;
             order.grind_type = order_details.grind_type;
-            cartFireService.order(order);
+            cartService.order(order);
             alertService.addAlert('success', 'Your order was succesfully placed!');
         });
     }
@@ -94,9 +94,9 @@ app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter',
     
 }]);
 
-app.controller('OrderCartCtrl', ['$scope', '$uibModal', 'cartFireService', function($scope, $uibModal, cartFireService) {
-    $scope.orders = cartFireService.orders;
-    cartFireService.orders.$loaded(function(orders) {
+app.controller('OrderCartCtrl', ['$scope', '$uibModal', 'cartService', function($scope, $uibModal, cartService) {
+    $scope.orders = cartService.orders;
+    cartService.orders.$loaded(function(orders) {
         var grandTotal = 0;
         angular.forEach(orders, function(order) {
             grandTotal += order.quantity * order.price;
@@ -105,13 +105,13 @@ app.controller('OrderCartCtrl', ['$scope', '$uibModal', 'cartFireService', funct
     });
 
     $scope.deleteOrder = function(order) {
-        cartFireService.orders.$remove(order);
+        cartService.orders.$remove(order);
     }
 
     $scope.increaseOrderQty = function(order) {
         if (order.quantity < 10) {
             order.quantity += 1;
-            cartFireService.orders.$save(order);
+            cartService.orders.$save(order);
         }
         
     }
@@ -119,15 +119,10 @@ app.controller('OrderCartCtrl', ['$scope', '$uibModal', 'cartFireService', funct
     $scope.decreaseOrderQty = function(order) {
         if (order.quantity > 1) {
             order.quantity -= 1;
-            cartFireService.orders.$save(order);
+            cartService.orders.$save(order);
         }
     }
 
-
-    $scope.deleteOrders = function() {
-        $scope.orders = null;
-        removeItem('orders');
-    }
 
     $scope.placeOrder = function() {
         //show modal!
@@ -138,7 +133,9 @@ app.controller('OrderCartCtrl', ['$scope', '$uibModal', 'cartFireService', funct
         });
 
         modalInstance.result.catch(function() {
-            $scope.deleteOrders();
+            angular.forEach(cartService.orders, function(order) {
+                cartService.orders.$remove(order);
+            });
         })
 
     }
@@ -153,7 +150,7 @@ app.controller('SubmitOrderModalCtrl', function($scope, $uibModalInstance) {
 })
 
 
-app.factory('cartFireService', ['$http', '$filter', '$firebaseArray', function($http, $filter, $firebaseArray) {
+app.factory('cartService', ['$http', '$filter', '$firebaseArray', function($http, $filter, $firebaseArray) {
     var cart = {};
 
     var ref = new Firebase("https://blinding-heat-3412.firebaseio.com/data");
@@ -165,7 +162,7 @@ app.factory('cartFireService', ['$http', '$filter', '$firebaseArray', function($
             id: order_details.id,
             grind_type: order_details.grind_type
         }, true)[0];
-        
+
         if (match) { // coalesce
             match.quantity += order_details.quantity
             if (match.quantity > 10) {
@@ -180,40 +177,6 @@ app.factory('cartFireService', ['$http', '$filter', '$firebaseArray', function($
     return cart;
 }]);
 
-
-app.factory('cartService', ['$http', '$filter', function($http, $filter) {
-    var cart = {};
-
-    cart.orders = getItem('orders');
-    if (!cart.orders) {
-        cart.orders = [];
-        setItem('orders', cart.orders);
-    }
-    cart.order = function(order_details) {
-        var match = $filter('filter')(cart.orders, {
-            id: order_details.id,
-            grind_type: order_details.grind_type
-        }, true)[0]
-        if (match) {
-            console.log('COALESCING');
-            match.quantity += order_details.quantity;
-            cart.orders = setItem('orders', cart.orders);
-        } else {
-            console.log('NOT COALESCING');
-            $http.get('data/products.json').then(function(response) {
-                var order = $filter('filter')(response.data, {
-                    id: order_details.id,
-                }, true)[0]
-                order.quantity = order_details.quantity;
-                order.grind_type = order_details.grind_type;
-                cart.orders.push(order);
-                setItem('orders', cart.orders);
-            });
-        }
-    }
-
-    return cart;
-}]);
 
 app.factory('alertService', ['$rootScope', function($rootScope) {
     var alertService = {};
