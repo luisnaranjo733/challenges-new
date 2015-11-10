@@ -8,6 +8,7 @@
     <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" id="alert-{{$index}}" dismiss-on-timeout="5000">{{alert.msg}}</uib-alert>
 </div>
 
+
 <div class="row">
     <div class="col-md-8 order-grid-col">
         <h2>{{ order.name }}</h2>
@@ -48,6 +49,7 @@
             </div>    
 
             <button type="submit" class="btn btn-primary" ng-click="submitForm(orderForm);scrollTo('order-header')" ng-disabled="orderForm.$invalid">Submit</button>
+            <button type="submit" class="btn btn-primary" ng-click="submitFireForm(orderForm)">Submit FireForm</button>
         </form>
 
   </div>

@@ -15,7 +15,7 @@ var removeItem = function(key) {
     localStorage.removeItem(key);
 }
 
-var app = angular.module('CoffeeApp', ['ui.router', 'ui.bootstrap']);
+var app = angular.module('CoffeeApp', ['ui.router', 'ui.bootstrap', 'firebase']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider.state('Home', {
@@ -58,7 +58,7 @@ app.controller('OrderCtrl', ['$scope', '$http', function($scope, $http) {
     });
 }]);
 
-app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter', '$location', '$anchorScroll', 'cartService', 'alertService', function($scope, $http, $stateParams, $filter, $location, $anchorScroll, cartService, alertService) {
+app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter', '$location', '$anchorScroll', '$firebaseArray', 'cartFireService', 'alertService', function($scope, $http, $stateParams, $filter, $location, $anchorScroll, $firebaseArry, cartFireService, alertService) {
     $scope.grind_types = ['Whole Bean', 'Espresso', 'French Press', 'Cone Drip Filter', 'Flat Bottom Filter'];
     var product_id = $stateParams.id;
     $http.get('data/products.json').then(function(response) {
@@ -73,8 +73,11 @@ app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter',
             quantity: $scope.quantity,
             grind_type: $scope.grind_type,
         }
-        cartService.order(order_details);
+        cartFireService.order(order_details);
         alertService.addAlert('success', 'Your order was succesfully placed!');
+    }
+    $scope.submitFireForm = function(orderForm) {
+        console.log(orderForm)
     }
     $scope.scrollTo = function(id) {
         var old = $location.hash();
@@ -86,8 +89,8 @@ app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter',
     
 }]);
 
-app.controller('OrderCartCtrl', ['$scope', '$uibModal', 'cartService', function($scope, $uibModal, cartService) {
-    $scope.orders = getItem('orders');
+app.controller('OrderCartCtrl', ['$scope', '$uibModal', 'cartFireService', function($scope, $uibModal, cartFireService) {
+    $scope.orders = cartFireService.orders;
     // Needs to be sanitized for null $scope.orders case
     $scope.getTotal = function() {
         var sum = 0;
@@ -148,8 +151,27 @@ app.controller('SubmitOrderModalCtrl', function($scope, $uibModalInstance) {
     };
 })
 
+
+app.factory('cartFireService', ['$http', '$filter', '$firebaseArray', function($http, $filter, $firebaseArray) {
+    var cart = {};
+
+    var ref = new Firebase("https://blinding-heat-3412.firebaseio.com/data");
+    // download the data into a local object
+    cart.orders = $firebaseArray(ref);
+
+    cart.order = function(order_details) {
+        console.log('cart.order');
+        console.log(cart.orders);
+        cart.orders.$add(order_details);
+    }
+
+    return cart;
+}]);
+
+
 app.factory('cartService', ['$http', '$filter', function($http, $filter) {
     var cart = {};
+
     cart.orders = getItem('orders');
     if (!cart.orders) {
         cart.orders = [];
