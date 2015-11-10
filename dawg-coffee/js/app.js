@@ -76,9 +76,6 @@ app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter',
         cartFireService.order(order_details);
         alertService.addAlert('success', 'Your order was succesfully placed!');
     }
-    $scope.submitFireForm = function(orderForm) {
-        console.log(orderForm)
-    }
     $scope.scrollTo = function(id) {
         var old = $location.hash();
         $location.hash(id);
@@ -101,25 +98,25 @@ app.controller('OrderCartCtrl', ['$scope', '$uibModal', 'cartFireService', funct
         return sum;
     }
 
-    $scope.deleteOrder = function(index) {
-        $scope.orders.splice(index, 1); // so it gets removed from view
-        cartService.orders = setItem('orders', $scope.orders);
+    $scope.deleteOrder = function(order) {
+        cartFireService.orders.$remove(order);
     }
 
-    $scope.increaseOrderQty = function(index) {
-        var order = $scope.orders[index];
+    $scope.increaseOrderQty = function(order) {
+        console.log(order);
         if (order.quantity < 10) {
             order.quantity += 1;
+            cartFireService.orders.$save(order);
         }
-        cartService.orders = setItem('orders', $scope.orders);
+        
     }
 
-    $scope.decreaseOrderQty = function(index) {
-        var order = $scope.orders[index];
+    $scope.decreaseOrderQty = function(order) {
+        console.log(order);
         if (order.quantity > 1) {
             order.quantity -= 1;
+            cartFireService.orders.$save(order);
         }
-        cartService.orders = setItem('orders', $scope.orders);
     }
 
 

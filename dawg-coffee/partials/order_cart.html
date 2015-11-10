@@ -23,7 +23,7 @@
             <tr ng-repeat="order in orders">
                 <td ui-sref="OrderDetail({id: order.id})">{{ order.name }}</td>
                 <td>{{ order.grind_type }}</td>
-                <td><i class="fa fa-plus space-right" ng-click="increaseOrderQty($index)"></i>{{ order.quantity }}<i class="fa fa-minus space-left" ng-click="decreaseOrderQty($index)"></i></td>
+                <td><i class="fa fa-plus space-right" ng-click="increaseOrderQty(order)"></i>{{ order.quantity }}<i class="fa fa-minus space-left" ng-click="decreaseOrderQty(order)"></i></td>
                 <td>{{ order.price }}</td>
                 <td>{{ order.quantity * order.price | currency }}</td>
                 <td><i class="fa fa-times" ng-click="deleteOrder(order)"></i></td>
