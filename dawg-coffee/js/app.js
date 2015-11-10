@@ -109,7 +109,6 @@ app.controller('OrderCartCtrl', ['$scope', '$uibModal', 'cartFireService', funct
     }
 
     $scope.increaseOrderQty = function(order) {
-        console.log(order);
         if (order.quantity < 10) {
             order.quantity += 1;
             cartFireService.orders.$save(order);
@@ -118,7 +117,6 @@ app.controller('OrderCartCtrl', ['$scope', '$uibModal', 'cartFireService', funct
     }
 
     $scope.decreaseOrderQty = function(order) {
-        console.log(order);
         if (order.quantity > 1) {
             order.quantity -= 1;
             cartFireService.orders.$save(order);
@@ -163,9 +161,20 @@ app.factory('cartFireService', ['$http', '$filter', '$firebaseArray', function($
     cart.orders = $firebaseArray(ref);
 
     cart.order = function(order_details) {
-        console.log('cart.order');
-        console.log(cart.orders);
-        cart.orders.$add(order_details);
+        var match = $filter('filter')(cart.orders, {
+            id: order_details.id,
+            grind_type: order_details.grind_type
+        }, true)[0];
+        
+        if (match) { // coalesce
+            match.quantity += order_details.quantity
+            if (match.quantity > 10) {
+                match.quantity = 10;
+            }
+            cart.orders.$save(match);
+        } else {
+            cart.orders.$add(order_details);
+        }
     }
 
     return cart;
