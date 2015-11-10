@@ -58,7 +58,7 @@ app.controller('OrderCtrl', ['$scope', '$http', function($scope, $http) {
     });
 }]);
 
-app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter', 'cartService', 'alertService', function($scope, $http, $stateParams, $filter, cartService, alertService) {
+app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter', '$location', '$anchorScroll', 'cartService', 'alertService', function($scope, $http, $stateParams, $filter, $location, $anchorScroll, cartService, alertService) {
     $scope.grind_types = ['Whole Bean', 'Espresso', 'French Press', 'Cone Drip Filter', 'Flat Bottom Filter'];
     var product_id = $stateParams.id;
     $http.get('data/products.json').then(function(response) {
@@ -76,6 +76,14 @@ app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter',
         cartService.order(order_details);
         alertService.addAlert('success', 'Your order was succesfully placed!');
     }
+    $scope.scrollTo = function(id) {
+        console.log('scrolling!');
+        var old = $location.hash();
+        $location.hash(id);
+        $anchorScroll();
+        //reset to old to keep any additional routing logic from kicking in
+        $location.hash(old);
+    };
     
 }]);
 

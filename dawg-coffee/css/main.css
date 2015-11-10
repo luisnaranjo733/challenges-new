@@ -20,6 +20,9 @@
   margin-top: 1em;
   text-align: center;
   font-size: 1.75em; }
+.order-grid-col form {
+  padding-left: 0.5em;
+  padding-right: 0.5em; }
 
 .grower-section {
   text-align: center;
