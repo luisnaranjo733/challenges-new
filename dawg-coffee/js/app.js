@@ -77,7 +77,6 @@ app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter',
         alertService.addAlert('success', 'Your order was succesfully placed!');
     }
     $scope.scrollTo = function(id) {
-        console.log('scrolling!');
         var old = $location.hash();
         $location.hash(id);
         $anchorScroll();
@@ -157,15 +156,26 @@ app.factory('cartService', ['$http', '$filter', function($http, $filter) {
         setItem('orders', cart.orders);
     }
     cart.order = function(order_details) {
-        $http.get('data/products.json').then(function(response) {
-            var order = $filter('filter')(response.data, {
-                id: order_details.id,
-            }, true)[0]
-            order.quantity = order_details.quantity;
-            order.grind_type = order_details.grind_type;
-            cart.orders.push(order);
-            setItem('orders', cart.orders);
-        });
+        var match = $filter('filter')(cart.orders, {
+            id: order_details.id,
+            grind_type: order_details.grind_type
+        }, true)[0]
+        if (match) {
+            console.log('COALESCING');
+            match.quantity += order_details.quantity;
+            cart.orders = setItem('orders', cart.orders);
+        } else {
+            console.log('NOT COALESCING');
+            $http.get('data/products.json').then(function(response) {
+                var order = $filter('filter')(response.data, {
+                    id: order_details.id,
+                }, true)[0]
+                order.quantity = order_details.quantity;
+                order.grind_type = order_details.grind_type;
+                cart.orders.push(order);
+                setItem('orders', cart.orders);
+            });
+        }
     }
 
     return cart;
