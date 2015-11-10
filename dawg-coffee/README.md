@@ -3,16 +3,16 @@
 *Update!* This folder contains your submission for the [shopping cart challenge](http://info343-joelross.rhcloud.com/challenges/cart). Please answer the below questions with details about your submission for this later challenge.
 
 ##### 1. Did you receive any help from others (classmates, etc)? If so, please list who. #####
-> Answer goes here!
+> Nick Polsin helped me come up with the idea of using a shopping cart icon on mobile screens so the "Shopping Cart" navlink doesn't overflow
 
 ##### 2. Did you complete any advanced extensions to this challenge? If so, what? #####
-> Answer goes here!
+> Used firebase, implemented order coalescing, and sort by categoring
 
 ##### 3. Approximately how many hours did it take you to complete this challenge? #####
-> Answer goes here!
+> About 10.
 
 ##### 4. Did you encounter any problems in this challenge we should warn students about in the future? How can we make the challenge better? #####
-> Answer goes here!
+> I had trouble with factories. I wanted to make the alerts into a factory so multiple controllers could use it. It was kind of hard to do, I had to figure out how to use $rootScope.
 
 
 
