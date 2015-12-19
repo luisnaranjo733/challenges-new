@@ -1,33 +1,18 @@
 'use strict';
 
-var setItem = function(key, value) {
-    var json = JSON.stringify(value);
-    localStorage.setItem(key, json);
-    return value
-}
-
-var getItem = function(key) {
-    var json = localStorage.getItem(key);
-    return JSON.parse(json);
-}
-
-var removeItem = function(key) {
-    localStorage.removeItem(key);
-}
-
 var app = angular.module('CoffeeApp', ['ui.router', 'ui.bootstrap', 'firebase']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider.state('Home', {
        url: '/', 
        templateUrl: 'partials/home.html',
-       controller: 'HomeCtrl',
+       //controller: 'HomeCtrl',
     });
 
-    $stateProvider.state('Order', {
-       url: '/orders', 
-       templateUrl: 'partials/order.html',
-       controller: 'OrderCtrl',
+    $stateProvider.state('Products', {
+       url: '/products', 
+       templateUrl: 'partials/products.html',
+       controller: 'ProductCtrl',
     });
 
     $stateProvider.state('OrderCart', {
@@ -36,29 +21,29 @@ app.config(function($stateProvider, $urlRouterProvider) {
        controller: 'OrderCartCtrl',
     });
 
-    $stateProvider.state('OrderDetail', {
-       url: '/orders/{id}', 
-       templateUrl: 'partials/order_detail.html',
-       controller: 'OrderDetailCtrl',
+    $stateProvider.state('ProductDetail', {
+       url: '/product/{id}', 
+       templateUrl: 'partials/product_detail.html',
+       controller: 'ProductDetailCtrl',
     });
-
-
 
     $urlRouterProvider.otherwise('/');
 })
 
-app.controller('HomeCtrl', ['$scope', function($scope) {
+// not needed
+// app.controller('HomeCtrl', ['$scope', function($scope) {
 
-}]);
+// }]);
 
-app.controller('OrderCtrl', ['$scope', '$http', function($scope, $http) {
+app.controller('ProductCtrl', ['$scope', '$http', function($scope, $http) {
+    // adding categories to sort products by
     $scope.categories = ["blends", "dark roast", "espresso", "varietals", "luxury"];
     $http.get('data/products.json').then(function(response) {
         $scope.orders = response.data;
     });
 }]);
 
-app.controller('OrderDetailCtrl', ['$scope', '$http', '$stateParams', '$filter', '$location', '$anchorScroll', '$firebaseArray', 'cartService', 'alertService', function($scope, $http, $stateParams, $filter, $location, $anchorScroll, $firebaseArry, cartService, alertService) {
+app.controller('ProductDetailCtrl', ['$scope', '$http', '$stateParams', '$filter', '$location', '$anchorScroll', '$firebaseArray', 'cartService', 'alertService', function($scope, $http, $stateParams, $filter, $location, $anchorScroll, $firebaseArry, cartService, alertService) {
     $scope.grind_types = ['Whole Bean', 'Espresso', 'French Press', 'Cone Drip Filter', 'Flat Bottom Filter'];
     var product_id = $stateParams.id;
     $http.get('data/products.json').then(function(response) {
